@@ -1,0 +1,255 @@
+<include file="App/Home/Iphone/Public/top.html"/><body>
+	<header class="Wf-div1">
+		<a href="{:U('User/index')}">返回</a>
+		<span>{$cuid.currency_name}提币</span>
+	</header>
+	<script type="text/javascript" src="__PUBLIC__/Iphone/js/sendMessage.js"></script>
+<div style="width:95%;margin:0 auto;">
+	<div class="Wf-div1" style="padding-left: 0.05rem; border-bottom: solid #FF6A04 0.05rem ;">
+		<i style="float:left; text-align: left; color: #FF6A04;">选择一个提币地址</i>
+	</div>
+	<table cellpadding="0" cellspacing="0" border="1" bordercolor="#CCCCCC" style="width:100%;font-size:0.24rem;margin:0 auto;margin-bottom: 0.8rem; line-height: 0.4rem;">
+		<thead style="width:100%;">
+			<tr align="center" style="border-bottom: solid #E7E7E7 1px;">
+				<th style="width:10%">选择</th>
+				<th style="width:20%">地址标签</th>
+				<th>提币地址</th>
+				<th style="width:10%">状态</th>
+				<th style="width:10%">操作</th>
+			</tr>
+			<volist name="address" id="vo" key="k">	
+				<tr align="center">
+				  <td><input type="radio" value="{$vo.id}" id="address_id" name="redios" onclick="address_id($(this))" <eq name="k" value="1">checked="checked"</eq>></td>
+                  <td>{$vo.name|default=''}</td>
+				  <td>{$vo.qianbao_url|default=''}</td>
+                  <td>可用</td>
+                  <td><a class="link-del" href="{:U('Pay/del_address',array('id'=>$list['id'],'cuid'=>$cuid['currency_id']))}">删除</a></td>
+				</tr>
+			</volist>
+		</thead>
+		<script>
+		function address_id(_this){
+			var list= $('input:radio[name="redios"]:checked').val();
+			$("#select_address").val(list);
+			//console.log(_this.parents('tr').children('td'));
+			var add = _this.parents('tr').children('td').eq(2).children('input').val();
+			//alert(add);
+			$("#addre_show").html(add);
+			//$("#select_address").attr('type','text');
+			
+		}
+		</script>
+		<tbody style="width:100%;">
+			<form class="form-horizontal m-t" id="address" jump-url="{:U('Pay/tcoin',array('currency_id'=>$cuid['currency_id']))}" method="post" action="{:U('Pay/add_qianbao_address')}" >
+            	<tr style="display:none;" id="coinout_newaddr" align="center" >
+					<td>新地址</td>
+					<td><input class="sum" id="new_label"  type="text" name="name" placeholder="xx的地址" style="width:100%"></td>
+					<td><input class="sum" id="wallet_address"   type="text" name="address" placeholder="例如：yja67fGc8UBXLWtjwvHFkjrmYhTFGH9PTs" ></td>				
+					<input type="hidden" name="currency_id" id="currency_id" value="{$cuid['currency_id']}" />
+					<td>&nbsp;</td>
+					<td><input class="verify"  id="yes_add2" value="确认" type="button" onClick="tijiao();"></td>
+				</tr>
+			</form>
+			<tr align="center" id="addAddress_tr" style="border-bottom: solid #E7E7E7 1px;">
+				<td colspan="5"><a href="javascript:addNewAddr();" id="addNewAddress">点击添加一个新的提币地址</a></td>          
+			</tr>
+			<tr align="center" style="border-bottom: solid #E7E7E7 1px;">
+				<td colspan="5">提币地址最多添加10条</td>          
+			</tr>
+		</tbody>
+	</table>
+	<script>	
+		function tijiao(){
+			//alert (111);return;
+			var name=$("#new_label").val();
+			var address=$("#wallet_address").val();
+			var currency_id=$("#currency_id").val();
+			var url="{:U('Pay/add_qianbao_address')}";
+			
+			$.post(url,{"name":name,"address":address,"currency_id":currency_id},function(d){
+				alert(d['info']);
+				if(d['status']==1){
+					window.location.href="{:U('Pay/tcoin',array('currency_id'=>$cuid['currency_id']))}";
+				}
+			});
+		}
+	   function addNewAddr(){
+			document.getElementById("coinout_newaddr").style.display="";//显示
+			document.getElementById("addAddress_tr").style.display="none";//隐藏
+		}
+		</script>
+
+	<div class="Wf-div1" style="padding-left: 0.05rem; border-bottom: solid #FF6A04 0.05rem;">
+		<p style="display: inline-block; float:left; text-align: left;">
+			输入要提币的数额(可用余额:<i style="color: #FF6A04;">{$cuser.num} {$cuid.currency_mark}</i>)
+		</p>
+	</div>
+	<form action="{:U('Pay/ti_bi')}" method="post" id="drawform" jump-url="{:U('Pay/tcoin',array('currency_id'=>$cuid['currency_id']))}">
+		<div class="cb-box1 tb-box1" style="margin-bottom: 0.8rem;;">
+		<input type="hidden" name="currency_id" value="{$cuid.currency_id}">
+		<input type="hidden" id="sell_fee" value="{$config.tcoin_fee}">
+			<p class="p5" style="margin-top: 0.2rem; padding-bottom: 0.2rem; border-bottom: solid #E7E7E7 1px;">
+				<label>提币数量</label>
+				
+				<input class="sum" id="coin_rmb" name="num" type="text" style="width: 2.89rem;">
+			</p>
+			<p class="p5" style="margin-top: 0.2rem; padding-bottom: 0.2rem; border-bottom: solid #E7E7E7 1px;">
+				<label>实际到账</label>
+				<input  class="sum" id="true_coin" disabled="" type="text" style="width: 2.89rem;">
+				<label style="color: #FF6A04;">手续费{$config.tcoin_fee|mb_substr=0,4,"utf-8"}%</label>
+			</p>
+			<p class="p5" style="margin-top: 0.2rem; padding-bottom: 0.2rem; border-bottom: solid #E7E7E7 1px;">
+				<label>交易密码</label>
+				
+				<input class=" class="sum"" id="paypwd" name="paypwd" type="password" style="width: 2.89rem;">
+			</p>
+			<p class="p5" style="margin-top: 0.2rem; padding-bottom: 0.2rem; border-bottom: solid #E7E7E7 1px;">
+				<label>验证码</label>
+				 <input style="display:none" type="password">
+				<input class=" class="sum"" id="code" name="code" type="text" style="width: 2.89rem;" style="width: 2.89rem;">
+				<input class="input_news_password" value="点击发送" type="button" style="width: 1.5rem;" id="msgt" onClick="sandPhone()">
+			</p>
+			<p class="p5" style="margin-top: 0.2rem; padding-right: 0.5rem; padding-bottom: 0.2rem; border-bottom: solid #E7E7E7 1px; text-align: center;">
+				<input class="input_news_password" value="确认提交" type="submit" style="width: 2.04rem;">
+			</p>
+		</div>
+		</form>
+	
+	<div class="Wf-div1" style="padding-left: 0.05rem; border-bottom: solid #FF6A04 0.05rem;">
+		<p style="display: inline-block; float:left; text-align: left; color:#FF6600">
+			转出{$cuid.currency_name}说明
+		</p>
+	</div>
+	<div style="margin-bottom: 0.8rem; text-align: left; line-height: 0.6rem;">
+		<p style="width: 100%; font-size: 0.28rem;">
+			1.提笔手续费费{$config.tcoin_fee|mb_substr=0,4,"utf-8"}%,请仔细确认后再操作
+		</p>
+		<p style="width: 100%; font-size: 0.28rem;">
+			2.每笔转出限额{$cuid.currency_all_tibi|default="0"}个币
+		</p>
+	</div>
+	<div style="clear: both;"></div>
+	<div class="j-box3 wt-box3">
+	<table class="j-tab3">
+					<thead>
+						<tr>
+							<th>记录ID</th>
+							<th>转入钱包地址</th>
+							<th>转出数量</th>
+							<th>实际到账</th>
+							<th>操作时间</th>
+							<th>状态</th>
+						</tr>
+					</thead>
+					<tbody id="trust_history">
+						<volist name="tibi_list" id='vo'>
+						<tr>
+							<td id="btc_id">{$vo.id}</td>
+							<td id="btc_wallet">{$vo.url}</td>
+							<td id="btc_number">{$vo.num}</td>
+							<td id="btc_fee">
+							<eq name="vo.status" value="1">
+								{$vo.actual}
+								<else/>
+							   暂无记录
+								</eq>
+								</td>
+								<td id="btc_created">{$vo.add_time|date="Y-m-d H:i:s",###}</td>
+				
+				
+							<td class="tableEnd" id="btc_status">
+							<eq name="cuid.currency_name" value='比特币'>
+							
+							<eq name="vo.status" value="8">驳回<else/><eq name="vo.status" value="1">通过<else/>审核中</eq></eq>
+							
+							<else />
+								<if condition="$vo.status eq -1"> 
+								等待审核中
+								<elseif condition="$vo.status eq 0"/>
+								等待转出
+								<elseif condition="$vo.status eq 1"/>
+								已经到账
+								<elseif condition="$vo.status eq -2"/>
+								转出审核失败
+								<else /> 
+								未知状态
+								</if>
+							</eq>
+							
+							</td>
+						</tr>
+						</volist>
+					</tbody>
+				</table>
+	
+	
+	</div>
+	
+</div>
+<script>
+	$(".menu").addClass("uc-current");
+	
+	$('#coin_rmb').bind('input propertychange', function() {
+		var num=$("#coin_rmb").val();
+		//alert(num);
+		if(isNaN(num)){
+		 alert("请输入数字类型");
+		}else{
+		
+		var fee=$("#sell_fee").val()/100;
+		var shiji=num*(1-fee);
+		$("#true_coin").val(shiji.toFixed(2));
+		}
+	}); 
+	function sandPhone(){
+		
+ 		var money=Number($("#coin_rmb").val());
+		
+		var mo=Number("{$cuser.num}");
+		
+		var paypwd=hex_md5($("#paypwd").val());
+		//alert(paypwd);
+		//var pwdtrade=hex_md5(pwdtr);
+		var pwdt="{$pwdtrade.pwdtrade}";
+        var phone="{$member.phone}";
+		//alert (mo);
+		//alert(money);return;
+		var i=120;
+        var tid2;  
+		if(money==""){
+			alert("请输入提币数量");return;
+		}else if(money>mo){
+			alert("余额不足");return;
+		}else if(paypwd=""){
+			alert("请输入交易密码");return;
+		}else if(paypwd!=pwdt){
+			alert("交易密码不正确");return;
+		}else{
+			tid2=setInterval(function(){
+				if($("#msgt").attr("data-key")=='off'){
+					$("#msgt").attr("disabled",true);
+					$("#msgt").removeClass("class");
+					$("#msgt").addClass("button again");
+					i--;
+					$("#msgt").val(i+"秒");
+					if(i<=0){
+						$("#msgt").removeAttr("disabled").val("重新发送");
+						$("#msgt").attr("data-key","on");
+					}
+				}
+			},1000);
+			
+				$.post("{:U('Pay/ajaxSandPhone')}",{'phone':phone},
+					function(d){
+						alert(d.info);
+						if(d.status==1){
+							
+							i=120;
+							$("#msgt").attr("data-key","off");
+					 	}
+					});
+		}
+    }
+</script>
+
+<include file="App/Home/Iphone/Public/footer.html"/>

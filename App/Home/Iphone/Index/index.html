@@ -1,0 +1,124 @@
+<include file="App/Home/Iphone/Public/header.html"/>
+		<style>
+			.num_color .align_right .sell {
+				color: #33cc00
+			}
+			
+			.num_color .buy {
+				color: #f60
+			}
+			
+			.s-nav {
+				font-size: 0.28rem;
+				padding-left: 0.5rem;
+			}
+			
+			.s-tab table {
+				font-size: 0.28rem;
+			}
+			
+			.s-tab table td.s-tRight {
+				padding-left: 7px;
+			}
+			
+			.s-tab table thead {
+				font-size: 0.24rem;
+			}
+			
+			.s-tab table thead th {
+				font-weight: 500;
+			}
+		</style>
+		
+		<header class="headers addWrap">
+			<div class="swipe" id="mySwipe" style="visibility: visible;">
+				<div class="swipe-wrap" style="width: 414px;">
+				<!--<volist name="flash" id="vo" key="k">
+					<div data-index="0" style="width: 414px; left: 0px; transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">
+						<a href="{$vo.jump_url}">
+							<img class="img-responsive" src="{$vo.pic}" alt="{$vo.title}">
+						</a>
+					</div>
+					</volist>-->
+					<div data-index="0" style="width: 414px; left: 0px; transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">
+						<a href="{$flash[0]['jump_url']}">
+							<img class="img-responsive" src="{$flash[0]['pic']}" alt="{$flash[0]['title']}">
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<ul id="position">
+			</ul>
+		</header>
+		<p class="index_gg">
+			<span>
+				<a href="{:U('Art/details',array('id'=>$gfgg[0]['article_id']))}">【动态】{$gfgg[0]['title']}</a>
+			</span>
+			<span>
+				<a href="{:U('Art/index',array('ramdon_id'=>'1'))}">查看全部</a>
+			</span>
+		</p>
+		<div class="strip"></div>
+		<div class="s-nav" id="tags_coin">
+			<a href="#" class="s-aClick">CNY</a>
+			<!--<a href="#">YZB</a>
+			<a href="#">BTC</a>-->
+			<!--<span id="coins_timer" style="display:none">10秒后刷新</span>-->
+		</div>
+		<div id="page">
+			<!-- 对CNY交易区 结束-->
+			<div class="s-tab" style="display: block;">
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<table class="coin_list coinarea num_color" id="click-sort1">
+					<thead>
+						<tr>
+							<th>&nbsp;</th>
+							<th style="text-align:left;width:1.2rem">股票</th>
+							<th class="bg-th" style="cursor: pointer;">最新价格</th>
+							<th class="bg-th" style="cursor: pointer;">24H成交额</th>
+							<th class="bg-th" style="text-align: right; padding-right: 14px; cursor: pointer;">24H涨跌</th>
+						</tr>
+					</thead>
+					<tbody>
+						<volist name="currency" id="vo">
+						<tr>
+							<td class="s-tRight">
+								<a href="{:U('Orders/index',array('currency'=>$vo['currency_mark']))}"><img src="{$vo.currency_logo}" alt=""></a>
+							</td>
+							<td>
+								<a href="{:U('Orders/index',array('currency'=>$vo['currency_mark']))}">{$vo.currency_name}</a>
+							</td>
+							<td class="align_right">
+								<a href="{:U('Orders/index',array('currency'=>$vo['currency_mark']))}" id="coins_btc_cny_current">{$vo.new_price|default="0.000"}</a>
+							</td>
+							<!--					注意总成交额达到了万则以万为单位显示，若过亿则亿为单位显示-->
+							<td class="align_right aLR">
+								<a href="{:U('Orders/index',array('currency'=>$vo['currency_mark']))}" id="coins_btc_cny_sum">{$vo.24H_done_money|default="0.000"}</a>
+							</td>
+							<td class="align_right  right1">
+								<a href="{:U('Orders/index',array('currency'=>$vo['currency_mark']))}" id="coins_btc_cny_24_ups" class="buy">{$vo.24H_change|default="0.000"}</a>
+							</td>
+						</tr>
+						</volist>
+					</tbody>
+				</table>
+			</div>
+<include file="App/Home/Iphone/Public/footer.html"/> 

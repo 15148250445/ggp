@@ -1,0 +1,66 @@
+<include file="App/Home/Iphone/Public/header.html"/>
+		<script type="text/javascript" src="js/sendMessage.js"></script>
+
+		<div class="strip"></div>
+		<div class="cb-box1 tb-box1">
+			<form id="ttttform" method="post" jump-url="{:U('ModifyMember/modify')}" action="{:U('Reg/addReg')}" >
+				<input name="isSendphone" value="0" type="hidden">
+				<p class="p5" style="margin-top: 0.8rem"><label>用户名</label>
+					<input class="loginValue" id="email" name="email" placeholder="请输入您的用户名" type="text">
+				</p>
+				<p class="p5" style="margin-top: 0.2rem"><label>登录密码</label>
+					<input class="loginValue" id="pwd" name="pwd" placeholder="请输入您的密码" type="password">
+				</p>
+				<p class="p5" style="margin-top: 0.2rem"><label>重复密码</label>
+					<input class="loginValue" id="repwd" name="repwd" placeholder="请重复您的密码" type="password">
+				</p>
+				<p class="p5" style="margin-top: 0.2rem"><label>邀请码</label>
+					<input class="loginValue" name="pid" <if condition="$pid">value="{$pid}" onkeyup="this.value={$pid}" </if> type="text">
+				</p>
+				<p class="p5" style="margin-top: 0.2rem"><label>交易密码</label>
+					<input class="loginValue" id="pwdtrade" name="pwdtrade" placeholder="请输入您的交易密码" type="password">
+				</p>
+				<p class="p5" style="margin-top: 0.2rem"><label>重复交易密码</label>
+					<input class="loginValue" id="repwdtrade" name="repwdtrade" placeholder="请输入您的交易密码" type="password">
+				</p>
+
+				<p class="p5" style="margin-top: 0.1rem">
+					<div class="ybc_user2 clearfix">
+						<div class="ybc_text left" style="float:left; width:20px; padding-left:100px;">
+							<input name="agree" id="tongyi" type="checkbox" value="1" checked="checked">
+						</div>
+						<div class="ybc_hint left">
+							<label for="tongyi">
+								同意{$config.name}<a href="{:U('Reg/terms')}">服务条款</a>
+							<div class="ybc_hint left">
+								<span id="agree"></span>
+							</div>
+		</div>
+	</p>
+    <p class="p5" style="margin-top: 0.4rem;"><input class="input_news_password" value="注册" type="button" onclick="tijiao()" ></p>
+     </form>
+    <p class="forget_dibu" style="margin-bottom: 150px;">
+        <span>已有账号去<a href="{:U('Login/index')}">登录</a></span>
+    </p>
+</div>
+<script>
+	function tijiao(){
+		var email=$("#email").val();
+		var agree=$("#tongyi").val();
+		var pwd=$("#pwd").val();
+		var repwd=$("#repwd").val();
+		var pid=$("#pid").val();
+		var pwdtrade=$("#pwdtrade").val();
+		var repwdtrade=$("#repwdtrade").val();
+		var url="{:U('Reg/addReg')}";
+		$.post(url,{"agree":agree,"email":email,"pwd":pwd,"repwd":repwd,"pid":pid,"pwdtrade":pwdtrade,"repwdtrade":repwdtrade},function(d){
+			alert(d["info"]);
+			if(d["status"]==1){
+				//alert(d["info"]);
+				window.location.href="{:U('ModifyMember/modify')}";
+			}
+		});
+	}
+</script>
+<div style="clear: both;"></div>
+<include file="App/Home/Iphone/Public/footer.html"/>

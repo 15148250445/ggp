@@ -1,0 +1,992 @@
+
+
+		
+		<title>元宝网｜综合数字资产交易平台</title>
+		
+		
+		
+		<script src="js/hm.js"></script>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/downList.js"></script>
+		<script src="js/jquery.cookie.js" type="text/javascript"></script>
+
+	</head>
+
+	<body>
+		<!--<div class="clearfix phone_top" id="phone_top_div" style="display:none;">
+	<div class="left">
+		<p class="left phone_logo"><img src="https://ybh-static.oss-cn-hangzhou.aliyuncs.comimg/phone_logo01.png"/></p>
+		<p class="left phone_title">第一数字货币众筹交易平台</p>
+	</div>
+	<div class="right"><a href="http://m.yuanbao.com/download/yuanbao.apk" class="left">Android客户端</a><a href="http://m.yuanbao.com" class="right">访问触屏版</a></div>
+	<a href="javascript:hidephone();" class="phone_x">X</a>
+</div>-->
+		<!--top start-->
+
+		<div class="noticemsg" style="margin: 0px auto; text-align: center; height: 60px; line-height: 60px; font-size: 24px; display: none; width: 1020px; background: rgb(255, 255, 202);">
+			<a href="#" style="color:#f60;text-decoration: none" class="mobile">您正在使用移动设备访问元宝网，点击使用触屏版</a>
+			<span style=" margin-left: 15px;display: inline-block; position: relative;top: 4px;">
+			<img src="img/icon_close.png" alt="" style="height: 25px; width: 25px;" class="fadeout">
+		</span>
+		</div>
+		<div style="background:#f9f9f9; height:30px;">
+			<div style="min-width:1000px;max-width:1000px;margin:0 auto;">
+				<ul class="qqkf left" style="line-height:30px; color:#999;">
+					<li class="phone">
+						<a href="javascript:void(0)" onclick="javascript:window.open(&#39;http://b.qq.com/webc.htm?new=0&amp;sid=4008367667&amp;eid=218808P8z8p8p8K8K8Q8P&amp;o=www.yuanbao.com&amp;q=7&amp;ref=&#39;+document.location, &#39;_blank&#39;, &#39;height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no&#39;);" class="qq_qq"></a>
+					</li>
+					<li class="phone_email">
+						<a href="#"><span>客服:</span>ybw@yuanbao.com</a>
+					</li>
+					<li class="phone_email" style="background:url();padding-left:0px;">
+						<a href="mailto:chongzhi@yuanbao.com"><span>充值:</span>chongzhi@yuanbao.com</a>
+					</li>
+					<li class="phone400">4008-367-667</li>
+					<!--				<li>工作日:9-19时&nbsp;&nbsp;节假日:9-18时</li>-->
+				</ul>
+				<div id="phone" class="account left" href="javascript:void(0)" style="z-index:9997; display:none;">
+					<a class="user_me" href="javascript:void(0)" style="width:90px; background-position:80px center;"><img src="img/phoneicon.png" style="position:absolute; left:8px; top:4px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;元宝钱包</a>
+					<div class="accountList2" style="padding: 15px; border-radius: 5px 0px 5px 5px; position: absolute; right: 0px; top: 30px; width: 190px; display: none; background: rgb(85, 85, 85);">
+						<div>
+							<p style="color:#fff; margin-bottom:10px; text-align:center;">触屏版：<span style=" font-size:14px; color:#ff0;">m.yuanbao.com</span></p>
+						</div>
+						<div class="left"><img src="img/phone_url002.png" style="width:86px; height:86px;"></div>
+						<div class="left" style="width:92px; text-align:center; margin-left:10px;">
+							<p style="color:#fff; font-size:14px; line-height:30px;">&nbsp;</p>
+							<a href="#" style="background:none;"><img src="img/android_btn.png" style=""></a>
+						</div>
+					</div>
+				</div>
+				<div class="person right">
+					<a class="left myhome" href="#" style=" height:30px; line-height:30px; margin-right:5px;">2281403728@qq.com</a>
+					<span class="left" style="height:30px; line-height:30px; color:#999; margin-right:5px;">(UID:428456)</span>
+					<!--				<a href="/user_level" class="-->
+					<!--"></a>-->
+					<a href="#" style="margin-top:2px;width:65px;height:25px;background:url(&#39;img/chuji_03.png?=1&#39;) no-repeat scroll left 2px;" class="left"></a>
+					<a class="left myhome" href="#" style="height:30px; line-height:30px; margin:0 5px;">退出</a>
+
+				</div>
+			</div>
+		</div>
+		<div class="top">
+			<div class="wapper clearfix">
+				<h1 class="left"><a href="#"><img src="img/ybc_logo_201604281200.png" alt="元宝网" title="元宝网" style="margin-top:15px;"></a></h1>
+
+				<ul class="nav right" style="z-index:996;">
+					<li>
+						<a href="#">首页</a>
+					</li>
+
+					<!--<li><a  href="https://www.yuanbao.com/index/project">项目众筹</a></li>-->
+					<!--
+                <li><a  href="https://www.yuanbao.com/stocks">项目交易</a></li>
+        -->
+					<li>
+						<a href="#">币币交易</a>
+					</li>
+					<li>
+						<a href="#">帮助中心</a>
+					</li>
+					<!-- <li class="year3"><a  href="https://www.yuanbao.com/event_index/three"></a></li> -->
+					<!-- <li><a  href="https://www.yuanbao.com/event_index/three">元宝三周年</a></li> -->
+					<!--<li><a href="http://www.yuanbaolicai.com/" target="_blank">元宝理财</a></li>-->
+					<!-- <li><a href="http://taiyilabs.com/" target="_blank">太一</a></li> -->
+					<li id="my" class="account left" href="javascript:void(0)" style="z-index:9999; margin-left:10px; margin-top:-5px;">
+						<a class="user_me" href="#" style="padding-right:20px; padding-top:5px;">我的账户</a>
+						<div style="width:105px; height:5px; background:#fff; z-index: 9999; position:absolute; top:30px;"></div>
+						<ul class="accountList" style="padding-top: 10px; border-radius: 5px 0px 5px 5px; font-size: 12px; display: none; background: rgb(255, 255, 255);">
+							<!--<li class="accountico no"></li>-->
+							<li>
+								<a href="#">我的资产</a>
+							</li>
+							<li>
+								<a href="#">我的交易</a>
+							</li>
+							<li style="border-bottom:1px solid #ddd;">
+								<a href="#">我的众筹</a>
+							</li>
+							<li>
+								<a href="#">已创建项目</a>
+							</li>
+							<li style="border-bottom:1px solid #ddd;">
+								<a href="#">创建项目</a>
+							</li>
+							<li>
+								<a href="#">人民币充值</a>
+							</li>
+							<li>
+								<a href="#">人民币提现</a>
+							</li>
+							<li style="border-bottom:1px solid #ddd;">
+								<a href="#">充币提币</a>
+							</li>
+							<li>
+								<a href="#">元宝会员</a>
+							</li>
+							<li>
+								<a href="#">实名认证</a>
+							</li>
+							<li>
+								<a href="#">修改密码</a>
+							</li>
+							<li>
+								<a href="#">系统消息</a>
+							</li>
+
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--top end-->
+		<script>
+			$(document).ready(function() {
+				start = document.cookie.indexOf("motip=")
+				if(start != -1) {
+					start = start + 6
+					end = start + 1
+					motip = unescape(document.cookie.substring(start, end))
+					if(motip == 1)
+						$('#phone_top_div').show();
+				}
+			});
+
+			function hidephone() {
+				$('#phone_top_div').hide();
+				var d = new Date()
+				d.setTime(d.getTime() + 7200)
+				document.cookie = "motip=2;expires=" + d.toUTCString()
+			}
+
+			function JSprice2transf(num, price) {
+				if(parseInt(price) != price) {
+					var floatprice = parseFloat(price);
+					var listprice = floatprice.toString().split('.');
+					var lenstrprice = listprice[1].length;
+					var tenprice = Math.pow(10, lenstrprice);
+				} else {
+					var tenprice = 1;
+				}
+
+				return num * (price * tenprice) / tenprice;
+			}
+
+			$(function() {
+				var ss = $(document).width(); //浏览器当前窗口文档对象宽度gin
+				var ff = $(".noticemsg").css("width", ss + 'px');
+			})
+
+			$(document).ready(function() {
+				//设备判断
+				if(navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+					if($.cookie('noticehidden') != 1) {
+						$('.noticemsg').css('display', 'block');
+					}
+				}
+			})
+
+			$('.fadeout').click(function() {
+				//设置cookie,2小时
+				var date = new Date();
+				date.setTime(date.getTime() + (90 * 60 * 1000)); //coockie保存60秒
+				$.cookie('noticehidden', 1, { expires: date });
+				$('.noticemsg').css('display', 'none');
+			})
+		</script>
+		<script src="js/index.js"></script>
+		<div id="main">
+			<div class="main_box">
+				<div id="my_menu" class="sdmenu left">
+					<div>
+						<p>我的资产</p>
+						<a href="#"><b class="ic-uc"></b>账户资产</a>
+					</div>
+					<div style="position:relative;">
+						<p>我的交易</p>
+						<a href="#"><b class="ic-uc"></b>委托管理</a>
+						<a href="#"><b class="ic-uc"></b>我的成交</a>
+						<a href="#"><b class="ic-uc"></b>项目委托</a>
+						<a href="#"><b class="ic-uc"></b>项目交易</a>
+						<a href="#"><b class="ic-uc"></b>API申请</a>
+					</div>
+					<div>
+						<p>我的众筹</p>
+						<a href="#"><b class="ic-uc"></b>已参与众筹</a>
+						<a href="#"><b class="ic-uc"></b>我的项目资产</a>
+						<a href="#"><b class="ic-uc"></b>我的项目分红</a>
+					</div>
+					<div>
+						<p>账户中心</p>
+						<a href="#"><b class="ic-uc"></b>元宝网会员</a>
+						<a href="#"><b class="ic-uc"></b>账户信息</a>
+						<a href="#"><b class="ic-uc"></b>实名认证</a>
+						<a href="#"><b class="ic-uc"></b>修改密码</a>
+						<a href="#"><b class="ic-uc"></b>邀请好友</a>
+						<a href="#"><b class="ic-uc"></b>系统消息</a>
+					</div>
+				</div>
+				<div class="raise right clearfix">
+					<link rel="stylesheet" href="css/layer.css">
+					<script src="js/base64.js"></script>
+					<script src="js/Fnc.js"></script>
+					<script src="js/qrcode.js"></script>
+					<style>
+						.zzzn a {
+							display: block;
+							float: right;
+							margin: 20px;
+							padding: 8px 20px;
+							color: #fff;
+							background: #82b52d;
+							font-size: 20px;
+							border-radius: 30px;
+							text-decoration: none;
+						}
+						
+						.zzzn a:hover {
+							background: #90c13e;
+						}
+						
+						.ul_recharge_padding {
+							padding: 20px 0 0px 160px;
+						}
+						
+						.recharge_tips {
+							color: #f00;
+							line-height: 40px;
+							margin: 0;
+						}
+						
+						.recharge_left_input {
+							margin-left: 16px;
+						}
+						
+						.help_link {
+							line-height: 40px;
+							color: #2471cb;
+							text-decoration: underline;
+							font-size: 14px;
+						}
+						
+						.help_link:hover {
+							color: #f30;
+						}
+						
+						.help_link1 {
+							color: #;
+						}
+						
+						.ebank_pay {
+							font-family: Arial, "微软雅黑";
+							width: 260px;
+							height: 40px;
+							color: #fff;
+							font-size: 16px;
+							line-height: 40px;
+							text-align: center;
+							margin: 0 auto;
+							background: #f60;
+							display: block;
+							text-decoration: none;
+							border: 0;
+						}
+						
+						.ebank_pay:hover {
+							background: #f70;
+							color: #fff;
+							text-decoration: none;
+							cursor: pointer;
+						}
+						
+						.box_close {
+							height: 24px;
+							line-height: 24px;
+							width: 24px;
+							text-align: center;
+							font-size: 14px;
+							color: #999;
+							border-radius: 20px;
+							position: absolute;
+							top: 10px;
+							right: 10px;
+							text-decoration: none;
+							font-family: Arial;
+						}
+						
+						.box_close:hover {
+							color: #fff;
+							background: #f00;
+							text-decoration: none;
+						}
+						
+						.choice_ebank .note1 {
+							width: 100px;
+							text-align: right;
+							display: block;
+							float: left;
+							margin-right: 5px;
+							line-height: 40px;
+						}
+						
+						.yellow a:hover {
+							color: #f60;
+						}
+					</style>
+					<div class="request none">[]</div>
+					<under id="under" data="yes"></under>
+					<name id="realname" data="邹海琳"></name>
+					<div class="ybc_list">
+						<div class="ybcoin clearfix">
+							<h2 class="left">充值人民币CNY[<a href="#" target="_blank" style="color:red">谨防诈骗</a>]</h2>
+							<!-- <p class="right recharge_tips" style="margin-bottom:0;"><a href="/pdf/pay" class="help_link">人工充值帮助？</a></p> -->
+						</div>
+						<div class="support_ybc pass_ybc ybc_optimize" id="verifyon">
+							<ul id="pass_change">
+								<!-- <li class="ebank_change selectTag"><a onclick="selectTag('tagContent2',this);" href="javascript:void(0)" class="ebank_change">小额扫码充值(内测版)</a></li> -->
+								<!-- <li class="ebank_change"><a onclick="selectTag('tagContent0',this);Ebank.platform('alipay');" href="javascript:void(0)" class="middle " class="ebank_pay">支付宝汇款</a></li> -->
+								<li class="selectTag">
+									<a onclick="selectTag(&#39;tagContent0&#39;,this);Ebank.platform(&#39;bank&#39;);" href="javascript:void(0)" class="ebank_change">快速充值</a>
+								</li>
+								<li class="">
+									<a onclick="selectTag(&#39;tagContent1&#39;,this);Ebank.platform(&#39;bank&#39;);" href="javascript:void(0)" class="ebank_change">人工充值</a>
+								</li>
+								<div class="clear"></div>
+							</ul>
+							<div id="tagContent" class="passContent">
+								<div class="tagContent selectTag" id="tagContent0" style="display: block;">
+									<form class="form-horizontal" onsubmit="return false;" onkeydown="if (event.keyCode == 13) {return false;}">
+										<ul class="ybc_con ybc_optimize_con" id="rollout" style="padding:80px 0 50px 160px;">
+											<li style="margin-top:0; position:relative;" class="choice_ebank">
+												<span class="note1" style="color:#333;font-size:12px;">充值金额</span>
+												<input style="display:none;">
+												<!-- for disable autocomplete on chrome -->
+												<input name="txnAmt" id="txnAmt" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" type="text" value="" autocomplete="off" style="width:256px;">
+												<span class="note">最低充值金额100元</span>
+											</li>
+											<li style="position:relative;">
+												<a href="javascript:void(0);" onclick="return Gatewaypay.confirm();" class="btn_turn" style="margin-left:110px;">去充值</a>
+												<a href="#" class="help_link" style="position:absolute; top:0px; left:380px; font-size:12px;">查看支持银行及限额</a>
+											</li>
+										</ul>
+									</form>
+									<div class="turns">
+										<h2>快速充值说明</h2>
+										<p style="margin-bottom:0;">1. 充值免手续费，即时到账。</p>
+										<p style="margin-bottom:0;">2. 最低充值金额100元。</p>
+										<p style="margin-bottom:0;">
+											<font color="red">3.严禁电信诈骗分子利用平台进行洗钱，元宝网已与有关部门建立联动机制，将采取各种措施，坚决打击相关犯罪活动，请勿以身试法。</font>
+										</p>
+									</div>
+								</div>
+								<div id="tagContent" class="passContent">
+									<div class="tagContent selectTag" id="tagContent2" style="display:none;">
+										<div class="prev-mian">
+											<form class="form-horizontal" onsubmit="return false;" onkeydown="if (event.keyCode == 13) {return false;}">
+												<ul class="ybc_con ybc_optimize_con" id="rollout" style="padding:80px 0 50px 160px;">
+													<li style="margin-top:0; position:relative;margin-bottom: 0px;" class="choice_ebank">
+														<span class="note1" style="color:#333;font-size:12px;">充值金额</span>
+														<input style="display:none;">
+														<!-- for disable autocomplete on chrome -->
+														<input name="wctxnAmt" id="wctxnAmt" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" type="text" value="" autocomplete="off" style="width:254px;">
+														<span class="note">最低充值金额100元</span>
+													</li>
+													<li class="num_money choice_ebank" style="margin-left:110px; position:relative;">
+														<span class="left" style="color:#f60;font-size:12px;">实际到账</span>
+														<input style="display:none;">
+														<!-- for disable autocomplete on chrome -->
+														<span class="real-in left" style="color: #f00;"></span>
+														<!--<span class="left" style="color:#f60;">CNY</span>-->
+														<span class="note" style="position:absolute; top:0; right:-75px; color:#999; font-size:12px;">手续费0.5%</span>
+													</li>
+													<li style="position:relative;">
+														<a href="javascript:void(0);" data="BC_NATIVE" id="weichatPay" onclick="return Wechatpay.confirm();" class="btn_turn" style="margin:0px 10px 0px 110px;float:left;">提交订单</a>
+														<a href="javascript:void(0);" id="weichatPay2" class="btn_turn" style="margin:0px 10px 0px 110px;display:none;float:left;background-color: #ccc;">提交订单（<span class="showClick" style="color:#f60 !important;"></span> ）</a>
+														<!--<span style="color: red;font-size: 12px;display: block;margin-top:10px;">服务时间：08:00-24:00</span>-->
+													</li>
+												</ul>
+											</form>
+
+										</div>
+										<div class="wechatpay-child none">
+
+										</div>
+										<div class="turns">
+											<h2>充值说明</h2>
+											<p style="margin-bottom:0;font-size: 14px;">1. 充值即时到账，<span class="importants">第三方平台会收取 0.5% 手续费</span>，如：您充值1000元，实际到账 995 元；</p>
+											<p style="margin-bottom:0;font-size: 14px;">2. 最低充值<span class="importants">100</span>元，
+												<a href="http://kf.qq.com/touch/sappfaq/151210NZzmuY151210ZRj2y2.html?platform=15&amp;ADTAG=veda.weixinpay.wenti&amp;pass_ticket=1nfES3Na8%2Fnrj1tym7f49Vwtwnef1Hqb%2BIeb2lQ8Qvd2hT4d8oTAoufs81Bna1iF" target="_blank" class="help_link">点击查看小额支付限额</a>。</p>
+											<p style="margin-bottom:0;font-size: 14px;">
+												<font color="red">3.严禁电信诈骗分子利用平台进行洗钱，元宝网已与有关部门建立联动机制，将采取各种措施，坚决打击相关犯罪活动，请勿以身试法。</font>
+											</p>
+										</div>
+									</div>
+
+								</div>
+								<!-- bank/alipay -->
+								<div class="tagContent selectTag" id="tagContent1" style="display: none;">
+									<ul class="ybc_optimize_con ul_recharge_padding" id="rollout2" style="margin-top:30px;">
+										<!--  <li class="clearfix">
+                        <span class="note1" style="color:#333;font-size:12px; margin-left: 30px;">选择汇款额度</span>
+                        <input type="radio" name="bank" id="choice_money_upper" onclick="Ebank.choiceMoney(1)" checked="checked" style="vertical-align:bottom; height:40px;">
+                        <label for="choice_money_upper" class="tibi_l" onclick="Ebank.choiceMoney(1)" style="font-size:16px; line-height:40px;">大于等于5000元&nbsp;&nbsp;</label>
+                        <input type="radio" name="bank" id="choice_money_lower" onclick="Ebank.choiceMoney(0)" style="vertical-align:bottom; height:40px;">
+                        <label for="choice_money_lower" class="tibi_l" onclick="Ebank.choiceMoney(0)" style="font-size:16px; line-height:40px;">小于5000元</label>
+                    </li> -->
+										<li style="margin-top:0; position:relative;" class="choice_ebank">
+											<span class="note1" style="color:#333;font-size:12px;">金额</span>
+											<input type="text" name="number" id="over_num" class="money num_three" onkeyup="value=value.replace(/[^\d]/g,&#39;&#39;); Ebank.decimal();" autocomplete="off" maxlength="10">
+											<span class="note" style="margin-left: 5px;">最小充值金额5000元。</span>
+											<input type="hidden" id="rand_num" value="4.56">
+										</li>
+										<li class="num_money choice_ebank" style="margin-left:105px; position:relative;">
+											<span class="left">汇款金额：</span>
+											<font color="red" id="ure" class="left"></font>
+											<span class="note" style="position:absolute; top:0; right:-270px; color:#f00; font-size:14px; line-height:20px;">请严格按照汇款金额汇款，汇款金额的后<br>3位是为了保证即时到账系统自动分配的。</span>
+										</li>
+
+										<li style="margin-top:10px; position:relative;" class="choice_ebank">
+											<span class="note1" style="color:#333;font-size:12px;" id="recharge_name">汇款人姓名</span>
+											<input type="text" id="recharge_name_yes" class="money num_three" value="邹海琳" autocomplete="off" readonly="">
+											<span class="note" style="margin-left: 5px;">系统只接受您实名账户充值</span>
+										</li>
+
+										<li style="margin-top:10px; position:relative;" class="choice_ebank">
+											<span class="note1" style="color:#333;font-size:12px; margin-left:0;" id="recharge_account">汇款银行</span>
+											<select class="money num_three" id="bankOut" name="bankOut" style="width:259px; height:40px;" onchange="Ebank.checkBank()">
+												<option selected="" value="请选择银行">请选择银行</option>
+												<option value="招商银行">招商银行</option>
+												<option value="中信银行">中信银行</option>
+												<option value="光大银行">光大银行</option>
+												<option value="兴业银行">兴业银行</option>
+												<option value="平安银行">平安银行</option>
+												<option value="华夏银行">华夏银行</option>
+												<option value="邮政储蓄">邮政储蓄</option>
+												<option value="广发银行">广发银行</option>
+												<option value="浦发银行">浦发银行</option>
+												<option value="北京银行">北京银行</option>
+												<option value="上海银行">上海银行</option>
+												<option value="杭州银行">杭州银行</option>
+												<option value="宁波银行">宁波银行</option>
+												<option value="民生银行">民生银行</option>
+												<option value="工商银行">工商银行</option>
+												<option value="农业银行">农业银行</option>
+												<option value="建设银行">建设银行</option>
+												<option value="交通银行">交通银行</option>
+												<option value="中国银行">中国银行</option>
+												<option value="其它银行">其它银行</option>
+											</select>
+											<span class="note" style="margin-left:5px;">请注意：部分银行周末汇款，不能及时到账。</span>
+										</li>
+
+										<li style="margin-top:10px; position:relative;" class="choice_ebank">
+											<span class="note1 recharge_left_input" style="color:#333;font-size:12px; margin-left:0;" id="recharge_account">汇款银行账号</span>
+											<input type="text" id="recharge_account_yes" class="money num_three" autocomplete="off">
+											<span class="note" style="position:absolute; top:0; right:38px; line-height:20px;">请准确填写汇款银行账号，否则不能到账，<br>需要人工联系客服排队处理，时间无法保证。</span>
+										</li>
+
+										<li style="color:#f00; font-size:16px; margin-top:20px; margin-left:99px;" class="choice_ebank"></li>
+
+										<li class="clearfix">
+											<a href="javascript:void(0);" onclick="Ebank.recharge()" class="btn_turn left" id="choice_submit" style="margin-left:105px;">生成汇款订单</a>
+											<a href="#" class="help_link left" style="margin:30px 0 0 10px;" target="_blank">帮助？</a>
+										</li>
+									</ul>
+
+									<div class="turns truns_upper">
+										<h2>充值说明</h2>
+										<p style="margin-bottom:0; font-size:14px;">1. <span style="color:#f00;">汇款人姓名必须与账户实名认证姓名一致</span>，姓名<span style="color:#f00">不一致</span>的请联系客服并提供汇款证明，我们会在<span style="color:#f00">3-5个工作日内退款。</span></p>
+										<p style="margin-bottom:0; font-size:14px;">2. 充值免收手续费，<span style="color:#f00;">系统收到</span>您的<span style="color:#f00">汇款后20分钟内入账</span>，请耐心等待。</p>
+										<p style="font-size:14px; margin-bottom:0;">3. <span style="color:#f00">超过3个小时的汇款订单将失效，请重新生成汇款订单并汇款。</span></p>
+										<p style="font-size:14px;margin-bottom:0;">4. 由于周末部分银行不提供汇款到账业务，导致用户充值不能及时到账。建议周末（周五17:00至周一09:00）请尽量避免使用：工商银行、农业银行、建设银行、交通银行、中国银行、民生银行等银行卡进行汇款，否则可能会延迟至周一到账。</p>
+										<p style="margin-bottom:0; font-size:14px;">5.
+											<a href="#" class="help_link" style="height:22px; line-height: 22px;">充值不到账如何处理？</a>
+										</p>
+										<p style="margin-bottom:0; font-size:14px;">
+											<font color="red">6.严禁电信诈骗分子利用平台进行洗钱，元宝网已与有关部门建立联动机制，将采取各种措施，坚决打击相关犯罪活动，请勿以身试法。</font>
+										</p>
+									</div>
+									<div class="turns turns_lower" style="display: none;">
+										<h2 style="margin-top:80px;">充值必看步骤</h2>
+										<p style="margin-bottom:0; color:#f00; font-size:14px;">1. 元宝理财和元宝网账户互通，请直接登录，使用快速充值通道（连连支付、宝付）进行充值。</p>
+										<p style="color:#f00; font-size:14px;">2. 在元宝理财充值成功后，请返回元宝网，并选择“从元宝理财提现”，将资金转入元宝网即可正常使用。</p>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					<!-- exchange_cny list start-->
+
+					<div class="ybc_list">
+						<div class="ybcoin ">
+							<h2 class="left">充值记录</h2>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<table cellspacing="0" cellpadding="0" border="0" class="raise_list" align="center" style="border:1px solid #e1e1df;">
+						<thead>
+							<tr>
+								<th>记录ID</th>
+								<th>转入渠道</th>
+								<th>充值金额</th>
+								<th>实际到账</th>
+								<th>发送时间</th>
+								<th>状态</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+					<div class="page">
+						<a class="page_a" href="#">&lt;</a>
+						<a class="page_a" href="#">1</a>
+						<a class="page_a" href="#">&gt;</a>
+					</div>
+					<!-- 订单列表 -->
+
+					<!-- exchange_cny list end -->
+
+					<!-- recharge alert start -->
+					<style type="text/css">
+						.ybc_chongzhi_tc {
+							width: 810px;
+							height: 520px;
+							border: 1px #ddd solid;
+							z-index: 9999;
+							position: fixed;
+							left: 50%;
+							top: 50%;
+							margin: -300px 0 0 -405px;
+							background: #fff;
+							z-index: 9999;
+						}
+						
+						.ybc_chongzhi_tc_tittle {
+							width: 770px;
+							height: 80px;
+							padding: 0 20px 0 20px;
+							text-align: center;
+						}
+						
+						.ybc_chongzhi_tc_tittle h2 {
+							color: #666;
+							text-align: left;
+							font-size: 24px;
+							height: 80px;
+							line-height: 80px;
+						}
+						
+						.ybc_chongzhi_tc_main {
+							width: 810px;
+							height: 200px;
+							background-color: #ffffc9;
+							padding: 30px 0px;
+						}
+						
+						.ybc_chongzhi_tc_tittle_img {
+							margin-top: 26px;
+							width: 28px;
+							height: 28px;
+							background: url("img/close.png") left bottom no-repeat;
+						}
+						
+						.ybc_chongzhi_tc_tittle_img:hover {
+							margin-top: 26px;
+							width: 28px;
+							height: 28px;
+							background: url("img/close.png") left top no-repeat;
+							cursor: pointer
+						}
+						
+						.ybc_chongzhi_tc_main h3 {
+							color: #333;
+							text-align: center;
+							font-size: 20px;
+							line-height: 30px;
+						}
+						
+						.ybc_chongzhi_tc_main .hs {
+							color: #ff0000;
+							text-align: center;
+							font-size: 20px;
+							line-height: 30px;
+						}
+						
+						.ybc_chongzhi_tc_main li span {
+							width: 300px;
+							text-align: right;
+							float: left;
+							color: #333;
+							font-size: 16px;
+						}
+						
+						.ybc_chongzhi_tc_main li {
+							font-size: 14px;
+							color: #333;
+							height: 30px;
+							line-height: 30px;
+						}
+						
+						.ybc_chongzhi_tc_tishi h3 {
+							color: #ff0000;
+							text-align: center;
+							font-size: 25px;
+							;
+							line-height: 60px;
+						}
+						
+						.ybc_chongzhi_tc_tishi p {
+							color: #ff0000;
+							text-align: left;
+							font-size: 16px;
+							;
+							line-height: 24px;
+							padding-left: 130px;
+						}
+						
+						.ybc_chongzhi_tc_tishi_bz {
+							width: 770px;
+							height: 80px;
+							padding: 0 20px 0 20px;
+							line-height: 80px;
+							font-size: 18px;
+							color: #666;
+						}
+						
+						.ybc_chongzhi_tc_tishi span {
+							width: 1px;
+							padding: 0px 2px;
+							border-right: 1px #ddd solid;
+							height: 18px;
+							margin-right: 8px;
+						}
+						
+						.box_bg2 {
+							width: 100%;
+							height: 100%;
+							background: #000;
+							filter: Alpha(opacity=60);
+							-moz-opacity: 0.6;
+							-khtml-opacity: 0.6;
+							opacity: 0.6;
+							position: absolute;
+							z-index: 9998;
+							position: fixed;
+							left: 0;
+							top: 0;
+						}
+						
+						.special_note {
+							width: 480px;
+							height: 320px;
+							background: #ffffca;
+							border: 1px solid #fbd163;
+							position: fixed;
+							top: 50%;
+							margin-top: -161px;
+							left: 50%;
+							margin-left: -241px;
+							z-index: 9999;
+						}
+						
+						.special_note h2 {
+							color: #f60;
+							font-size: 24px;
+							text-align: center;
+							height: 60px;
+							line-height: 60px;
+						}
+						
+						.special_note p {
+							font-size: 16px;
+							line-height: 28px;
+							padding: 0 40px;
+							margin-bottom: 10px;
+							text-indent: 2em;
+							color: #333;
+						}
+						
+						.special_note .yes_no .yes,
+						.special_note .yes_no .no {
+							width: 160px;
+							height: 40px;
+							border: 0;
+							margin: 10px 20px;
+							cursor: pointer;
+							color: #fff;
+							font-family: 'Microsoft Yahei';
+							font-size: 14px;
+						}
+						
+						.special_note .yes_no {
+							width: 400px;
+							margin: 0 auto;
+						}
+						
+						.special_note .yes_no .yes {
+							background: #690;
+							color: #fff;
+						}
+						
+						.special_note .yes_no .yes:hover {
+							background: #4b7100;
+						}
+						
+						.special_note .yes_no .no {
+							background: #f00;
+							color: #fff;
+						}
+						
+						.special_note .yes_no .no:hover {
+							background: #ba0000;
+						}
+					</style>
+
+					<div id="recharge_alert_bank" style="display:none;">
+						<div class="box_bg2"></div>
+						<div class="ybc_chongzhi_tc">
+							<div class="ybc_chongzhi_tc_tittle">
+								<h2 class="left clearfix" id="recharge_alert_title"></h2>
+								<div id="recharge_alert_bank_close">
+									<a class="ybc_chongzhi_tc_tittle_img  right clearfix "></a>
+								</div>
+							</div>
+							<!--<div class="ybc_chongzhi_tc_main" style="padding:20px 0; height:220px;">
+        <h3>请您打开你的<span class="hs phone_bank_and_net"></span><br/>按照汇款金额<span  class="hs recharge_html_num"></span>向企业账号“元宝金汇（北京）科技有限公司”汇款</h3>
+        <ul style="margin-top:20px;">
+            <li><span>收款人：</span>元宝金汇（北京）科技有限公司<a href="#" class="copyBtn" style="margin-left:20px;color:#2471cb" data-clipboard-text="元宝金汇（北京）科技有限公司">复制</a></li>
+            <li><span>收款人账号：</span>1109 2540 3110 104<a href="#" class="copyBtn" style="margin-left:20px;color:#2471cb" data-clipboard-text="110925403110104">复制</a></li>
+            <li><span>收款人开户行：</span>招商银行北京望京支行</li>
+            <li style="font-size:14px; color:#f00;"><span  style="font-size:18px;">汇款金额：</span><strong style="font-size:18px;" class="recharge_html_num"></strong>（汇款时请严格按照此金额转账，否则不能到账）</li>
+            <li><span  style="font-size:18px;">&nbsp;</span><a href="/pdf/pay" target="_blank" class="help_link">银行卡汇款帮助</a></li>
+        </ul>
+    </div>-->
+							<div class="ybc_chongzhi_tc_main" style="padding:20px 0; height:220px;">
+								<h3>请您打开你的<span class="hs phone_bank_and_net"></span><br>按照汇款金额<span class="hs recharge_html_num"></span>向企业账号“元宝金汇（北京）科技有限公司”汇款</h3>
+								<ul style="margin-top:20px;">
+									<li><span>收款人：</span>元宝金汇（北京）科技有限公司
+										<a href="#" class="copyBtn" style="margin-left:20px;color:#2471cb" data-clipboard-text="元宝金汇（北京）科技有限公司">复制</a>
+									</li>
+									<li><span>收款人账号：</span>1105 0160 5900 0000 0147
+										<a href="#" class="copyBtn" style="margin-left:20px;color:#2471cb" data-clipboard-text="11050160590000000147">复制</a>
+									</li>
+									<li><span>收款人开户行：</span>中国建设银行东方广场支行</li>
+									<li style="font-size:14px; color:#f00;"><span style="font-size:18px;">汇款金额：</span><strong style="font-size:18px;" class="recharge_html_num"></strong>（汇款时请严格按照此金额转账，否则不能到账）</li>
+									<li><span style="font-size:18px;">&nbsp;</span>
+										<a href="#" target="_blank" class="help_link">银行卡汇款帮助</a>
+									</li>
+								</ul>
+							</div>
+							<div class="ybc_chongzhi_tc_tishi">
+								<h3>注意</h3>
+								<p style="padding-left:80px;">1、本系统非自动扣款，请通过您的
+									<font class="phone_bank_and_net"></font>汇款！<br> 2、如您已向“元宝金汇（北京）科技有限公司”汇款“
+									<font class="recharge_html_num"></font>"，系统在收到汇款后20分钟内入账。</p>
+								<div class="ybc_chongzhi_tc_tishi_bz">
+									<div class="left clearfix"></div>
+									<div class="right clearfix">
+										<a href="javascript:void(0)" onclick="javascript:window.open(&#39;http://b.qq.com/webc.htm?new=0&amp;sid=4008367667&amp;eid=218808P8z8p8p8K8K8Q8P&amp;o=www.yuanbao.com&amp;q=7&amp;ref=&#39;+document.location, &#39;_blank&#39;, &#39;height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no&#39;);" class="qq_qq help_link">联系客服QQ</a>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- recharge alert end -->
+
+					<div>
+						<!-- <button class="ebank_pay" onclick="Ebank.licai()" style="margin-top:160px;">去元宝理财充值</button> -->
+						<div class="ebank_box_common" style=" width:100%; height:100%; background:#000; filter: Alpha(opacity=60); -moz-opacity: 0.6; -khtml-opacity: 0.6; opacity: 0.6; position:absolute; z-index:9998; position:fixed; left:0; top:0; z-index: 9998;  display:none;">
+						</div>
+						<div class="ebank_box_common" style="width:760px; height:600px; position:fixed; top:50%; margin-top:-300px; left:50%; margin-left:-380px; background:#fff; z-index: 9998; display:none;">
+							<div style="font-size:14px; margin-top:10px; padding-left:20px;">
+								<h1 style="text-align:center; font-size:30px; font-weight:normal; margin-bottom:10px;">从元宝理财充值步骤</h1>
+								<p>1.去元宝理财充值</p>
+								<p>2.充值完成后回到元宝网充值页面</p>
+								<p>3.选择从元宝理财转账，
+									<font style="color: red;">如下图所示：</font>
+								</p>
+							</div>
+							<!-- <button class="ebank_pay" style="margin-top:20px;">去元宝理财充值</button> -->
+							<a href="#" target="_blank" class="ebank_pay" style="margin-top:20px;">去元宝理财充值</a>
+							<img src="img/chongzhi_img.png" style="-moz-box-shadow:0px 0px 10px #333333; -webkit-box-shadow:0px 0px 10px #333333; box-shadow:0px 0px 10px #333333; margin:50px 0 0 75px;">
+							<a href="javascript:;" class="box_close" onclick="Ebank.hideAlert()">X</a>
+						</div>
+					</div>
+
+					<script type="text/javascript" src="js/tab2.js"></script>
+					<script src="js/layer.js"></script>
+					<script src="js/recharge.js"></script>
+					<script src="js/clipboard.min.js"></script>
+					<script>
+						var clipboard = new Clipboard('.copyBtn');
+						$(document).ready(function() {
+							var request = eval("(" + $("div.request").html() + ")");
+							if(request.type == 2) {
+								$('.yellows').css('color', '#f60');
+								$('.yellow').css('color', '#999');
+							} else {
+								$('.yellow').css('color', '#f60');
+								$('.yellows').css('color', '#999');
+							}
+							/* var url = window.location.search;
+							 if(url == ''){
+							     $('.yellow').css('color','#f60');
+							 }else{
+							     $('.yellows').css('color','#f60');
+							 }*/
+
+							//默认选中充值类别
+							$("ul.pass_change li").each(function() {
+								$(this).attr("class")
+							});
+						})
+
+						function stopservice() {
+							Layer.alert('微信服务维护中，请稍后再试！');
+						}
+					</script>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!--footer start-->
+		<div class="coin_footer" style="position:relative;">
+			<div class="coin_hint footer_small">
+				<h2>风险提示</h2>
+				<p>比特币等数字货币交易具有极高的风险（预挖、暴涨暴跌、庄家操控、团队解散、技术缺陷等），据国家五部委《关于防范比特币风险的通知》，元宝网仅为数字货币的爱好者提供一个自由的网上交换平台，对币的投资价值不承担任何审查、担保、赔偿的责任，您需要完全对自己的投资损失承担责任，如果您不能接受，请不要进行交易！谢谢！</p>
+			</div>
+			<div class="coin_footerbar">
+				<div class="coin_footer_nav clearfix footer_small">
+					<div class="coin_nav coin_copy left">
+						<p>
+							<a href="#"><img src="img/coin_footer_logo.png"></a>
+						</p>
+					</div>
+
+					<div class="coin_nav left" style="width:148px;">
+						<h2>服务帮助</h2>
+						<ul>
+							<li>
+								<a href="#" target="_blank" class="left">价格API</a>
+							</li>
+							<li>
+								<a href="#" target="_blank" class="left">元宝网操作指南</a>
+							</li>
+							<li>
+								<a href="#" target="_blank" class="left">反洗钱政策</a>
+							</li>
+						</ul>
+					</div>
+					<div class="coin_nav coin_nav02 left" style="width: 290px;">
+						<h2 class="clearfix"><span class="left">联系我们</span><a href="#" target="_blank" class="coin_sina left"></a><!-- <a href="#" id="coin_weixin" class="coin_wei left"></a> --></h2>
+						<ul>
+							<li>
+								<a href="mailto:contact@yuanbao.com">业务合作：contact@yuanbao.com</a>
+							</li>
+							<li>合作电话：010-58493613<span style="font-size:12px;">（工作日:9-18时）</span> </li>
+							<li>举报电话：010-57741547<span style="font-size:12px;">（工作日:9-18时）</span></li>
+							<!--<li>客服QQ：4008367667</li>-->
+							<li>
+								<a href="mailto:jubao@yuanbao.com">举报邮箱：jubao@yuanbao.com</a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="coin_nav coin_nav02 left" style="position:relative;padding-top:8px;width: 240px;">
+						<p class="coin_phoneqq" style="padding-left: 20px;">
+							<a href="javascript:void(0)" onclick="javascript:window.open(&#39;http://b.qq.com/webc.htm?new=0&amp;sid=4008367667&amp;eid=218808P8z8p8p8K8K8Q8P&amp;o=www.yuanbao.com&amp;q=7&amp;ref=&#39;+document.location, &#39;_blank&#39;, &#39;height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no&#39;);" style="margin:15px 0  5px 0;">在线客服</a>
+						</p>
+						<p class="coin_phoneqq" style="margin-bottom:10px;font-size:12px;text-align:left;padding-left:20px;color:#999;">工作日:9-19时 节假日:9-18时</p>
+						<p class="coin_phoneqq" style="margin-top:5px;font-size:14px;text-align:left;padding-left:20px;">客服电话：4008-367-667</p>
+						<p style="margin-top:0px;font-size:14px;text-align:left;padding-left:20px;">
+							<a href="mailto:ybw@yuanbao.com" style="color:#666;">客服邮箱：ybw@yuanbao.com</a>
+						</p>
+						<div class="group" style="top:14px; left:0px; width:180px;">
+							<ul class="qq_all" style=" width:180px;">
+								<li>
+									<a class="hide" href="javascript:void(0)" style="width:180px;">元宝官方群</a>
+									<ul>
+										<li>元宝网官方一群至五群<span style="color:red">（已满）</span></li>
+										<li>元宝网官方六群 469894504</li>
+										<li>元宝网官方七群 103616890</li>
+										<li>元宝网官方八群 479921782</li>
+										<li>元宝网官方九群 133213458</li>
+										<li>元宝网官方十群 459294506</li>
+										<li>元宝网官方十一群 164580743</li>
+										<li>元宝网官方十二群 145940990</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="coin_nav coin_nav02 left" style="position:relative; width:150px;">
+						<!-- <p class="coin_phone400">4008-367-667</p> -->
+						<div style="padding-left:40px;text-line:center">
+							<img src="img/phone_url002.png" style="width:110px; margin:0 5px;">
+							<p>关注微信</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer_aq footer_small">
+				<p>Copyright 2013-2016 元宝网 All Rights Reserved. Powered by 元宝金汇（北京）科技有限公司&nbsp;&nbsp;
+					<a target="_blank" style="color:#666" href="http://map.baidu.com/?shareurl=1&amp;poiShareUid=d6df91c1b393f16af6b916e0"><img src="img/local_03.png" style="border:0px">&nbsp;公司地址</a>
+				</p>
+				<p>京ICP证160909号 &nbsp;&nbsp;京ICP备16017317号-2 &nbsp;&nbsp;京网文（2016）2097-245号 &nbsp;&nbsp;
+					<a target="_blank" style="color:#666" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502032587"><img src="img/beian.png" style="width:15px;" alt="">京公网安备 11010502032587号</a>
+				</p>
+				<ul class="footerSafety clearfix" style="width:452px">
+					<li class="safety02">
+						<a href="#" target="_blank"></a>
+					</li>
+					<li class="safety03">
+						<a href="#" target="_blank"></a>
+					</li>
+					<a style="float:left" href="#" target="_blank"><img src="img/anquanlianmeng.png" alt=""></a>
+					<li class="safety04">
+						<a href="#" target="_blank"></a>
+					</li>
+					<li class="safety05">
+						<a id="___szfw_logo___" href="#" target="_blank"></a>
+					</li>
+				</ul>
+			</div>
+			<div class="footerbot" style="display:none;">
+				<div class="wapper clearfix">
+					<p class="right graylogo" style="margin-top:25px;">
+						<a href="#"></a>
+					</p>
+				</div>
+			</div>
+			<div id="weixin" style="position:absolute; bottom:88px; left:50%; margin-left:170px; display:none;"><img src="img/qrcode_ybw.jpg"></div>
+			<script>
+				$('#coin_weixin').mouseover(function() {
+					$('#weixin').show();
+				}).mouseout(function() {
+					$('#weixin').hide();
+				});
+			</script>
+			<!--footer end-->
+			<script type="text/javascript" src="js/downList.js"></script>
+			<script type="text/javascript" src="js/sdmenu.js"></script>
+			<script>
+				var _hmt = _hmt || [];
+				(function() {
+					var hm = document.createElement("script");
+					hm.src = "#";
+					var s = document.getElementsByTagName("script")[0];
+					s.parentNode.insertBefore(hm, s);
+				})();
+			</script>
+
+			<!--诚信网站-->
+			<script type="text/javascript">
+				(function() { document.getElementById('___szfw_logo___').oncontextmenu = function() { return false; } })();
+			</script>
+
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,151 @@
+<include file="App/Home/Iphone/Public/top.html"/>
+	<div id="main">
+		<header class="Wf-div1">
+			<a href="{:U('User/index')}">返回</a>
+			<span>CNY提现</span>
+		</header>
+		<span style="font-size:18px;margin-left:10px;">人民币在线充值</span>
+		<form name="direct" id="form1" action="{:U('FillByBank/bank')}"  method="post"  target="_blank">
+			<table style="width:80%;font-size:18px;margin:0 auto;">
+				<tr style="line-height:50px;">
+					<td>充值金额：</td>
+					<td><input type="text" style="line-height:25px;width:3rem" name="p3_Amt" onkeyup="var num_ac = $(this).val()*(1-{$config['huanxun_fee']});$('#actual').html(num_ac);" id="p3_Amt"  /></td>
+					
+				</tr>
+				<tr style="line-height:25px;">
+					<td colspan="2"><span style="color:#FF0000;font-size:12px">&nbsp;&nbsp;&nbsp;*&nbsp;充值金额不能低于{$config.pay_min_money}元且包含手续费{$config['huanxun_fee'] * 100}%,实际到账<span id="actual">0</span>元</span></td>
+				</tr>
+				<tr style="line-height:50px">
+					<td>支付方式：</td>
+					<td>
+						<select style="height:30px;width:3rem" name="choosePayType">
+							<option value="01">借记卡</option>
+							<option value="02">信用卡</option>
+							<option value="03">IPS账户支付</option>
+						
+						</select>
+					</td>
+				</tr>
+				<tr style="line-height:50px">
+					<td>银行卡编号：</td>
+					<td>
+						<select style="height:30px;width:3rem" name="bankCode">
+							<option value="1101">中国农业银行</option>
+							<option value="1113">北京银行</option>
+							<option value="1107">中国银行</option>
+							<option value="1112">中国光大银行</option>
+							<option value="1103">兴业银行</option>
+							<option value="1104">中信银行</option>
+							<option value="1110">中国民生银行</option>
+							<option value="1100">中国工商银行</option>
+							<option value="1118">宁波银行</option>
+							<option value="1111">华夏银行</option>
+							<option value="1109">浦发银行</option>
+							<option value="1119">中国邮政储蓄银行</option>
+							<option value="1117">杭州银行</option>
+							<option value="1115">南京银行</option>
+							<option value="1108">交通银行</option>
+							<option value="1102">招商银行</option>
+							<option value="1106">中国建设银行</option>
+							<option value="1114">广发银行</option>
+							<option value="1116">上海银行</option>
+							<option value="1120">浙商银行</option>
+							<option value="1122">东亚银行</option>
+							<option value="1123">渤海银行</option>
+							<option value="1124">北京农商银行</option>
+							<option value="1125">浙江泰隆商业银行</option>
+							<option value="1121">平安银行</option>
+						
+						</select>
+					</td>
+				</tr>
+				 <tr>
+				  <td  height="40" colspan="2" align="left"><div><span style="color:#FF0000;font-size:12px;">注意：付款后请等待系统自动跳转到提示交易成功的页面。</span></div></td>
+				</tr>
+				
+				<tr>
+					<td></td>
+					<td><input type="submit" class="addition" value="马上充值" style="height:0.6rem; list-style-type:none;color:#FFFFFF; background:#FF6600;padding-left:0.1rem;padding-right:0.1rem; border-radius:0.1rem;width:40%;height:0.8rem; border:0px;margin-top:0.2rem;"></td>
+				</tr>
+			</table>
+			<table width="90%" style="margin:0 auto;">
+			  <tr >
+				<td align="left" style="padding-top:10px;"><strong style="font-size:14px;" >在线冲值说明：</strong></td>
+			  </tr>
+			  <tr>
+				<td align="left"><span class="font-hblack"><span >
+				  <div style=" line-height:22px; font-size:12px;"> (1).请按表格填写准确的在线冲值信息,确认提交后会进入选择的银行进行在线付款! </div>
+				  <div style=" line-height:22px;font-size:12px;"> (2).交易成功后请点击返回支付网站可以查看您的订单信息! </div>
+				  <div style=" line-height:22px;font-size:12px;"> (3).如有任何疑问,您可以联系 在线客服,{$config['name']}网为您提供专业客户咨询服务! </div>
+				  <div style=" line-height:22px;font-size:12px;"> (4).注意：充值成功后，请不要急着关闭支付成功的跳转页面，否则有可能不会到帐。 </div>
+				  <div style=" line-height:22px;font-size:12px;"> (5).如需网银汇款/ATM转账或支付宝存款，请联系在线客服索取存款账号！ </div>
+				  </span> </span></td>
+			  </tr>
+       		</table>
+		 	<input type="hidden" name="pa_MP" id="pa_MP" value="<?=$rows['username']?>" />
+         	<input size="50" type="hidden" name="pr_NeedResponse" id="pr_NeedResponse" value="1" />
+		 </form>
+	</div>
+	<script>       
+        //数字验证 过滤非法字符
+        function clearNoNum(obj){
+	        //先把非数字的都替换掉，除了数字和.
+	        obj.value = obj.value.replace(/[^\d.]/g,"");
+	        //必须保证第一个为数字而不是.
+	        obj.value = obj.value.replace(/^\./g,"");
+	        //保证只有出现一个.而没有多个.
+	        obj.value = obj.value.replace(/\.{2,}/g,".");
+	        //保证.只出现一次，而不能出现两次以上
+	        obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+	        if(obj.value != ''){
+	        var re=/^\d+\.{0,1}\d{0,2}$/;
+                  if(!re.test(obj.value))   
+                  {   
+			          obj.value = obj.value.substring(0,obj.value.length-1);
+			          return false;
+                  }else{
+					  $("#p3_my").val($("#p3_Amt").val()/6.5);
+				  }
+	        }
+        }
+<!--
+//去掉空格
+function check_null(string) { 
+var i=string.length;
+var j = 0; 
+var k = 0; 
+var flag = true;
+while (k<i){ 
+if (string.charAt(k)!= " ") 
+j = j+1; 
+k = k+1; 
+} 
+if (j==0){ 
+flag = false;
+} 
+return flag; 
+}
+function VerifyData() {
+var min_num={$config.pay_min_money};
+if ($('#p3_Amt').val() == "") {
+			alert("请输入存款金额！")
+			document.form1.p3_Amt.focus();
+			return false;
+}
+/*if ($('#p3_Amt').val() !="") {
+		  if($('#p3_Amt').val() <min_num )
+		  {
+			alert("充值不能小于"+min_num+"元！")
+			document.form1.p3_Amt.focus();
+			return false;
+		  }
+}*/
+$("#form1").submit();
+}
+function url(s){
+location.href="<?=substr($_SERVER['HTTP_REFERER'],0,strlen($_SERVER['HTTP_REFERER'])-12) ?>/"+s;
+}
+
+</script>
+</div>
+<include file="App/Home/Iphone/Public/footer.html"/> 

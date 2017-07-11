@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)https://m.yuanbao.com/user/login -->
+<html lang="en" style="font-size: 95.3333px;">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="keywords" content="{$config.content}">
+    <link rel="stylesheet" href="__PUBLIC__/Iphone/css/css.css">
+    <script type="text/javascript" src="__PUBLIC__/Iphone/js/1.9.1.min.js"></script>
+	<script src="__PUBLIC__/Iphone/js/hm.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Iphone/js/zepto.js"></script>
+	<script src="__PUBLIC__/Iphone/js/public.js"></script>
+	<!--<script src="__PUBLIC__/Iphone/js/index.js"></script>-->
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Iphone/css/layer.css" id="skinlayercss">
+    <title><notempty name='article'>{$article.title}-</notempty>{$config.title|default="股票交易网站"}</title>
+	<meta property="wb:webmaster" content="8af72a3a7309f0ee">
+	<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?bdf95dc7fc4c22c518fc712d90092d31";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<!--<script type="text/javascript" src="__PUBLIC__/Iphone/js/downList.js"></script>-->
+		<!--<script type="text/javascript" src="__PUBLIC__/Iphone/js/focus.js"></script>-->
+		<script type="text/javascript" src="__PUBLIC__/Iphone/js/Fnc.js"></script>
+		<!--<script type="text/javascript" src="__PUBLIC__/Iphone/js/coinindex.js"></script>-->
+		<script type="text/javascript" src="__PUBLIC__/Iphone/js/tab.js"></script>
+		<!--<script src="__PUBLIC__/Iphone/js/mcoins.js"></script>-->
+		<!--<script type="text/javascript" src="__PUBLIC__/Iphone/js/mcoinindex.js"></script>-->
+		<script src="__PUBLIC__/Iphone/js/socket.io.js"></script>
+		<!--<script src="__PUBLIC__/Iphone/js/jquery-2.0.3.js"></script>-->
+		
+		<script src="__PUBLIC__/Iphone/js/jquery-2.1.1.min.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/Iphone/css/boot.css">
+		<script src="__PUBLIC__/Iphone/js/jquery.cookie.js"></script>
+		<script src="__PUBLIC__/Iphone/js/bootstrap.js"></script>
+		<script src="__PUBLIC__/Iphone/js/slider.js"></script>
+
+</head>
+
+<body>
+
+<div class="cont">
+    <header class="header">
+        <a href="#">
+		<div style="width:2.5rem; height:0.8rem; float:left; ">
+			<img src="{$config.logo}" style="width:100%; height:100%;"/>
+		</div></a>
+        <div class="nav" id="snav">
+			 <a href="{:U('Index/index')}">股票交易</a>
+           <!-- <a href="{:U('Index/index')}" class="a-on">币币交易</a>-->
+			<notempty name="member">
+				<a href="{:U('User/index')}">我的账户</a>
+				<a href="{:U('Set/index')}">
+					<img src="__PUBLIC__/Iphone/img/icon_home_03.png" alt="" style="width:0.35rem;height:0.35rem; position: relative;top:0.08rem">
+				</a>
+			</notempty>
+			<empty name="member">
+			<a href="{:U('Login/index')}">登录</a>
+            <a href="{:U('Reg/reg')}">注册</a>
+			</empty>
+        </div>
+    </header>
+	
+    <div class="strip"></div>
+<script>
+//头部样式判断显示
+$('#snav a').each(function(index){
+	
+	if(document.location.href.indexOf($(this).attr('href')) != -1){
+		$(this).addClass('a-on');
+	}
+})
+if(document.location.href.indexOf('Orders/index') != -1){
+	$('#snav a').eq(0).addClass('a-on');
+}
+if(document.location.href.indexOf('FillByBank/index') != -1){
+	$('#snav a').eq(1).addClass('a-on');
+}
+if(document.location.href.indexOf('Pay/bpay') != -1){
+	$('#snav a').eq(1).addClass('a-on');
+}
+if(document.location.href.indexOf('Set/index') != -1){
+    $('#snav a').eq(2).empty();
+	$('#snav a').eq(2).html('<img src="__PUBLIC__/Iphone/img/icon_accont_03.png" alt="" style="width:0.35rem;height:0.35rem; position: relative;top:0.08rem">')
+}
+</script>

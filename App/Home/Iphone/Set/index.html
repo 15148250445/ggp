@@ -1,0 +1,51 @@
+<include file="App/Home/Iphone/Public/header.html"/>
+		<div id="main">
+			<div class="main_box">
+				<div class="raise right clearfix">
+					<div class="strip"></div>
+					<div class="acc_top">
+						<p class="acc_top_eml">{$u_info["email"]|default="暂无"}<span style="float:right;margin-right:0.3rem;"><a href="{:U('Login/loginOut')}">退出</a></span></p>
+						<p class="acc_top_uid">
+							<span class="acc_t_u_spano">UID:{$u_info["member_id"]|default="暂无"}</span>
+							<span class="acc_t_u_icon acc_weirenzheng"></span>
+						</p>
+					</div>
+					<p class="acc_title">
+						账户管理
+					</p>
+					<ul class="account_ul">
+						<a href="{:U('ModifyMember/modify')}">
+							<li>
+								<span class="account_ul_icon" style="text-decoration: none;color:#333">实名认证</span><span style="color:#FF0000"><if condition="$_SESSION['STATUS'] neq 0">已认证<else />未认证</if></span><span class="account_ui_right"></span>
+							</li>
+						</a>
+						<a href="{:U('User/updatePassword')}">
+							<li>
+								<span class="account_ul_icon1" style="text-decoration: none;color:#333">修改登录密码</span><span class="account_ui_right"></span>
+							</li>
+						</a>
+						<a href="{:U('User/updatePwdTrade')}">
+							<li>
+								<span class="account_ul_icon2" style="text-decoration: none;color:#333">修改交易密码</span><span class="account_ui_right"></span>
+							</li>
+						</a>
+
+					</ul>
+					<p class="acc_title">
+						联系客服
+					</p>
+					<ul class="account_ul">
+						<li style="border-top:0;">
+							<span class="account_ul_icon4">客服邮箱</span><span class="account_ui_right_news">{$config.email|default="暂无"}</span>
+						</li>
+						<li style="border-top:0;">
+							<span class="account_ul_icon5">客服电话</span><span class="account_ui_right_news">{$config.suggest_email|default="暂无"}</span>
+						</li>
+					</ul>
+					<div style="clear: both;"></div>
+
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+<include file="App/Home/Iphone/Public/footer.html"/>

@@ -1,0 +1,853 @@
+<include file="App/Home/View/Public/header.html" />
+<!--top end-->
+<!--header end-->
+<style>
+.pull-left{ float:left;}
+.pull-right{ float:right;}
+.link a{ color:#000;}
+.link{ margin:0px auto; width:100%;}
+.pt_img{ width:158px; height:61px;}
+.col-xs-2 {
+    width: 16.66666667%;
+	float: left;
+}
+p{
+	margin-bottom: 0px !important;
+}
+h1{
+	margin-top: 0px !important;
+}
+#qh_carousel{
+	position: absolute;
+	top: 74px;
+}
+#carousel-example-generic{
+	width:1903px !important;
+	height: 360px !important;
+}
+.carousel-indicators{
+
+}
+.carousel-inner{
+	height: 360px !important;
+}
+.carousel-indicators{
+	left: 25% !important;
+}
+.carousel-indicators li{
+	width: 14px !important;
+	height: 14px !important;
+	border-radius: 7px !important;
+	margin-right: 6px !important;
+	
+}
+/*.carousel-indicators .active{
+	background: white !important;
+}*/
+</style>
+<script type="text/javascript" src="__PUBLIC__/Home/js/focus.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/Fnc.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/zc.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/1.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/zc.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/bootstrap.css">
+<!--k线图有关-->
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Home/css/kline.css">
+<script src="__PUBLIC__/Home/js/jquery-1.js"></script>
+<script src="__PUBLIC__/Home/js/kline.js"></script>
+<script src="__PUBLIC__/Home/js/highstock.js"></script>
+<script src="__PUBLIC__/Home/js/coinindex.js"></script>
+
+<script>
+
+$(function() {
+	$.get("/Home/Orders/getOrdersKline",{"currency":26,"time":"kline_1h"},function(orders){
+        kline($("#currency_mark").html()+"2"+$("#currency_trade_mark").html(),orders.kline_1h);
+
+	});
+	
+	$("#chart-control > button").click(function(){
+		$(this).addClass("btn-success").siblings().removeClass("btn-success");
+			 var time = $(this).attr('data-time');
+			 $.get("/Home/Orders/getOrdersKline",{"currency":26,"time":time},function(orders){
+			 kline($("#currency_mark").html()+"2"+$("#currency_trade_mark").html(),orders[time]);
+		});
+	});
+});
+</script>
+<!--k线图有关结束-->
+<!--banner start-->
+<div class="blank_400">
+	<div class="ab_box">
+		<div class="index_banner_box" id="index_banner_box">
+			<div id="qh_carousel">
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="height:360px !important">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+					</ol>
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<img src="__PUBLIC__/Home/images/qh_Carousel_1.jpg" class="qh_img" alt="...">    
+						</div>
+						<div class="item">
+							<img src="__PUBLIC__/Home/images/qh_Carousel_1.jpg" class="qh_img" alt="...">     
+						</div>
+						<div class="item">
+							<img src="__PUBLIC__/Home/images/qh_Carousel_1.jpg" class="qh_img" alt="...">    
+						</div> 
+					</div>
+					<!-- Controls -->
+				</div>
+			</div>
+			<!-- <div class="banner_big_box" id="banner_big_box"> -->
+			<!-- <p -->
+			<!-- style="opacity: 1; filter: alpha(opacity =                   100); background-color:;"></p> -->
+			<!-- <p style="background-color:;"></p> -->
+			<!-- <p style="background-color:;"></p> -->
+			<!-- <p style="background-color:;"></p> -->
+			<!-- <p style="background-color:;"></p> -->
+			<!-- </div> -->
+			<div class="index_t">
+			<!-- <div class="banner_box" id="banner_box">
+			<volist name='flash' id='vo'> <b class="slideUp cur"
+			style="background-image: url({$vo.pic}); left: 0;"></b> </volist>
+			<b class="slideUp cur" style="background-image:url(https://static.huobi.com/upic/apic/201604/d6794d5d1af91e2caaada0f163b774a8.jpg); left: 0;"></b>
+			<b class="slideUp" style="background-image:url(https://static.huobi.com/upic/apic/201604/d6794d5d1af91e2caaada0f163b774a8.jpg); left: 0;"></b>
+			<b class="slideUp" style="background-image:url(https://static.huobi.com/upic/apic/201603/39689c1fd7041df3dc4b5bc43c6170f2.jpg); left: 0;"></b>
+			<b class="slideUp" style="background-image:url(https://static.huobi.com/upic/apic/201602/89c272760128f9ace50cfe3cfc0c52c2.jpg); left: 0;"></b>
+			<b class="slideUp" style="background-image:url(https://static.huobi.com/upic/apic/201603/e195ff8121283b90915d931557b9bad0.png); left: 0;"></b>
+			</div> -->
+
+			<!-- <div class="section floor_top">
+			<!-- 轮播的页码  开始 -->
+			<!-- <ul id="page_list"></ul>
+			<div class="index_login_box">
+			<div class="login_box">
+			<div class="opacity_bg"></div>
+			<!--登录前 -->
+			<!-- <empty name="member">
+
+			<div class="tab tab01">
+
+			<h4 class="title">登录{$config['name']|default='虚拟币'}</h4>
+			<p>
+			<input name="email_or_phone" id="email"
+			class="input_login mail_complete" data-type="*"
+			data-msg-null="请输入邮箱或手机" value="" placeholder="请输入邮箱或手机"
+			autocomplete="off" type="text">
+			</p>
+			<div class="relative">
+			<div class="mail_complete_list absolute"></div>
+			</div>
+			<p>
+			<input name="password" class="input_login" id="password"
+			data-type="*" data-msg-null="请输入密码" placeholder="请输入密码"
+			type="password">
+			</p>
+
+			<!-- <p class="relative" id="vcode_p" style="display:none;">
+			<input class="input_login" data-type="*" name="vcode" data-msg-null="请输入验证码" placeholder="验证码" type="text">
+			<span class="absolute"><img id="vcode1" onclick="change_vcode(this);" src="%EF%BF%A52728.86%20_%20%E3%80%90%E7%81%AB%E5%B8%81%E3%80%91%E8%99%9A%E6%8B%9F%E8%B4%A7%E5%B8%81%E4%BA%A4%E6%98%93_%E6%AF%94%E7%89%B9%E5%B8%81%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0_%E8%99%9A%E6%8B%9F%E5%B8%81%E8%8E%B1%E7%89%B9%E5%B8%81_%E6%AF%94%E7%89%B9%E5%B8%81%E5%AE%98%E7%BD%91_files/captcha.png" alt="" height="35" width="76"></span>
+			</p>-->
+
+			<!-- <div class="form_tip"></div>
+			<p>
+			<button class="btn btn_orange sign_btn loading" type="button"
+			onclick="login()">登录</button>
+			</p>
+			<p class="help">
+			<a
+			href="{:U('Login/findPwd')}"
+			target="_blank">忘记密码？</a>
+			</p>
+			<input name="step" value="" type="hidden">
+			<!--<hr class="login_hr">-->
+			<!-- </div>
+			<else /> <!--登录后 -->
+			<!-- <div class="tab tab01">
+			<h3 class="title">
+			<a href="{:U('User/index')}"
+			class="font_20"> {$Think.session.USER_KEY} </a>
+			</h3>
+			<p>
+			<a href="{:U('User/index')}" class="btn 
+			btn_orange btn_url">账户中心</a>
+			</p>
+			<p class="m_t_10">
+			<a href="{:U('Entrust/manage')}" class="btn btn_orange btn_url">委托管理</a>
+			</p>
+			<p class="button_box">
+			<a href="{:U('User/pay')}" class="btn_white">充值</a> <a
+			href="{:U('User/draw')}" class="btn_white">提现</a>
+			</p>
+			<!--<hr class="login_hr">-->
+			<!--
+			< p class="hr_tis">
+			<i class="icon_tis"></i> <a
+			href="https://www.huobi.com/about/static_security">纵深防御架构、冷钱包离线存储</a>
+			</p> -->
+			</div>
+			</empty>
+			</div>
+			</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function login() {
+		var email = $('#email').val();
+		var password = $('#password').val();
+		if ($('#email').val().length <= 0) {
+			layer.msg("请输入邮箱");
+			return;
+		}
+		if ($('#password').val().length <= 0) {
+			layer.msg("请输入密码");
+			return;
+		}
+
+		$.post("/Home/Login/checkLog", {
+			email : email,
+			pwd : password
+		}, function(data) {
+			layer.msg(data.info);
+			if (data.status == 1) {
+				location.reload();
+			}
+		});
+
+	}
+</script>
+<div class="hide">
+	<input name="coin_type" value="cny_btc" type="hidden"> <input
+		name="amount" value="" type="hidden">
+</div>
+
+<div class="index_box_1 market_part">
+	<div class="section clear_fix p_t_30">
+		<div class="market_left">
+			<h2>{$config['name']|default="虚拟币"}行情</h2>
+			<ul class="market_type">
+				<volist name="currency" id="vo">
+				<a href="{:U('Index/select_currency',array('currency'=>$vo['currency_id']))}"><li <eq name="vo['currency_id']" value="$cu_id">class="cur" </eq>data-type="btc,{$vo.currency_mark}">{$vo.currency_name} {$vo.currency_mark} </li></a>
+				</volist>
+					<!--	<a href="{:U('Orders/index',array('currency'=>'BTC'))}"><li class="cur" data-type="btc,cny">比特币 BTC</li></a>
+				<a href="{:U('Orders/index',array('currency'=>'GreenPay'))}"><li data-type="btc,usd">GreenPay</li></a>
+			<li data-type="ltc,cny">人民币现货 LTC</li>-->
+			</ul>
+
+        </div>
+        <div class="market_right">
+            <div class="market_sub">
+                <div class="sub_top market_top">
+                    <ul class="top_">
+                        <li class="price_box now_price"><span class="price font_down" id="new_price">0.001</span><i  id="ccc"class="icon_index_down"></i></li>
+                        <li class="price_box">最低价 <span class="font_down low" id="di_price">0.000</span></li>
+                        <li class="price_box">最高价 <span class="font_up high" id="gao_price">0.000</span></li>
+                        <li class="price_box">涨幅 <span class="rose font_down" id="zhangfu">-0.61</span>%</li>
+                        <li class="total_box">
+                            <div class="total_table">
+                                24H成交量 <span class="total" id="h24">0.000</span>
+                            </div>
+							<div class="total_table">
+                                总成交额 <span class="total" id="toal">{$trade_total|default='0'}</span>
+                            </div>
+                        </li>
+						
+                    </ul>
+				<input type="hidden" value="{$cu_id}" id="ccoin"/>
+<script type="text/javascript">	
+setInterval("coin_price1()",3000);//1000为1秒钟			
+function coin_price1(){
+//	alert(123);
+	var ccoin_id=$('#ccoin').val();
+	//alert(ccoin_id);
+	var uuuuurl="{:U('Index/ajax_trade_price')}";
+	
+	$.post(uuuuurl,{'id':ccoin_id},function(data){
+		
+//	alert(data.status);
+	if(data.status != 1){
+		return;
+	}
+
+	///处理最新价格***************
+		  var y = data.info.new_price;//最新价格
+			var x=$('#new_price').html();//上一次价格
+		//	alert(x);
+		  //  alert(y);
+			if(y-x>=0){
+				var color="green";
+				var asd="icon_index_up";
+				var aaa="icon_index_down";
+				var ppp="font_down";
+				var ppp1="font_up";
+				//涨幅
+					
+				var zhangfu1="font_down";
+				var zhangfu2="font_up";
+				
+				//alert(zhangfu);
+				
+			}else{
+				var color="red";
+				var asd="icon_index_down";
+				var aaa="icon_index_up";
+				var ppp1="font_down";
+				var ppp="font_up";
+			  //涨幅
+			  
+			  	var zhangfu1="font_up";
+				var zhangfu2="font_down";
+			//   var zhangfu=(y-(x-y))/y*100;
+			  // alert(zhangfu);
+			  
+			}
+		
+		y =  parseFloat(y).toFixed(4);
+		//alert(zhangfu);
+	
+		var zhangfu=(y-x)/x*100;
+		zhangfu=parseFloat(zhangfu).toFixed(2);
+		//alert(zhangfu)
+		$('#new_price').html(y);
+	
+		$('#new_price').removeClass(ppp1);
+		$('#new_price').removeClass(ppp);
+		$('#new_price').addClass(ppp1);
+		$('#ccc').removeClass(aaa);
+	    $('#ccc').removeClass(asd);
+		$('#ccc').addClass(asd);
+		
+	///处理最新价格*******	
+	
+	
+	//处理最高价格
+	$("#di_price").html(data.info.di_price);
+	//处理最高价格
+	$("#gao_price").html(data.info.gao_price);
+	//处理小时交易量
+	$("#h24").html(data.info.num_24);	
+	
+	//设置涨幅
+	$("#zhangfu").html(zhangfu);
+	$('#zhangfu').removeClass(zhangfu1);
+	$('#zhangfu').removeClass(zhangfu1);
+	$('#zhangfu').addClass(zhangfu2);
+	
+	});
+}
+	 
+</script>
+					
+					
+                </div>
+                <div class="sub_bottom clear_fix" id="market">
+                    <div class="sub_flash">
+                        <div class="k_img k-box" id="k-cus-box" style="height:700px;width:auto">
+							<iframe id="kline_iframe" onload="javascript:iframe_onload();"
+								style="border: 0; width: 100%; height: 100%;"
+								src="{:U("Market/index2",array('currency_id'=>$cu_id))}"></iframe>
+  <!--    <div id="graphbox" style="width:96%;margin:0px auto;">
+        <div id="container" style="min-width: 460px"></div>
+        <div id="chart-control" data="ybc" class="btn-group centered" style="width: 98%;height: 30px;line-height: 30px; marign:0 auto;text-align:center">
+          <button data-time="5m" class="btn">5分钟线</button>
+          <button data-time="15m" class="btn">15分钟线</button>
+          <button data-time="30m" class="btn">30分钟线</button>
+          <button data-time="1h" class="btn btn-success">1小时线</button>
+          <button data-time="8h" class="btn">8小时线</button>
+          <button data-time="1d" class="btn ">日线</button>
+        </div>
+      </div>-->
+    </div>
+                    </div>
+                    <div class="sub_tx">
+                        <div class="tx_title"><b>买卖盘</b>
+                            <!--<div class="index_depth">
+                                <div class="depth_box">
+                                    <div class="depth_info"><span class="depth_name">深度</span> <span class="now_depth">0</span> <i class="icon_gray_arrows"></i></div>
+                                    <ul class="change_depth" style="display: none">
+                                        <li class="tb">0</li>
+                                        <li>1</li>
+                                        <li>2</li>
+                                        <li>3</li>
+                                        <li>4</li>
+                                        <li>5</li>
+                                    </ul>
+                                </div>
+                            </div>-->
+                        </div>
+                        <div id="market_all">  
+						<ul class="m_t_o">   
+						                  
+						<div id="sellsellsell">	  
+							<volist name="sell" id="vo" key="k">
+						  <li><span class="tx_1 font_sell">卖<php>echo count($sell)-$k+1</php></span><span class="tx_2">￥{$vo.price|default=0.00}</span><span class="tx_3 font_sell">{$vo['num']-$vo['trade_num']}</span></li>    
+					        </volist>
+						    <li class="mid"><hr></li>     
+						  
+						  
+						  </div>
+						  
+						  <div id="buybuybuy">	
+						  
+						  <volist name="buy" id="vo" key='k'>
+							<li><span class="tx_1 font_buy">买<php>echo count($buy)-$k+1</php></span><span class="tx_2">￥{$vo.price|default=0.00}</span><span class="tx_3 font_buy">{$vo['num']-$vo['trade_num']}</span></li>         
+						   </volist>
+							</ul>    
+							
+							
+							</div>	                    
+						 <script type="text/javascript">
+							/*function formatfloat(f, size, add){
+								f = parseFloat(f);
+								if(size == 2) conf = [100,0.01];
+								if(size == 3) conf = [1000,0.001];
+								if(size == 4) conf = [10000,0.0001];
+								if(size == 5) conf = [100000,0.00001];
+								if(size == 6) conf = [1000000,0.000001];
+								if(size == 7) conf = [10000000,0.0000001];
+								if(size == 8) conf = [100000000,0.00000001];
+								var ff = Math.floor(f * conf[0]) / conf[0];
+								if(add && f > ff) ff += conf[1];
+								return isNaN(ff)? 0: ff;
+							}
+							
+							//5秒自动刷新挂单记录
+							setInterval(function(){
+								$.post('/Home/Orders/getOrders',{"type":'sell',"currency_id":25},function(data){
+									$("#coinsalelist").empty();
+									var length=parseInt(data.length)
+									for(var i=0;i<data.length;i++){
+										$("#coinsalelist").append(
+											"<li><span class='tx_1 font_buy'>卖("+(length-i)+")</span><span class='tx_2'>"+data[i]['price']+"</span><span class='tx_3 font_sell'>"+parseFloat(data[i]['num']-data[i]['trade_num'])+"</span></li>"
+										);
+									}
+								});
+									$.post('/Home/Orders/getOrders',{"type":'buy',"currency_id":$("#currency_id").val()},function(data){
+									$("#coinbuylist").empty();
+									var length=parseInt(data.length)
+									for(var i=0;i<data.length;i++){
+										$("#coinbuylist").append(
+											"<li><span class='tx_1 font_buy'>买("+(length-i)+")</span><span class='tx_2'>"+data[i]['price']+"</span><span class='tx_3 font_buy'>"+parseFloat(data[i]['num']-data[i]['trade_num'])+"</span></li>"
+										);
+									}
+								})		
+							},5000);*/
+						 </script>
+						  <div class="tx_title tx_s"><b>实时成交</b></div>  
+					 <ul class="m_t_y">       
+						<volist name="trade" id="vo" key="k">
+							<li><span class="tx_1">{$vo.trade_time|date=' H:i:s',###}</span><span class="tx_2">￥{$vo.price|default='暂无'}</span><span class="tx_3 font_sell">{$vo.num|default='暂无'} <if condition="$trade[$k]['price'] lt  $trade[$k-1]['price']">↓<else />↑</if></span></li> 
+						</volist>
+					</div>
+                    </div>
+                    <script type="text/x-tmpl">
+                        <ul class="m_t_o">
+                        <%
+                        for(var l = sel.length;l--;){
+                        %>
+                        <li><span class="tx_1 font_sell">卖<%= l+1 %></span><span class="tx_2"><%= mark %><%= sel[l][0] %></span><span class="tx_3 font_sell"><%= sel[l][1] %></span></li>
+                        <%}%>
+                        <li class="mid"><hr></li>
+                        <%
+                            for(var i = 0,l = buy.length;i < l;i ++){
+                        %>
+                        <li><span class="tx_1 font_buy">买<%= i+1 %></span><span class="tx_2"><%= mark %><%= buy[i][0] %></span><span class="tx_3 font_buy"><%= buy[i][1] %></span></li>
+                        <%}%>
+                        </ul>
+                        <div class="tx_title tx_s"><b>实时成交</b></div>
+                        <ul class="m_t_y">
+                        <%
+                            for(var i = 0,l = tra.length;i < l;i ++){
+                        %>
+                            <li><span class="tx_1"><%= tra[i][1] %></span><span class="tx_2"><%= mark %><%= tra[i][3] %></span><span class="tx_3 <% if(tra[i][0] == 1){ %>font_buy<% }else{ %>font_sell<% } %>"><%= tra[i][2] %> <% if(tra[i][0] == 1){ %>↑<% }else{ %>↓<% } %></span></li>
+                        <%}%>
+                        </ul>
+                        </script>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <div class="index_box_1 cooperate">
+	<div class="section">
+		<div class="cooperate_title">硅谷国际数字资产结算中心平台</div>
+		<div class="cooperate_info_box">
+			<img src="__PUBLIC__/Home/images/information_1.png">
+			<div class="info_title">安全</div>
+			<p>超过10年金融风控经验团队</p>
+			<p>全方位可定制的安全策略体系</p>
+			<p>98% 比特币资产存储多重签名冷钱包</p>
+		</div>
+		<div class="cooperate_info_box">
+			<img src="__PUBLIC__/Home/images/information_2.png">
+			<div class="info_title">专业</div>
+			<p>创下日交易量纪录354万枚比特币</p>
+			<p>人民币、美元市场一站式交易</p>
+			<p>业内专业级操盘工具“闪电手”</p>
+		</div>
+		<div class="cooperate_info_box">
+			<img src="__PUBLIC__/Home/images/information_3.png">
+			<div class="info_title">用户至上</div>
+			<p>人民币交易免费</p>
+			<p>充值提现快速到账，比特币实时到账</p>
+			<p>7x24 小时中英双语客服服务</p>
+		</div>
+	</div>
+</div> -->
+
+<div class="index_box_2 information" style="height:300px">
+	<div class="section p_t_x">
+		<div class="information_part ml0">
+			<div class="information_title">官方公告</div>
+				<volist name="gfgg" key='k' id="vo"> 
+			
+				<if condition="$k  eq  1">
+			<div class="f_box" style="display:none">
+				<p class="m_t_20">
+					<a href="{:U('Art/details',array('id'=>$vo['article_id']))}"
+						target="_blank">{$vo['title']}</a>
+				</p>
+				<p>{$config['name']}</p>
+				<div class="f_logo_box"
+					style="background: url(https://static.huobi.com/exchange/src/images/1bt.png?hbver=2016040604) 96% 50% no-repeat;"></div>
+			</div>
+			<else />
+			<p>
+				<a href="{:U('Art/details',array('id'=>$vo['article_id']))}"
+					target="_blank"> <span>[{$vo['add_time']|date="m-d",###}]</span>{$vo['title']}
+				</a>
+			</p>
+			</if>
+			</volist>
+		</div>
+		<div class="information_part">
+			<div class="information_title">市场动态</div>
+			<volist name="scdt" key='k' id="vo"> 
+				<if condition="$k  eq  1">
+			<div class="f_box" style="display:none">
+				<p class="m_t_20">
+					<a href="{:U('Art/details',array('id'=>$vo['article_id']))}"
+						target="_blank">{$vo['title']}</a>
+				</p>
+				<p>{$config['name']}</p>
+				<div class="f_logo_box"
+					style="background: url(https://static.huobi.com/exchange/src/images/xinhua.png?hbver=2016040604) 96% 50% no-repeat;"></div>
+			</div>
+			<else />
+			<p>
+				<a href="{:U('Art/details',array('id'=>$vo['article_id']))}"
+					target="_blank"> <span>[{$vo['add_time']|date="m-d",###}]</span>{$vo['title']}
+				</a>
+			</p>
+			</if>
+			</volist>
+		</div>
+		<div class="information_part">
+			<div class="information_title">媒体报道</div>
+			<volist name="mtbd" key='k' id="vo"> 
+				<if condition="$k  eq  1">
+			<div class="f_box" style="display:none">
+				<p class="m_t_20">
+					<a href="{:U('Art/details',array('id'=>$vo['article_id']))}"
+						target="_blank">{$vo['title']}</a>
+				</p>
+				<p>{$config['name']}</p>
+				<div class="f_logo_box"
+					style="background: url(https://static.huobi.com/exchange/src/images/hb_logo.png?hbver=2016040604) 96% 50% no-repeat;"></div>
+			</div>
+			<else />
+			<p>
+				<a href="{:U('Art/details',array('id'=>$vo['article_id']))}"
+					target="_blank"> <span>[{$vo['add_time']|date="m-d",###}]</span>{$vo['title']}
+				</a>
+			</p>
+			</if>
+			</volist>
+			<!-- 
+			<div class="f_box">
+				<p class="m_t_20">
+					<a
+						href="https://www.huobi.com/help/index.php?a=notice_content&amp;id=545"
+						target="_blank">火币兄弟公司出品【财猫贵金属】，现开户就送比特币！</a>
+				</p>
+				<p>火币网</p>
+				<div class="f_logo_box"
+					style="background: url(https://static.huobi.com/exchange/src/images/hb_logo.png?hbver=2016040604) 96% 50% no-repeat;"></div>
+			</div>
+			<p>
+				<a
+					href="https://www.huobi.com/help/index.php?a=notice_content&amp;id=544"
+					target="_blank"> <span>[03-24]</span> 充值迎福利：充5000就领币！
+				</a>
+			</p>
+			<p>
+				<a
+					href="https://www.huobi.com/help/index.php?a=notice_content&amp;id=543"
+					target="_blank"> <span>[03-12]</span> 提醒：火币网站和APP为唯一官方充值渠道！
+				</a>
+			</p>
+			<p>
+				<a
+					href="https://www.huobi.com/help/index.php?a=notice_content&amp;id=539"
+					target="_blank"> <span>[03-02]</span> 自定义比特币网络转账费功能上线通知
+				</a>
+			</p>
+			<p>
+				<a
+					href="https://www.huobi.com/help/index.php?a=notice_content&amp;id=538"
+					target="_blank"> <span>[03-01]</span> 火币网全面实行5倍杠杆通知
+				</a>
+			</p> -->
+		</div>
+	</div>
+</div>
+
+<!--<div class="index_box_2 friend">
+    <div class="slogan_title">战略合作机构</div>
+    <div class="slogan_tis">清华大学五道口金融学院互联网金融实验室  金融客咖啡  正和岛</div>
+    <div class="friend_logo_box">
+        <img src="__PUBLIC__/Home/images/wudaokou.png">
+    </div>
+    <div class="friend_logo_box">
+        <img src="__PUBLIC__/Home/images/jinrongke.png">
+    </div>
+    <div class="friend_logo_box">
+        <img src="__PUBLIC__/Home/images/zhenghedao.png">
+    </div>
+</div>-->
+<!-- <div class="index_box_2 slogan" style="margin: 0px auto;">
+
+	<div class="slogan_title">选择{$config.name|default='虚拟网'},安全可信赖</div>
+	<div class="slogan_tis">
+		累计交易额:<span>{$sum_money|default='0'}</span>
+	</div>
+	<div id="cumulative">
+		<div class="number_box">
+			<volist name="arr" id="vo" key="key">
+			<div
+				<if condition=" $key%3 eq 0 && $key%12 eq 0  ">class="unit
+				add_f" <elseif condition=" $key%3 eq 0 " />class="unit add_w" <else />class="unit"
+				</if>
+				>
+				<div class="top">
+					<span>{$vo}</span>
+				</div>
+				<div style="" class="top">
+					<span>{$vo}</span>
+				</div>
+				<div class="btm">
+					<span>{$vo}</span>
+				</div>
+				<div style="transform: rotateX(0deg);" class="btm">
+					<span>{$vo}</span>
+				</div>
+			</div>
+			</volist>
+		</div>
+	</div>
+</div> -->
+
+<div class="safety_tips" style="padding-top:40px;padding-bottom:100px">
+    <div style="width: 1000px; margin: 0 auto; margin-bottom: 20px;"></div>
+    <!-- <h3>专业的安全保障</h3> -->
+    <div class="autobox">
+        <ul class="safety_tips_ul clear">
+            <li style="width:300px">
+                <img src="/Public/Home/images/safe_1.jpg" alt="" height="70" width="70">
+                <h4>系统可靠</h4>
+                <p>银行级用户数据加密、动态身份验证，多级风险识别控制，保障交易安全</p>
+            </li>
+            <li>
+                <img src="/Public/Home/images/safe_2.jpg" alt="" height="70" width="70">
+                <h4>资金安全</h4>
+                <p>钱包多层加密，离线存储于银行保险柜，资金第三方托管，确保安全</p>
+            </li>
+            <li>
+                <img src="/Public/Home/images/safe_3.jpg" alt="" height="70" width="70">
+                <h4>快捷方便</h4>
+                <p>充值即时、提现迅速，每秒万单的高性能交易引擎，保证一切快捷方便</p>
+            </li>
+            <li>
+                <img src="/Public/Home/images/safe_4.jpg" alt="" height="70" width="70">
+                <h4>服务专业</h4>
+                <p>专业的客服团队，400电话和24小时在线QQ，VIP一对一专业服务</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- 合作伙伴 -->
+<div class="partners" style="margin-top:20px;">
+    <div class="page-view">
+        <div class="row">
+            <p class="pt-title">合作伙伴</p>
+        </div>
+        <div class="row">
+         <volist name = "link_info" id = "vo">
+            <div class="col-xs-2">
+                <div class="partBox">
+                    <a href="https://{$vo['url']}" target="_blank" title="{$vo.name}">
+                        <img class="pt_img" src="{$vo.tupian}">
+                    </a>
+                </div>
+            </div>
+          </volist>
+        </div>
+    </div>
+</div>
+<div style=" clear:both"></div>
+<!--<div style="height:360px; width:100%; position:relative; overflow:hidden; min-width:1200px;">
+
+<div>
+	<div class="flexslider">
+		<ul class="slides">
+			<volist name='flash' id='vo'>
+            	<li><a href="{$vo.jump_url|default='#'}" target="_blank"><img src="{$vo.pic}" alt="{$vo.title}" style="height:320px;"></a></li>
+            </volist>
+		</ul>
+	</div>
+	<div class="ybcoin_volume">
+		<div style="color:#fff;">
+			<p style=" font-size:16px; margin-bottom:5px; text-align: center;">风险提示</p>
+			<p style=" font-size:12px; line-height:22px;">{$config.risk_warning}</p>
+		</div>
+					<div class="news_coin"><empty name="member"><a href="{:U('Login/index')}">立即登录</a><else/><a href="{:U('User/index')}">我的账户</a></empty></div>
+			<p class="coin_reg"><empty name="member"><a href="{:U('Reg/reg')}" class="left">免费注册</a><a href="{:U('Oauth/index',array('type'=>'qq'))}" class="right">QQ登录  </a><else/></empty><a href="{:U('Dow/newcoin')}" class="right">我要上新币</a></p>
+			</div>
+</div>
+</div>-->
+<!--banner end-->
+
+<!--<script type="text/javascript" src="__PUBLIC__/Home/js/coinindex.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Home/js/tab.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/slide.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/page_glb_var.js"></script>
+<script>
+    seajs.use("dist/page_index");
+    /**/
+    function change_vcode(e) {
+        e.src = "/account/captcha?" + Math.random();
+    }
+    /**/
+
+</script>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?18784dd00dc1c9774528d08ae7943072";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+
+</script>-->
+
+                        <!--<div class="sp-step">-->
+                            <!--<div class="pull-left sp-time">-->
+                                <!--<p><span>2014-08-21</span></p>-->
+                                <!--<p><span>2014-07-21</span></p>-->
+                                <!--<p><span>2014-04-24</span></p>-->
+                            <!--</div>-->
+                            <!--<div class="pull-right">-->
+                                <!--<p>众筹完成</p>-->
+                                <!--<p>众筹开始</p>-->
+                                <!--<p>初创项目</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div style="width: 400px;" class="sp-wrap">-->
+                    <!--<div class="sp-box">-->
+                        <!--<a href="https://www.yuanbaohui.com/project_index/?id=187" target="_blank">-->
+                            <!--<div class="sp-info">-->
+                                <!--<div class="pull-right">-->
+                                    <!--<h4 style="font-weight: normal;font-size: 16px">免费VPN币分发投资</h4>-->
+
+                                    <!--<p style="font-size: 12px;">免费机会仅此一次</p>-->
+                                <!--</div>-->
+                                <!--<img src="__PUBLIC__/Home/images/d09a0420c556744cc948a0cbc7cf21bd.png" style="width: 82px;height: 82px;">-->
+                                <!--&lt;!&ndash;                                    <img src="&ndash;&gt;&lt;!&ndash;" style="width: 82px;height: 82px;">&ndash;&gt;-->
+                            <!--</div>-->
+                        <!--</a>-->
+
+                        <!--<div class="sp-step">-->
+                            <!--<div class="pull-left sp-time">-->
+                                <!--<p><span>2015-04-17</span></p>-->
+                                <!--<p><span>2015-04-13</span></p>-->
+                                <!--<p><span>2015-04-12</span></p>-->
+                            <!--</div>-->
+                            <!--<div class="pull-right">-->
+                                <!--<p>众筹完成</p>-->
+                                <!--<p>众筹开始</p>-->
+                                <!--<p>初创项目</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+           <!-- </div>
+        </div>
+    </div>
+</div> -->
+<!-- 客服信息 -->
+<!-- <div class="autobox">
+    <ul class="web_service clear pl30">
+        <li class="w265"><a id="BizQQWPA" href="http://wpa.qq.com/msgrd?v=3&uin={$config['qq1']}&site=qq&menu=yes"><div class="web_service_pic service_1"></div><div class="web_service_pic_num"><p>{$config.qq1|default="暂无"}</p><div class="qqsecvice">在线QQ客服</div></div></a></li>
+        <li class="w245"><div class="web_service_pic service_2"></div><div class="web_service_pic_num"><p>{$config.tel|default="暂无"}</p><div>工作日:9-19时 节假日:9-18时</div></div></li>
+        <li class="w265"><a href="http://weibo.com/{$config['weibo']}" target="_blank"><div class="web_service_pic service_3"></div><div class="web_service_pic_num"><p>{$config['weibo']|default="暂无"}</p><div>新浪官方微博</div></div></a></li>
+        <li><div class="web_service_pic service_4"></div><div class="web_service_pic_num"><p>2群：{$config['qqqun2']|default="暂无"}</p><div class="h_underl">交流QQ群 <a href="javascript:;" class="orange">查看更多</a>  </div></div></li>
+    </ul>
+</div> -->
+
+
+
+
+<!--友情链接-->
+<!-- <div class="link">
+    <div class="linkbox">
+        <h4>友情链接</h4>
+        <ul>
+            <volist name = "link_info" id = "vo">
+                <li><a target="_blank" href="http://{$vo['url']}" style=" font-size:16px;">{$vo.name}</a> </li>
+            </volist>
+
+        </ul>
+    </div>
+</div> -->
+
+<!--footer start-->
+<include file="App/Home/View/Public/footer.html" />
+<!--footer end-->
+<script>
+
+$("#head_nav ul").children("li").eq(0).addClass("cur");
+$(".market_type").children("li").on("click",function(){
+	$(this).addClass("cur").siblings().removeClass("cur");
+});
+/*$(window).scroll(function(e){
+	var h = $(".ab_box").offset().top+$(".ab_box").height();
+	var dh = 1;
+	if($(window).scrollTop()>h){
+		$("#doc_head").addClass("fixed");
+		$(".ab_box").css("padding-top","75px");
+		//$(".head_masthead").css("height",dh++);
+	}else{
+		$("#doc_head").removeClass("fixed");
+		$(".ab_box").css("padding-top",0);
+	}
+});
+	$(".qh_img").css("height","360px")*/
+
+</script>

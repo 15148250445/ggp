@@ -1,0 +1,65 @@
+<include file="App/Home/Iphone/Public/top.html"/>
+<body>
+<div id="main">
+		<div class="main_box">
+			<div class="raise right clearfix">
+
+<!--<div class="strip"></div>-->
+<div class="Wf-div1" style="border-bottom: none;">
+	<a href="javascript:" onclick="self.location=document.referrer;">返回</a>
+	<span>实名认证</span>
+</div>
+<div class="strip"></div>
+<div class="authent_ul">
+    <!--<p class="authent_ul_g" style="margin-left:20px;">
+        <span>推荐</span>
+        <span>实时</span>
+    </p>-->
+    <p class="authent_po">通过太一护照认证</p>
+<!--    未认证-->
+        <div>
+        <p class="authent_pt"><span class="color_dian">●</span>太一护照扫码</p>
+        <p class="authent_ps"><span class="color_dian">●</span>授权高级身份认证信息</p>
+        <p class="authent_pf"><span class="color_dian">●</span>认证完成享受最高级认证权限</p>
+        <p class="authent_pi">
+            <span class="color_dian">●</span>
+            <a href="https://ybh-static.oss-cn-hangzhou.aliyuncs.com/%E5%85%83%E5%AE%9D%E7%BD%91%E5%A4%AA%E4%B8%80%E6%8A%A4%E7%85%A7%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%970118.pdf" target="_blank">操作指南&gt;&gt;</a>
+        </p>
+        <p class="authent_pe"><a href="{:U('ModifyMember/modify')}">立即认证</a></p>
+    </div>
+    <div style="clear: both;"></div>
+<script>
+    //太一认证入口
+    $(' .authent_pe a').unbind('click').on("click",function(){
+        //获得太一护照认证入口 跳转
+        $.ajax({
+            url:'/Ajax/getCreditidtUrl',
+            type:'post',
+            data:{type:'auth'},
+            dataType:'json',
+            success:function(res){
+                var res= res.data;
+                window.location.href=res.url;
+            }
+        });
+    });
+</script>
+
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+
+<script>
+    //域名跳转
+    $('#phone').click(function(){
+        location.reload();
+    })
+    $('#window').click(function(){
+        var mode = 1;
+        $.post('/ajax/changemode',{mode:mode},function(){
+            window.location.href = 'http://www.yuanbao.com/coins?notice=1';
+        })
+    })
+</script>
+<include file="App/Home/Iphone/Public/footer.html"/>

@@ -1,0 +1,72 @@
+<include file="App/Home/Iphone/Public/header.html"/>
+
+    <div class="d-main">
+        <h2>{$config.name|default="虚拟币"}用户登录</h2>
+        <form id="signupForm" method="post" action="{:U('Login/checkLog')}" jump-url="{:U('Safe/index')}" onSubmit="return valiForm();">
+            <p>
+                <input type="text" name="email" id="email" value="" placeholder="用户名/手机号(e.g.+86 13912345678)">
+                <span class="note" id="emailmsg" style="color:red;margin-top: 10px;display: inline-block;"></span>
+            </p>
+            <p>
+                <input type="password" name="pwd" id="pwd" placeholder="密码">
+                <span class="note" id="pwdmsg" style="color:red;margin-top: 10px;display: inline-block;"></span>
+            </p>
+           <p style="margin-top:10px;margin-bottom:10px;font-size:13px;color:red;display:none" id="birthmsg" class="note"></p>
+            <p></p>
+            <p></p>
+            <p>
+                <input type="submit" value="登录" style="background:#f60;color:white;font-size: 0.3rem;width: 6.88rem;border: none;padding:0;margin-top: 0.2rem;" class="denglu dengluu" onclick="checkform()" >
+                	
+            </p>
+        </form>
+        <p>
+            <a href="http://{:$_SERVER['SERVER_NAME']}/Home/Login/findPwd.html" class="L" style="color:#f60">忘记密码？</a>
+            <span class="R" style="float:right">没有账号去<a href="http://{:$_SERVER['SERVER_NAME']}/Home/Reg/reg.html" style="color:#f60">注册</a></span>
+        </p><div style="clear: both;"></div>
+        <p></p>
+    </div>
+<script>
+    vali = {email: 0, pwd: 0};
+    $('#pwd').bind('blur', function(){
+        var pLen = $(this).val().length;
+        if(pLen < 6 || pLen > 20) return validateMsg('pwd', '密码长度在6-20个字符之间', 0);
+        return validateMsg('pwd', '', vali.pwd = 1);
+    });
+    function checkform(){
+       /*  if(vali.email==0){
+            $('#email').focus();
+            return false;
+        } */
+        if(vali.pwd==0){
+            $('#pwd').focus();
+            return false;
+        }
+//        return true;
+       $.post("{:U('Login/checkLog')}", $('#signupForm').serialize(),function(data){
+		   if(data.status==1){
+		   	alert(data['info']);
+			<eq name="Think.session.is_phone" value="1" >  <else /> $('.layui-layer-msg').css({position:'absolute',left:'50%',top:'20%'});</eq>
+				window.location.href="{:U('Index/index')}"
+		   }else{
+			   layer.msg(data['info']);
+	
+			   <eq name="Think.session.is_phone" value="1" >  <else /> $('.layui-layer-msg').css({position:'absolute',left:'50%',top:'20%'})</eq>
+			   }
+		  
+		})
+    }
+</script>
+
+<script>
+function KeyDown()
+{
+  if (event.keyCode == 13)
+  {		
+        var pLen = $('#pwd').val().length;
+        if(pLen < 6 || pLen > 20) return validateMsg('pwd', '密码长度在6-20个字符之间', 0);
+         validateMsg('pwd', '', vali.pwd = 1);
+		checkform();
+  }
+}
+</script>
+<include file="App/Home/Iphone/Public/footer.html"/> 

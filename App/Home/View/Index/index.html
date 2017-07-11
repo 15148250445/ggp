@@ -1,0 +1,985 @@
+<include file="App/Home/View/Public/header.html" />
+<!--top end-->
+<!--header end-->
+<style>
+.pull-left{ float:left;}
+.pull-right{ float:right;}
+.link a{ color:#000;}
+.link{ margin:0px auto; width:100%;}
+.pt_img{ width:158px; height:61px;}
+.col-xs-2 {
+    width: 16.66666667%;
+	float: left;
+}
+.carousel-indicators{width:100% !important;}
+p{
+	margin-bottom: 0px !important;
+}
+h1{
+	margin-top: 0px !important;
+}
+#qh_carousel{
+	position: absolute; width:100%;
+	top: 74px;
+}
+/*#carousel-example-generic{
+	width:100% !important;
+	
+}*/
+.carousel-indicators{
+
+}
+.carousel-inner{
+	height: 100% !important;
+}
+.carousel-indicators{
+	left: 25% !important;
+}
+.carousel-indicators li{
+	width: 14px !important;
+	height: 14px !important;
+	border-radius: 7px !important;
+	margin-right: 6px !important;
+	
+}
+/*.carousel-indicators .active{
+	background: white !important;
+}*/
+#chart_canvasGroup{
+	width: 800px !important
+}
+#qh_carousel img{height:360px !important; width:100%}
+.active img{height:360px !important;}
+/*.qh_sub img{
+	margin-top:-6px;
+}*/
+.qh_sub{
+	width: 200px;
+}
+<neq name="Think.session.is_phone" value="1">
+.section.clear_fix.p_t_30{
+	min-width: 1200px !important;
+}
+.market_right{
+	width:1050px !important;
+}
+.sub_flash{
+	width: 72% !important;
+}
+.qh_wxts{
+	padding-left: 13% !important;
+}
+</neq>
+
+</style>
+<script type="text/javascript" src="__PUBLIC__/Home/js/focus.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/Fnc.js"></script>
+<!-- <script type="text/javascript" src="__PUBLIC__/Home/js/zc.js"></script> -->
+<script type="text/javascript" src="__PUBLIC__/Home/js/1.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/zc.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/bootstrap.css">
+<!--k线图有关-->
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Home/css/kline.css">
+<script src="__PUBLIC__/Home/js/jquery-1.js"></script>
+<script src="__PUBLIC__/Home/js/kline.js"></script>
+<script src="__PUBLIC__/Home/js/highstock.js"></script>
+<script src="__PUBLIC__/Home/js/coinindex.js"></script>
+<!-- <script src="__PUBLIC__/Home/js/jquery.tablesort.js"></script> -->
+<!-- <script src="__PUBLIC__/Home/js/jquery.tablesort.min.js"></script> -->
+<script src="__PUBLIC__/Home/js/sort.js"></script>
+<!-- <script src="__PUBLIC__/Home/js/jquery-latest.min.js"></script> -->
+<!-- <script src="__PUBLIC__/Home/js/zepto.js"></script> -->
+
+<!-- <script> -->
+
+<!-- $(function() { -->
+	<!-- $.get("/Home/Orders/getOrdersKline",{"currency":26,"time":"kline_1h"},function(orders){ -->
+        <!-- kline($("#currency_mark").html()+"2"+$("#currency_trade_mark").html(),orders.kline_1h); -->
+
+	<!-- }); -->
+	
+	<!-- $("#chart-control > button").click(function(){ -->
+		<!-- $(this).addClass("btn-success").siblings().removeClass("btn-success"); -->
+			 <!-- var time = $(this).attr('data-time'); -->
+			 <!-- $.get("/Home/Orders/getOrdersKline",{"currency":26,"time":time},function(orders){ -->
+			 <!-- kline($("#currency_mark").html()+"2"+$("#currency_trade_mark").html(),orders[time]); -->
+		<!-- }); -->
+	<!-- }); -->
+<!-- }); -->
+<!-- </script> -->
+<!--k线图有关结束-->
+<!--banner start-->
+
+<div class="blank_400" style="height:260px;">
+	<div class="ab_box" style="    top: -4px;">
+		<div class="index_banner_box" id="index_banner_box">
+			<div id="qh_carousel">
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="height:330px !important;width:100%">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+					<volist name="flash" id="voo" key="kk">
+						<li data-target="#carousel-example-generic" data-slide-to="{$kk -1}"  <eq name='kk' value='1'> class='active' </eq>  ></li>
+					</volist>
+					</ol>
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox">
+						<volist name="flash" id="vo" key="k">
+						<div class="item <eq name='k' value='1' >active</eq> ">
+							<a href="{$vo.jump_url}"><img src="{$vo.pic}" class="qh_img" alt="{$vo.title}"></a>
+						</div>
+						</volist>
+					</div>
+					<!-- Controls -->
+				</div>
+			</div>
+			<div class="index_t">
+				<div class="section floor_top">
+					<!-- 轮播的页码  开始 -->
+					<ul id="page_list"></ul>
+					<div class="index_login_box">
+						<div class="login_box">
+							<div class="opacity_bg"></div>
+							<!--登录前 -->
+							<empty name="member">
+							<div class="tab tab01">
+								<h4 class="title">登录{$config['name']|default='虚拟币'}</h4>
+								<p>
+									<input name="email_or_phone" id="email"
+
+									class="input_login mail_complete" data-type="*"
+									data-msg-null="请输入用户名或手机" value="" placeholder="请输入用户名或手机"
+									autocomplete="off" type="text">
+								</p>
+								<div class="relative">
+									<div class="mail_complete_list absolute"></div>
+								</div>
+								<p>
+									<input name="password" class="input_login" id="password" 
+									data-type="*" data-msg-null="请输入密码" placeholder="请输入密码"
+									type="password">
+								</p>
+								<div class="form_tip"></div>
+								<p>
+									<button class="btn btn_orange sign_btn loading" type="button"
+									onclick="login()">登录</button>
+								</p>
+								<p class="help">
+									<a href="{:U('Login/findPwd')}"
+									target="_blank">忘记密码？</a>
+								</p>
+								<input name="step" value="" type="hidden">
+							</div>
+							<else />
+							<!--登录后 -->
+							<style>
+							.ab_box{    top: 24px;}
+							</style>
+							<div class="tab tab01">
+								<h3 class="title">
+									<a href="{:U('User/index')}"
+									class="font_20"> 账号：{$Think.session.USER_KEY} </a>
+								</h3>
+								<p>
+									<a href="{:U('User/index')}" class="btn 
+									btn_orange btn_url">账户中心</a>
+								</p>
+								<p class="m_t_10">
+									<a href="{:U('Entrust/manage')}" class="btn btn_orange btn_url">委托管理</a>
+								</p>
+								<p class="button_box">
+									<a  href="javascript:void(0)" onclick="confirm_fill();"  class="btn_white">充值</a>
+									<a href="{:U('User/draw')}" class="btn_white">提现</a>
+								</p>
+							</div>
+							</empty>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function login() {
+		var email = $('#email').val();
+		var password = $('#password').val();
+		if ($('#email').val().length <= 0) {
+			layer.msg("请输入用户名");
+			return;
+		}
+		if ($('#password').val().length <= 0) {
+			layer.msg("请输入密码");
+			return;
+		}
+
+		$.post("/Home/Login/checkLog", {
+			email : email,
+			pwd : password
+		}, function(data) {
+			layer.msg(data.info);
+			<eq name="Think.session.is_phone" value="1" >  <else /> $('.layui-layer-msg').css({position:'absolute',left:'88%',top:'15%'});</eq>
+			if (data.status == 1) {
+				location.reload();
+			}
+		});
+
+	}
+</script>
+<div class="hide">
+	<input name="coin_type" value="cny_btc" type="hidden"> <input
+		name="amount" value="" type="hidden">
+</div>
+
+
+<div style="padding-left:20%;" class="qh_wxts"><!--温馨提示：{$config.wenxin_tishi}--></div>
+
+
+<div class="index_box_1 market_part" >
+	<div class="section clear_fix p_t_300">
+		
+        <style type="text/css">
+        	.market_sub{
+        		border: 1px solid #ddd;
+        	}
+        	.qh_btc_title{
+        		width: 100%;
+        		height: 55px;
+        	}
+        	.qh_btc_title h1{
+        		height: 55px;
+        		color: #ff8839;
+        		font-size: 18px;
+        		margin-bottom: 0px;
+        		line-height: 55px;
+        		width: 200px;
+        		text-align: center;
+        		<!-- border-top:1px solid #ff8839; -->
+
+        	}
+        	.qh_btc_table{
+        		width: 100%;
+        	}
+        	.qh_btc_table tr{
+        		border-bottom: 1px solid #faf5f2;
+        	}
+        	.qh_btc_table thead tr:first-child{
+        		background: #e6e6e6;
+        		color: #7d7875;
+        	}
+			.qh_btc_table thead tr:hover{
+				cursor:pointer;
+			}
+        	.qh_btc_table th{
+        		text-align: center;
+        		padding: 0px;
+        		height: 50px;
+        		line-height: 50px;
+        		position: relative;
+        		
+
+        	}
+        	.qh_btc_table th:first-child{
+        		
+        	}
+        	.qh_btc_table td{
+        		padding: 0px;
+        		height: 50px;
+        		line-height: 50px;
+        		text-align: center;
+        	}
+        	.qh_btc_table td img{
+        		width: 24px;
+        		height: 24px;
+        	}
+        	.qh_btc_table tr td:first-child{
+        		color: #7d7875;
+        		font-weight: bold;
+        	} 
+        	.cagret-down{
+        		position: absolute;
+        		top: 26px;
+        	}
+        	.cagret-up{
+        		position: absolute;
+        		top: 14px;
+        	}
+			.qh_qujiaoyi{
+				color:#e55600;
+				line-height: 28px;
+				border:1px solid #e55600;
+				border-radius:3px;
+				width:80px;
+				height30px;
+				cursor:ponter;
+				margin:5px;
+			}
+			.qh_qujiaoyi:hover{
+				background-color:#e55600;
+				color:white;
+			}
+        	
+
+        	
+        </style>
+
+        <script type="text/javascript">
+			$(function(){
+
+
+				var a = 1;
+			/*setTimeout(function() { }, 20);*/
+				$(".qh_btc_table th").click(function(){
+					
+					$(".qh_btc_table th").css("color","#7d7875")
+					$(this).css("color","#FF8839");
+					if(a%2 == 0){
+						$('.qh_btc_table').find("i.cagret-up").css("border-bottom-color","");
+						$(this).find("i.cagret-down").css("border-top-color","red");	
+									
+					}else{
+						
+						$(".qh_btc_table").find("i").css("border-top-color","");
+						$(this).find("i.cagret-up").css("border-bottom-color","red");						
+					}
+					a++;
+				
+				})
+				/*$(document).on("click",".qh_btc_table th.descending",function(){
+				
+					$(".qh_btc_table th").css("color","#7d7875");
+					$(this).css("color","#FF8839");
+					$(".qh_btc_table th i.cagret-down").css("border-top-color","#7d7875");
+					$(".qh_btc_table th i.cagret-up").css("border-bottom-color","#7d7875");
+					$(this).find("i.cagret-down").css("border-top-color","#FF8839");
+					
+					
+				})*/
+			
+			
+				/*$(document).on("click",".qh_btc_table th.ascending",function(){
+				
+					$(".qh_btc_table th").css("color","#7d7875");
+					$(this).css("color","#FF8839");
+					$(".qh_btc_table th i.cagret-down").css("border-top-color","#7d7875");
+					$(".qh_btc_table th i.cagret-up").css("border-bottom-color","#7d7875");
+					$(this).find("i.cagret-up").css("border-bottom-color","#FF8839");
+				
+				})*/
+		});
+		</script> 
+            <div class="market_sub">
+                <div class="qh_btc_title">
+                	<h1>实时行情</h1>
+                </div>
+                <div class="example ex-1">
+				  <table class="qh_btc_table" id="tblSort">
+				   <thead>
+                		<th>币种代码</th>
+                		<th>币种简称</th>
+                		<th>昨收盘 </th>
+                		<th>今开盘 </th>
+                		<th>最新价 </th>
+                		<th>涨跌</th>
+                		<th>成交量 </th>
+                		<th>成交金额 </th>
+                		<th>最高价 </th>
+                		<th>最低价 </th>
+						<th>去交易</th> 
+					</thead>
+					</table>
+					<div class="dowebok"> 
+						<table class="qh_btc_table"  id="tblSort">
+						<volist name="currency_or" id="vo">
+							<tr style="color:white">
+								<td style="width:10%"><span>{$vo.currency_mark}</span></td>
+								<td style="width:13%"><span>{$vo.currency_name}</span></td>
+								<td style="width:8%"><span>{$vo.zuorishoupan|default="0.00"}</span></td>
+								<td style="width:8%"><span>{$vo.kai_price|default="0.00"}</span></td>
+								<td style="width:8%"><span>{$vo.new_price|formatOrderNum=###}</span></td>
+								<td style="width:8%;">
+									<gt name="vo.zhangfu" value="0">
+									<span class="buy">+{$vo.zhangfu|default='0'}</span>
+									<else/>
+									<span class="sell">{$vo.zhangfu|default='0'}</span>
+									</gt></td>
+								<td style="width:10%;"><span>{$vo.all_num|default="0.00"}</span></td>
+								<td style="width:10%"><span>{$vo.currency_trade_all|default="0.00"}</span></td>
+								<td style="width:9%"><span>{$vo.zuigao|default="0.000"}</span></td>
+								<td style="width:8%"><span>{$vo.zuidi|default="0.00"}</span></td>
+								<td ><a href="{:U('Orders/index',array('currency'=>$vo['currency_mark']))}"><input value="去交易" class="qh_qujiaoyi" type="button"></a></td>
+							</tr>
+	                	</volist>
+						</table>
+					</div>
+				</div>
+				<link rel="stylesheet" href="__PUBLIC__/Home/css/liMarquee.css">
+				<style>
+.dowebok tr:hover { text-decoration: underline;} 
+.dowebok {height: 250px;padding-left:25px;} 
+.qh_btc_table tr:hover{
+        		background: underline;
+        	}
+				</style> 
+				<script src="__PUBLIC__/Home/js/jquery-1.7.2.min.js"></script>
+				<script src="__PUBLIC__/Home/js/jquery.liMarquee.js"></script>
+				<script>
+				$(document).ready(function(){
+					$('.dowebok').liMarquee({
+						direction: 'up',
+						circular: true,
+						loop: -1,
+						runshort: true,
+						scrollamount: 30
+					});
+				})
+				</script>
+				<!-- <script>
+				$(document).ready(function(){
+					var speed=30;
+					var demo1 = document.getElementById("demo1");
+					var demo = document.getElementById("demo");
+					var demo2 = document.getElementById("demo2");
+					demo2.innerHTML=demo1.innerHTML;
+					function Marquee(){
+						console.log(demo2.offsetTop);
+						console.log(demo.offsetTop);
+					if(demo2.offsetTop-demo.scrollTop<=0){
+					demo.scrollTop-=demo1.offsetHeight}
+					else{
+					
+					demo.scrollTop++;
+					}
+					}
+					var MyMar=setInterval(Marquee,speed)
+					demo.onmouseover=function() {clearInterval(MyMar)}
+					demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+				})
+				
+				</script> -->
+				<script>
+					//30s update-to-data
+					setInterval(function(){
+						$.ajax({
+							url:"{:U('Index/currency_info')}",
+							type:'POST',
+							data:null,
+							dataType:'JSON',
+							success:function(data){
+								var arr = new Array();
+								arr = eval(data);
+								arr.forEach(function(value, index, array) {
+										$('#new_price'+value['currency_id']).html(value['new_price']);
+										$('#H24_done'+value['currency_id']).html(value['24H_done_num']);
+										$('#H24_money'+value['currency_id']).html(value['24H_done_money']);
+										$('#currency_all_money'+value['currency_id']).html(value['currency_all_money']);
+										$('#24H_change'+value['currency_id']).html(value['24H_change']);
+										$('#7D_change'+value['currency_id']).html(value['7D_change']);
+										if(Number(value['24H_change']) > 0){
+											$('#24H_change'+value['currency_id']).attr('class','sell');
+											$('#24H_change'+value['currency_id']).html('+'+Number(value['24H_change'])+'%');
+										}else{
+											$('#24H_change'+value['currency_id']).attr('class','buy');
+											$('#24H_change'+value['currency_id']).html(Number(value['24H_change'])+'%');
+										}
+										if(Number(value['7D_change']) > 0){
+											$('#7D_change'+value['currency_id']).attr('class','sell');
+											$('#7D_change'+value['currency_id']).html('+'+Number(value['7D_change'])+'%');
+										}else{
+											$('#7D_change'+value['currency_id']).attr('class','buy');
+											$('#7D_change'+value['currency_id']).html(Number(value['7D_change'])+'%');
+										}
+									});
+							}
+						});
+						
+					},30000);
+				
+				
+				</script>
+     <!--       ////////////////////////////////////////////////////////////////////////////////////// -->    
+<!-- <script type="text/javascript">	
+setInterval("coin_price1()",5000);//1000为1秒钟			
+function coin_price1(){
+
+	var ccoin_id=$('#ccoin').val();
+	
+	var uuuuurl="{:U('Index/ajax_trade_price')}";
+	
+	$.post(uuuuurl,{'id':ccoin_id},function(data){
+		
+
+	if(data.status != 1){
+		return;
+	}
+
+	
+		  var y = data.info.new_price;
+			var x=$('#new_price').html();
+		
+			if(y-x>=0){
+				var color="green";
+				var asd="icon_index_up";
+				var aaa="icon_index_down";
+				var ppp="font_down";
+				var ppp1="font_up";
+				
+					
+				var zhangfu1="font_down";
+				var zhangfu2="font_up";
+				
+				
+				
+			}else{
+				var color="red";
+				var asd="icon_index_down";
+				var aaa="icon_index_up";
+				var ppp1="font_down";
+				var ppp="font_up";
+			  
+			  
+			  	var zhangfu1="font_up";
+				var zhangfu2="font_down";
+			
+			  
+			}
+		
+		y =  parseFloat(y).toFixed(4);
+		
+	
+		var zhangfu=(y-x)/x*100;
+		zhangfu=parseFloat(zhangfu).toFixed(2);
+		
+		$('#new_price').html(y);
+	
+		$('#new_price').removeClass(ppp1);
+		$('#new_price').removeClass(ppp);
+		$('#new_price').addClass(ppp1);
+		$('#ccc').removeClass(aaa);
+	    $('#ccc').removeClass(asd);
+		$('#ccc').addClass(asd);
+		
+		
+	
+	
+	
+	$("#di_price").html(data.info.di_price);
+	
+	$("#gao_price").html(data.info.gao_price);
+	
+	$("#h24").html(parseInt(data.info.num_24*100)/100);	
+	
+	
+	$("#zhangfu").html(zhangfu);
+	$('#zhangfu').removeClass(zhangfu1);
+	$('#zhangfu').removeClass(zhangfu1);
+	$('#zhangfu').addClass(zhangfu2);
+	
+	});
+}
+	 
+</script> -->
+					
+					
+                
+                   <!--  <script type="text/x-tmpl">
+                        <ul class="m_t_o">
+                        <%
+                        for(var l = sel.length;l--;){
+                        %>
+                        <li><span class="tx_1 font_sell">卖<%= l+1 %></span><span class="tx_2"><%= mark %><%= sel[l][0] %></span><span class="tx_3 font_sell"><%= sel[l][1] %></span></li>
+                        <%}%>
+                        <li class="mid"><hr></li>
+                        <%
+                            for(var i = 0,l = buy.length;i < l;i ++){
+                        %>
+                        <li><span class="tx_1 font_buy">买<%= i+1 %></span><span class="tx_2"><%= mark %><%= buy[i][0] %></span><span class="tx_3 font_buy"><%= buy[i][1] %></span></li>
+                        <%}%>
+                        </ul>
+                        <div class="tx_title tx_s"><b>实时成交</b></div>
+                        <ul class="m_t_y">
+                        <%
+                            for(var i = 0,l = tra.length;i < l;i ++){
+                        %>
+                            <li><span class="tx_1"><%= tra[i][1] %></span><span class="tx_2"><%= mark %><%= tra[i][3] %></span><span class="tx_3 <% if(tra[i][0] == 1){ %>font_buy<% }else{ %>font_sell<% } %>"><%= tra[i][2] %> <% if(tra[i][0] == 1){ %>↑<% }else{ %>↓<% } %></span></li>
+                        <%}%>
+                        </ul>
+                        </script> -->
+				
+
+			</div>
+		
+	</div>
+</div>
+<!-- <div class="index_box_1 cooperate">
+	<div class="section">
+		<div class="cooperate_title">硅谷国际数字资产结算中心平台</div>
+		<div class="cooperate_info_box">
+			<img src="__PUBLIC__/Home/images/information_1.png">
+			<div class="info_title">安全</div>
+			<p>超过10年金融风控经验团队</p>
+			<p>全方位可定制的安全策略体系</p>
+			<p>98% 比特币资产存储多重签名冷钱包</p>
+		</div>
+		<div class="cooperate_info_box">
+			<img src="__PUBLIC__/Home/images/information_2.png">
+			<div class="info_title">专业</div>
+			<p>创下日交易量纪录354万枚比特币</p>
+			<p>人民币、美元市场一站式交易</p>
+			<p>业内专业级操盘工具“闪电手”</p>
+		</div>
+		<div class="cooperate_info_box">
+			<img src="__PUBLIC__/Home/images/information_3.png">
+			<div class="info_title">用户至上</div>
+			<p>人民币交易免费</p>
+			<p>充值提现快速到账，比特币实时到账</p>
+			<p>7x24 小时中英双语客服服务</p>
+		</div>
+	</div>
+</div> -->
+
+<div class="index_box_2 information" style="height:300px">
+	<div class="section p_t_x" style="min-width:1200px;padding-top: 10px;">
+		<div class="information_part ml0">
+			<div class="information_title" style="border:1px solid #FF9100;padding-left:20px">官方公告<a href="{:U('Art/index',array('id'=>$gfgg[0]['position_id']))}" style="float:right;font-weight:500;color:#E45600;padding-top:10px;padding-right:10px">更多>></a></a></a></div>
+				<volist name="gfgg" key='k' id="vo"> 
+			
+				<if condition="$k  eq  0">
+			<div class="f_box" style="display:none">
+				<p class="m_t_20">
+					<a href="{:U('Art/details',array('id'=>$vo['article_id']))}"
+						target="_blank">{$vo['title']}</a>
+				</p>
+				<p>{$config['name']}</p>
+				<div class="f_logo_box"
+					style="background: url(https://static.huobi.com/exchange/src/images/1bt.png?hbver=2016040604) 96% 50% no-repeat;"></div>
+			</div>
+			<else />
+			<p>
+				<a href="{:U('Art/details',array('id'=>$vo['article_id']))}"
+					target="_blank"> <span>[{$vo['add_time']|date="m-d",###}]</span>{$vo['title']}
+				</a>
+			</p>
+			</if>
+			</volist>
+		</div>
+		<div class="information_part">
+			<div class="information_title" style="border:1px solid #FF9100;padding-left:20px">市场动态<a href="{:U('Art/index',array('id'=>$scdt[0]['position_id']))}" style="float:right;font-weight:500;color:#E45600;padding-top:10px;padding-right:10px">更多>></a></a></a></div>
+			<volist name="scdt" key='k' id="vo"> 
+				<if condition="$k  eq  0">
+			<div class="f_box" style="display:none">
+				<p class="m_t_20">
+					<a href="{:U('Art/details',array('id'=>$vo['article_id']))}"
+						target="_blank">{$vo['title']}</a>
+				</p>
+				<p>{$config['name']}</p>
+				<div class="f_logo_box"
+					style="background: url(https://static.huobi.com/exchange/src/images/xinhua.png?hbver=2016040604) 96% 50% no-repeat;"></div>
+			</div>
+			<else />
+			<p>
+				<a href="{:U('Art/details',array('id'=>$vo['article_id']))}"
+					target="_blank"> <span>[{$vo['add_time']|date="m-d",###}]</span>{$vo['title']}
+				</a>
+			</p>
+			</if>
+			</volist>
+		</div>
+		<div class="information_part">
+			<div class="information_title" style="border:1px solid #FF9100;padding-left:20px">媒体报道<a href="{:U('Art/index',array('id'=>$mtbd[0]['position_id']))}" style="float:right;font-weight:500;color:#E45600;padding-top:10px;padding-right:10px">更多>></a></a></a></div>
+			<volist name="mtbd" key='k' id="vo"> 
+				<if condition="$k  eq  0">
+			<div class="f_box" style="display:none">
+				<p class="m_t_20">
+					<a href="{:U('Art/details',array('id'=>$vo['article_id']))}"
+						target="_blank">{$vo['title']}</a>
+				</p>
+				<p>{$config['name']}</p>
+				<div class="f_logo_box"
+					style="background: url(https://static.huobi.com/exchange/src/images/hb_logo.png?hbver=2016040604) 96% 50% no-repeat;"></div>
+			</div>
+			<else />
+			<p>
+				<a href="{:U('Art/details',array('id'=>$vo['article_id']))}"
+					target="_blank"> <span>[{$vo['add_time']|date="m-d",###}]</span>{$vo['title']}
+				</a>
+			</p>
+			</if>
+			</volist>
+			<!-- 
+			<div class="f_box">
+				<p class="m_t_20">
+					<a
+						href="https://www.huobi.com/help/index.php?a=notice_content&amp;id=545"
+						target="_blank">火币兄弟公司出品【财猫贵金属】，现开户就送比特币！</a>
+				</p>
+				<p>火币网</p>
+				<div class="f_logo_box"
+					style="background: url(https://static.huobi.com/exchange/src/images/hb_logo.png?hbver=2016040604) 96% 50% no-repeat;"></div>
+			</div>
+			<p>
+				<a
+					href="https://www.huobi.com/help/index.php?a=notice_content&amp;id=544"
+					target="_blank"> <span>[03-24]</span> 充值迎福利：充5000就领币！
+				</a>
+			</p>
+			<p>
+				<a
+					href="https://www.huobi.com/help/index.php?a=notice_content&amp;id=543"
+					target="_blank"> <span>[03-12]</span> 提醒：火币网站和APP为唯一官方充值渠道！
+				</a>
+			</p>
+			<p>
+				<a
+					href="https://www.huobi.com/help/index.php?a=notice_content&amp;id=539"
+					target="_blank"> <span>[03-02]</span> 自定义比特币网络转账费功能上线通知
+				</a>
+			</p>
+			<p>
+				<a
+					href="https://www.huobi.com/help/index.php?a=notice_content&amp;id=538"
+					target="_blank"> <span>[03-01]</span> 火币网全面实行5倍杠杆通知
+				</a>
+			</p> -->
+		</div>
+	</div>
+</div>
+
+<!--<div class="index_box_2 friend">
+    <div class="slogan_title">战略合作机构</div>
+    <div class="slogan_tis">清华大学五道口金融学院互联网金融实验室  金融客咖啡  正和岛</div>
+    <div class="friend_logo_box">
+        <img src="__PUBLIC__/Home/images/wudaokou.png">
+    </div>
+    <div class="friend_logo_box">
+        <img src="__PUBLIC__/Home/images/jinrongke.png">
+    </div>
+    <div class="friend_logo_box">
+        <img src="__PUBLIC__/Home/images/zhenghedao.png">
+    </div>
+</div>-->
+<!-- <div class="index_box_2 slogan" style="margin: 0px auto;">
+
+	<div class="slogan_title">选择{$config.name|default='虚拟网'},安全可信赖</div>
+	<div class="slogan_tis">
+		累计交易额:<span>{$sum_money|default='0'}</span>
+	</div>
+	<div id="cumulative">
+		<div class="number_box">
+			<volist name="arr" id="vo" key="key">
+			<div
+				<if condition=" $key%3 eq 0 && $key%12 eq 0  ">class="unit
+				add_f" <elseif condition=" $key%3 eq 0 " />class="unit add_w" <else />class="unit"
+				</if>
+				>
+				<div class="top">
+					<span>{$vo}</span>
+				</div>
+				<div style="" class="top">
+					<span>{$vo}</span>
+				</div>
+				<div class="btm">
+					<span>{$vo}</span>
+				</div>
+				<div style="transform: rotateX(0deg);" class="btm">
+					<span>{$vo}</span>
+				</div>
+			</div>
+			</volist>
+		</div>
+	</div>
+</div> -->
+
+<!-- <div class="safety_tips" style="padding-top:40px;padding-bottom:100px">
+    <div style="width: 1000px; margin: 0 auto; margin-bottom: 20px;"></div>
+    <div class="autobox">
+        <ul class="safety_tips_ul clear">
+            <li>
+                <img src="/Public/Home/images/safe_1.jpg" alt="" height="70" width="70">
+                <h4>系统可靠</h4>
+                <p>银行级用户数据加密、多重身份验证，多级风险识别控制，保障交易安全</p>
+            </li>
+            <li>
+                <img src="/Public/Home/images/safe_2.jpg" alt="" height="70" width="70">
+                <h4>资金安全</h4>
+                <p>钱包多层加密，离线存储于电脑钱包，资金第三方托管，确保安全</p>
+            </li>
+            <li>
+                <img src="/Public/Home/images/safe_3.jpg" alt="" height="70" width="70">
+                <h4>快捷方便</h4>
+                <p>充值即时、提现迅速，高性能快速交易引擎，保证一切快捷方便</p>
+            </li>
+            <li>
+                <img src="/Public/Home/images/safe_4.jpg" alt="" height="70" width="70">
+                <h4>服务专业</h4>
+                <p>专业的客服团队，400电话和在线QQ客服，VIP一对一专业服务</p>
+            </li>
+        </ul>
+    </div>
+</div> -->
+
+<!-- 合作伙伴 -->
+<!-- <div class="partners" style="margin-top:20px;">
+    <div class="page-view">
+        <div class="row">
+            <p class="pt-title">合作伙伴</p>
+        </div>
+        <div class="row">
+         <volist name = "link_info" id = "vo">
+            <div class="col-xs-2">
+                <div class="partBox">
+                    <a href="http://{$vo['url']}" target="_blank" title="{$vo.name}">
+                        <img class="pt_img" src="{$vo.tupian}">
+                    </a>
+                </div>
+            </div>
+          </volist>
+        </div>
+    </div>
+</div> -->
+<div style=" clear:both"></div>
+<!--<div style="height:360px; width:100%; position:relative; overflow:hidden; min-width:1200px;">
+
+<div>
+	<div class="flexslider">
+		<ul class="slides">
+			<volist name='flash' id='vo'>
+            	<li><a href="{$vo.jump_url|default='#'}" target="_blank"><img src="{$vo.pic}" alt="{$vo.title}" style="height:320px;"></a></li>
+            </volist>
+		</ul>
+	</div>
+	<div class="ybcoin_volume">
+		<div style="color:#fff;">
+			<p style=" font-size:16px; margin-bottom:5px; text-align: center;">风险提示</p>
+			<p style=" font-size:12px; line-height:22px;">{$config.risk_warning}</p>
+		</div>
+					<div class="news_coin"><empty name="member"><a href="{:U('Login/index')}">立即登录</a><else/><a href="{:U('User/index')}">我的账户</a></empty></div>
+			<p class="coin_reg"><empty name="member"><a href="{:U('Reg/reg')}" class="left">免费注册</a><a href="{:U('Oauth/index',array('type'=>'qq'))}" class="right">QQ登录  </a><else/></empty><a href="{:U('Dow/newcoin')}" class="right">我要上新币</a></p>
+			</div>
+</div>
+</div>-->
+<!--banner end-->
+
+<!--<script type="text/javascript" src="__PUBLIC__/Home/js/coinindex.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Home/js/tab.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/slide.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/page_glb_var.js"></script>
+<script>
+    seajs.use("dist/page_index");
+    /**/
+    function change_vcode(e) {
+        e.src = "/account/captcha?" + Math.random();
+    }
+    /**/
+
+</script>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?18784dd00dc1c9774528d08ae7943072";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+
+</script>-->
+
+                        <!--<div class="sp-step">-->
+                            <!--<div class="pull-left sp-time">-->
+                                <!--<p><span>2014-08-21</span></p>-->
+                                <!--<p><span>2014-07-21</span></p>-->
+                                <!--<p><span>2014-04-24</span></p>-->
+                            <!--</div>-->
+                            <!--<div class="pull-right">-->
+                                <!--<p>众筹完成</p>-->
+                                <!--<p>众筹开始</p>-->
+                                <!--<p>初创项目</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div style="width: 400px;" class="sp-wrap">-->
+                    <!--<div class="sp-box">-->
+                        <!--<a href="https://www.yuanbaohui.com/project_index/?id=187" target="_blank">-->
+                            <!--<div class="sp-info">-->
+                                <!--<div class="pull-right">-->
+                                    <!--<h4 style="font-weight: normal;font-size: 16px">免费VPN币分发投资</h4>-->
+
+                                    <!--<p style="font-size: 12px;">免费机会仅此一次</p>-->
+                                <!--</div>-->
+                                <!--<img src="__PUBLIC__/Home/images/d09a0420c556744cc948a0cbc7cf21bd.png" style="width: 82px;height: 82px;">-->
+                                <!--&lt;!&ndash;                                    <img src="&ndash;&gt;&lt;!&ndash;" style="width: 82px;height: 82px;">&ndash;&gt;-->
+                            <!--</div>-->
+                        <!--</a>-->
+
+                        <!--<div class="sp-step">-->
+                            <!--<div class="pull-left sp-time">-->
+                                <!--<p><span>2015-04-17</span></p>-->
+                                <!--<p><span>2015-04-13</span></p>-->
+                                <!--<p><span>2015-04-12</span></p>-->
+                            <!--</div>-->
+                            <!--<div class="pull-right">-->
+                                <!--<p>众筹完成</p>-->
+                                <!--<p>众筹开始</p>-->
+                                <!--<p>初创项目</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+           <!-- </div>
+        </div>
+    </div>
+</div> -->
+<!-- 客服信息 -->
+<!-- <div class="autobox">
+    <ul class="web_service clear pl30">
+        <li class="w265"><a id="BizQQWPA" href="http://wpa.qq.com/msgrd?v=3&uin={$config['qq1']}&site=qq&menu=yes"><div class="web_service_pic service_1"></div><div class="web_service_pic_num"><p>{$config.qq1|default="暂无"}</p><div class="qqsecvice">在线QQ客服</div></div></a></li>
+        <li class="w245"><div class="web_service_pic service_2"></div><div class="web_service_pic_num"><p>{$config.tel|default="暂无"}</p><div>工作日:9-19时 节假日:9-18时</div></div></li>
+        <li class="w265"><a href="http://weibo.com/{$config['weibo']}" target="_blank"><div class="web_service_pic service_3"></div><div class="web_service_pic_num"><p>{$config['weibo']|default="暂无"}</p><div>新浪官方微博</div></div></a></li>
+        <li><div class="web_service_pic service_4"></div><div class="web_service_pic_num"><p>2群：{$config['qqqun2']|default="暂无"}</p><div class="h_underl">交流QQ群 <a href="javascript:;" class="orange">查看更多</a>  </div></div></li>
+    </ul>
+</div> -->
+
+
+
+
+<!--友情链接-->
+<!-- <div class="link">
+    <div class="linkbox">
+        <h4>友情链接</h4>
+        <ul>
+            <volist name = "link_info" id = "vo">
+                <li><a target="_blank" href="http://{$vo['url']}" style=" font-size:16px;">{$vo.name}</a> </li>
+            </volist>
+
+        </ul>
+    </div>
+</div> -->
+
+<!--footer start-->
+<include file="App/Home/View/Public/footer.html" />
+<!--footer end-->
+<script>
+
+$("#head_nav ul").children("li").eq(0).addClass("cur");
+$(".market_type").children("li").on("click",function(){
+	$(this).addClass("cur").siblings().removeClass("cur");
+});
+/*$(window).scroll(function(e){
+	var h = $(".ab_box").offset().top+$(".ab_box").height();
+	var dh = 1;
+	if($(window).scrollTop()>h){
+		$("#doc_head").addClass("fixed");
+		$(".ab_box").css("padding-top","75px");
+		//$(".head_masthead").css("height",dh++);
+	}else{
+		$("#doc_head").removeClass("fixed");
+		$(".ab_box").css("padding-top",0);
+	}
+});
+	$(".qh_img").css("height","360px")*/
+
+</script>

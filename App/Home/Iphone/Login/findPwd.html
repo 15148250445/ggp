@@ -1,0 +1,62 @@
+<include file="App/Home/Iphone/Public/top.html"/>
+<script type="text/javascript" src="js/sendMessage.js"></script>
+<div class="Wf-div1">
+    <a href="{:U('Login/index')}">返回</a>
+    <span>忘记登录密码</span><strong style="color:red"></strong>
+</div>
+<div class="strip"></div>
+<div class="cb-box1 tb-box1">
+    <form method="post" onSubmit="return sendMessage.checkValid();">
+    <input name="isSendphone" value="0" type="hidden">
+    <p class="p5" style="margin-top: 0.8rem"><label>手机号</label>
+        <input class="loginValue"  name="email" placeholder="请输入您的手机号" id="mobile-number" type="text">
+    </p>
+    <p class="p5 p5_f ">
+        <label style="margin-right:0.1rem">验证码</label>
+        <input class="loginValue Txt11" name="captcha" id="captcha" placeholder="验证码" style="wdith:2rem;" type="text">
+		
+        <a href="#" class="p5_kanbuq" onclick="$('#captchaimg').attr('src', '{:U(\'Login/showVerify\')}?t='+Math.random())">看不清？</a>
+        <img class="capture forget_img_11" id="captchaimg" src="{:U('Login/showVerify')}">
+				<!--<img class="yanzm" id="captchaimg" src="{:U('Login/showVerify')}">-->
+    </p>
+   <!--  <p class="p5 p5_f" id="phone_alert" style="display:none">
+        <span>
+        <label style="margin-right: 4px;">短信验证</label>
+        <input class="Txt22" name="phone_code" id="phone_code_wallet" placeholder="请输入短信验证码" type="text">
+        </span>
+        <label class="verify phone_code verify_code" name="getPhoneCode" onClick="sendMessage.getPhoneCode(this)">获取短信验证码</label>
+    </p>-->
+    <p class="p5" style="margin-top: 0.7rem;"><input class="input_news_password" value="找回密码" type="button" onclick="xx();"></p>
+     </form>
+    <p class="forget_dibu" style="margin-bottom: 150px;">
+        <span>已有账号去<a href="{:U('Login/index')}">登录</a></span>
+        <span>没有账号去<a href="{:U(Reg/reg)}">注册</a></span>
+    </p>
+</div>
+<script>
+	$("#mobile-number").intlTelInput();
+</script>
+	
+	<script>
+		function xx(){
+			//alert(123);
+			var mid=$('#mobile-number').val();
+			var captcha=$("#captcha").val();
+			if(mid==""){
+				alert("请填写手机号码");return;
+			}
+			if(captcha==""){
+				alert("请填写验证码");return;
+			}
+			var url="{:U('Login/findpwd')}";
+			$.post(url,{'email':mid,'captcha':captcha},function(data){
+					alert(data['info']);
+					if(data['status'] == 1){
+						window.location.href="{:U('Login/resetpwd')}";
+					}
+			});
+			
+		}
+	</script>
+<div style="clear: both;"></div>
+<include file="App/Home/Iphone/Public/footer.html"/>

@@ -1,0 +1,3 @@
+<?php
+//000000000000a:2:{i:0;a:8:{s:8:"flash_id";s:2:"10";s:5:"title";s:3:"123";s:3:"pic";s:52:"/Uploads/Public/Uploads/2017-05-04/590a8a1fa2d70.jpg";s:8:"jump_url";s:0:"";s:4:"sort";s:1:"0";s:4:"type";s:0:"";s:8:"add_time";s:10:"1493862943";s:6:"status";s:1:"0";}i:1;a:8:{s:8:"flash_id";s:2:"11";s:5:"title";s:7:"G积分";s:3:"pic";s:52:"/Uploads/Public/Uploads/2017-05-04/590a8a3a4fdec.jpg";s:8:"jump_url";s:55:"https://www.100bi.com/Home/Orders/index/currency/G.html";s:4:"sort";s:1:"1";s:4:"type";s:0:"";s:8:"add_time";s:10:"1493862970";s:6:"status";s:1:"0";}}
+?>

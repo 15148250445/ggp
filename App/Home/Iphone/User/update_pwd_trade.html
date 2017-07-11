@@ -1,0 +1,82 @@
+
+
+	<include file="App/Home/Iphone/Public/top.html"/><body>
+		<header class="Wf-div1">
+			<a href="{:U('Set/index')}">返回</a>
+			<span>修改交易密码</span>
+		</header>
+		<script type="text/javascript" src="js/sendMessage.js"></script>
+
+		<div class="strip"></div>
+		<div class="cb-box1 tb-box1">
+			<form method="post" id="PwdtradeForm" jump-url="{:U('Login/index')}"  enctype="multipart/form-data" action="{:U('User/updatePwdtrade')}">
+				<p style="margin-top: 0.2rem">
+					<label>&nbsp;&nbsp;您正在为账户&nbsp;<span style="color:red">{$Think.session.USER_KEY}</span>&nbsp;修改登录密码</label>
+				</p>
+				<p class="p5" style="margin-top: 0.2rem"><label>交易密码</label>
+					<input class="loginValue" id="oldpwd_b" name="oldpwd_b" placeholder="请输入您交易的密码" type="password">
+				</p>
+				<p class="p5" style="margin-top: 0.2rem"><label>新交易密码</label>
+					<input class="loginValue" id="pwdtrade" name="pwdtrade" placeholder="设置新交易密码,长度在6-20个字符之间" type="password">
+				</p>
+				<p class="p5" style="margin-top: 0.2rem"><label>重复交易密码</label>
+					<input class="loginValue" id="repwdtrade" name="repwdtrade" placeholder="请再次输入新交易密码" type="password">
+				</p>
+				<p class="p5" style="margin-top: 0.2rem">
+					<label>验证码</label>
+					<input class="loginValue" id="code" name="code" placeholder="请输入短信验证码" type="text" style="width: 2.89rem;">
+					<input class="input_news_password" value="获取短信验证码" type="button" style="width: 2.04rem;" onClick="sandPhone()">
+				</p>
+				<p class="p5" style="margin-top: 0.4rem;">
+					<input class="input_news_password" value="确认修改" type="button" onClick="tijiao()">
+				</p>
+			</form>
+			<script type="text/javascript">
+				function tijiao(){
+					//alert(111);return;
+					var oldpwd_b=$("#oldpwd_b").val();
+					var pwdtrade=$("#pwdtrade").val();
+					var repwdtrade=$("#repwdtrade").val();
+					var code=$("#code").val();
+					var url="{:U('User/updatePwdTrade')}";
+					//alert(oldpwd);return;
+					$.post(url,{"oldpwd_b":oldpwd_b,"pwdtrade":pwdtrade,"repwdtrade":repwdtrade,"code":code},function(d){
+						alert(d["info"]);
+						if(d["status"]==1){
+							window.location.href="{:U('Set/index')}";
+						}
+					});
+				}
+			</script>
+			<script>
+				  function sandPhone(){
+					var phone="{$member.phone}";
+					
+					var i=120;
+					var tid2;
+					tid2=setInterval(function(){
+						if($("#msgt").attr("data-key")=='off'){
+							$("#msgt").attr("disabled",true);
+							$("#msgt").removeClass("class");
+							$("#msgt").addClass("button again");
+							i--;
+							$("#msgt").val(i+"秒后可重新发送");
+							if(i<=0){
+								$("#msgt").removeAttr("disabled").val("重新发送验证码");
+								$("#msgt").attr("data-key","on");
+							}
+						}
+					},1000);
+					$.post("{:U('User/sandPhone')}",{'phone':phone},
+							function(d){
+							   alert(d.info);
+								if(d.status==1){
+									i=120;
+									$("#msgt").attr("data-key","off");
+						 }
+					});
+    			}
+            </script>
+		</div>
+		<div style="clear: both;"></div>
+<include file="App/Home/Iphone/Public/footer.html"/>

@@ -1,0 +1,101 @@
+
+
+	<include file="App/Home/Iphone/Public/top.html"/><body>
+		<header class="Wf-div1">
+			<a href="{:U('Login/findPwd')}">返回</a>
+			<span>重置密码</span>
+		</header>
+		<script type="text/javascript" src="js/sendMessage.js"></script>
+
+		<div class="strip"></div>
+		<div class="cb-box1 tb-box1" style="margin-bottom: 1rem;">
+			<form method="post" id="resetPwdForm"  action="{:U('Login/resetPwd')}" jump-url="{:U('Index/index')}">
+				<input name="isSendphone" value="0" type="hidden">
+				<p class="p5" style="margin-top: 0.2rem"><label>新密码</label>
+					<input class="loginValue" id="pwd" name="pwd" placeholder="设置新密码,长度在6-20个字符之间" type="password">
+				</p>
+				<p class="p5" style="margin-top: 0.2rem"><label>确认新密码</label>
+					<input class="loginValue" id="repwd" name="repwd" placeholder="请再次输入新密码" type="password">
+				</p>
+				<p class="p5" style="margin-top: 0.2rem"><label>身份证号码</label>
+					<input class="loginValue" id="idcard" name="idcard" placeholder="如果账户未实名此项可不填" type="text">
+				</p>
+				<p class="p5" style="margin-top: 0.2rem">
+					<label>手机验证码</label>
+					<input class="loginValue" id="captcha" name="captcha" placeholder="请输入手机验证码" type="text" style="width: 2.89rem;">
+				</p>
+                <p class="p5" style="margin-top: 0.4rem;">
+                	<input class="input_news_password" value="找回密码" type="button" onClick="zhaohui();">
+                </p>
+     </form>
+     <p class="forget_dibu">
+        <span>已有账号<a href="{:U('Login/index')}">登录</a></span>
+        <span><a href="">没有云尊联盟账号?</a></span>
+    </p>
+    <p class="forget_dibu">
+        <span><a href="{:U('Reg/reg')}">注册一个</a></span>
+   </p>
+</div>
+<script>
+	function zhaohui(){
+			//alert(123);
+			var pwd=$('#pwd').val();
+			var repwd=$("#repwd").val();
+			var idcard=$("#idcard").val();
+			var captcha=$("#captcha").val();
+			/*if(mid==""){
+				alert("请填写手机号码");return;
+			}
+			if(captcha==""){
+				alert("请填写验证码");return;
+			}*/
+			var url="{:U('Login/resetPwd')}";
+			$.post(url,{'email':mid,'captcha':captcha},function(data){
+					alert(data['info']);
+					if(data['status'] == 1){
+						window.location.href="{:U('Index/index')}";
+					}
+			});
+			
+		}
+    /*$("#resetPwdForm").validate({
+        rules: {
+            pwd:{
+                required:true,
+                rangelength:[6,20]
+            },
+            repwd:{
+                required:true,
+                rangelength:[6,20],
+                equalTo:"#pwd"
+            },
+            captcha:{
+                required:true
+            }
+
+        },
+        messages: {
+            pwd:{
+                required:"密码不能为空",
+                rangelength:"密码长度在6-20个字符之间"
+            },
+            repwd:{
+                required:"确认密码不能为空",
+                rangelength:"密码长度在6-20个字符之间",
+                equalTo:"必须和密码一致"
+            },
+            captcha:{
+                required:"验证码不能为空"
+            }
+        },
+        submitHandler:function(form){
+            ajax_submit_form(form)
+            return false;
+        },
+        invalidHandler: function() {  //不通过回调
+            return false;
+        }
+    });*/
+</script>
+<div style="clear: both;"></div>
+<include file="App/Home/Iphone/Public/footer.html"/>

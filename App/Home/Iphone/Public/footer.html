@@ -1,0 +1,23 @@
+<footer class="footer" style="margin-top:4.8rem; ">
+        <p style="text-align: center;">
+			<!--<span style="margin-left: 0;">
+				<a href="javascript:void(0);" class="a1" id="phone">手机版</a>
+				<i>|</i>
+				<a href="javascript:void(0);" class="a2" id="window">电脑版</a>
+			</span>-->
+			<notempty name="member">
+				<span>
+					<a href="{:U('User/index')}"><em>(UID:{$_SESSION['USER_KEY_ID']})</em></a>
+					<i>|</i>
+					<a href="{:U('Login/loginOut')}">退出</a>
+				</span>
+			</notempty>
+        </p>
+        <div style="margin-left:10px;margin-right:10px;">
+            {$config.copyright|default="暂无"}
+        </div>
+    </footer>
+
+</div>
+<script src="__PUBLIC__/Iphone/js/form.js"></script>
+</body></html>

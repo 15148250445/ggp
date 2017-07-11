@@ -1,0 +1,421 @@
+
+
+	<include file="App/Home/Iphone/Public/top.html"/><body>
+	
+		<header class="Wf-div1">
+			<a href="{:U('User/index')}">返回</a>
+			<span>CNY提现</span>
+		</header>
+		<!--<script type="text/javascript" src="__PUBLIC__/Iphone/js/sendMessage.js"></script>-->
+		<div style="width:95%;margin:0 auto;">
+		<div class="Wf-div1" style="padding-left: 0.05rem; border-bottom: solid #FF6A04 0.05rem;">
+			<p style="display: inline-block; float:left; text-align: left; color: #FF6A04;">
+				提现说明
+			</p>
+		</div>
+		<div style="margin-bottom: 0.3rem; text-align: left; line-height: 0.6rem;font-size:14px;">
+			{$config.withdraw_warning}
+		</div>
+		<div class="Wf-div1" style="padding-left: 0.05rem; border-bottom: solid #FF6A04 0.05rem ;">
+			<i style="float:right; text-align: right; color: #FF6A04;">选择一个提款地址</i>
+		</div>
+		<table cellpadding="0" cellspacing="0" border="1" bordercolor="#CCCCCC"  style="width: 100%; font-size: 0.24rem; line-height: 0.4rem;margin-top:0.1rem; ">
+			<thead style="width:100%;">
+				<tr align="center">
+					<th style="width:8%">选择</th>
+					<th style="width:16%">地址标签</th>
+					<th>提款地址</th>
+					<th style="width:8%">操作</th>
+				</tr>
+			</thead>
+			<volist name="bank_info" id="vo">
+              <tbody>
+			  	  <tr>              	 
+					  <td><input type="radio" value="{$vo.id}" id="bank_id" name="redio" onClick="bank_id()"></td>
+					  <td>{$vo.bname}</td>
+					  <td>{$vo.bankname}|{$vo.cardnum}|{$vo.cardname}|{$vo.barea_name}|{$vo.aarea_name}</td>
+					  <td><a class="link-del" href="javascript:void(0);" onClick="checkSuccess({$vo.id})">删除</a></td>
+                 </tr>
+              </tbody>
+              </volist>
+			<script>
+			  	function checkSuccess(_this){
+					$.post("{:U('User/delete')}",{'id':_this},function(data){
+					if(data.status>0){
+						alert(data.info);
+						window.location.reload();
+					}else{
+						alert(data.info);
+						window.location.reload();
+					}
+					});	 	  	  
+				}
+					function bank_id(){
+						$("#select_bank").val($("#bank_id").val());
+					}
+              </script>
+			  </table>
+			<style>
+			.add_list{
+				font-size:14px;
+				margin-top:0.3rem;
+			}
+			.add_list ul{
+				margin:0 auto;
+			}
+			.add_list li{
+				height:1rem;
+				 line-height:inherit;
+				 margin:0 auto;
+			}
+			.add_list li label{
+				text-align:right;
+				width:30%;
+				
+			}
+			.add_list li input{
+				height:0.6rem;
+				 width:70%;
+				 float:right;
+				-webkit-appearance: none; 
+				-moz-appearance: none; 
+				-o-appearance: none; 
+				appearance: none;
+				border:1px solid #CCCCCC;
+				/*border-radius:0.1rem;*/
+			}
+			.add_list li select{
+				height:0.6rem;
+				 width:70%;
+				float:right;
+			}
+			</style>
+			<table id="addNewAddr" class="add_list" border="0" cellpadding="0" cellspacing="0" style="display:none;"> 
+              <tbody>
+                <tr>
+                 <form action="{:U('User/insert')}" method="post" id="bankform" jump-url="{:U('User/draw')}">
+                  <td colspan="4" id="newAddress"style="width:80%;margin:0 auto;">
+                  <div id="rmb_out_ok">
+                      <ul id="rollout" style="margin-top:10px;margin:0 auto;">
+                        <li>
+                          <label>新标签：&nbsp;</label>&nbsp;
+                          <input name="new_label" id="new_label" placeholder="例：提现卡01" type="text" >
+						</li>
+                        <li>
+                          <label>开户姓名：</label>
+                          <input name="name" id="name" value="{$auth}" disabled="disabled" type="text">				
+                         </li>
+                        <li>
+                          <label>银行名称：</label>
+                          <select name="bank" id="bank" style=" border:1px solid #e1e1df;">
+                            <option selected="selected" value="">请选择银行</option>
+                            <option>工商银行</option>
+                            <option>建设银行</option>
+                            <option>农业银行</option>
+                            <option>中国邮政储蓄银行</option>
+                            <option>交通银行</option>
+                            <option>中国银行</option>
+                            <option>光大银行</option>
+                            <option>中信银行</option>
+                            <option>招商银行</option>
+                            <option>民生银行</option>
+                            <option>兴业银行</option>
+                            <option>平安银行</option>
+                            <option>广发银行</option>
+                            <option>北京银行</option>
+                            <option>华夏银行</option>
+                            <option>上海浦东发展银行</option>
+                            <option>渤海银行</option>
+                            <option>浙商银行</option>
+                            <option>宁波银行</option>
+                            <option>恒丰银行</option>
+                            <option>中国农业发展银行</option>
+                          </select>
+                          <span class="rePWB" id="bankmsg"></span> 
+                          </li>
+                        <li>
+                          <label>银行卡所在地：</label>
+						  <select id="c1" style="width:33%; border:1px solid #e1e1df;" onChange="city();">
+                            <option selected="selected" value="">城市</option>
+                          </select>
+                          <select  id="p1" style="width:33%; border:1px solid #e1e1df;">
+                            <option selected="selected" value="">省份</option>
+                            <volist name="areas" id='row'> 
+                            <option value="{$row['area_id']}" 
+                              <eq name="row.area_id" value="$list.province">selected="selected"</eq>>
+                              {$row['area_name']}
+                              </option>
+                            </volist>
+                          </select>
+                          
+                      		<input type="hidden" name="shi" id="shi">
+                        </li>
+                        <li>
+                          <label>银行卡号：</label>
+                          <input onKeyUp="value=value.replace(/[^\d]/g,'')" name="account" id="account" class="loginValue" style="font-size:14px;font-weight:bold;color:#f60;background:#fff7f2;" type="text">
+                          </li>
+						  <li style="height:0.5rem"><span class="false" id="accountmsg" style="color:#f00;">银行卡号和开户姓名必须一致，否则无法到账。</span> </li>
+                        <li style="height:0.5rem">
+                          <span id="showMsg_address" style="color:red;">最多添加10条提款地址</span> </li>
+					    <li id="yes_add">
+                          <label>&nbsp;</label>
+                          <input class="addition"  value="确认添加" onClick="tijiao()" type="button" style="height:0.6rem; list-style-type:none;color:#FFFFFF; background:#FF6600;padding-left:0.1rem;padding-right:0.1rem; border-radius:0.1rem;width:30%;height:0.8rem">
+                       </li>
+					  
+						<script>
+							function city(){
+								$("#shi").val($("#c1").val());
+							}
+							$("#p1").change(function(){
+							$.post("{:U('User/getCity')}",{'id':$("#p1").val()},function(data){
+							  $("#c1").empty();
+								var area=new Option("请选择","");
+								$("#c1").append(area);
+								if(data.length>0){
+									for(var i=0;i<data.length;i++){
+										var option = new Option(data[i]["area_name"], data[i]["area_id"]);	
+										$("#c1").append(option);		
+								}
+								}else{
+									$("#c1").append("<option value='0'>没有相应城市信息</option>");
+								}
+								});	 	  	  
+							});
+						
+						</script> 
+						
+                         
+                      </ul>
+                      
+                  </div>
+                  </td>
+                  </form>
+                </tr>
+				 <!--新加-->
+						<script>
+							function tijiao(){
+								//alert (111);
+								var new_label=$("#new_label").val();
+								
+								//alert(new_label);
+								var name=$("#name").val();
+								//alert(name);
+								var shi=$("#shi").val();
+								//alert(shi);
+								var account=$("#account").val();
+								var bank=$("#bank").val();
+								var url="{:U('User/insert')}";
+								
+								$.post(url,{"new_label":new_label,"name":name,"shi":shi,"account":account,"bank":bank},function(d){
+									alert(d['info']);
+									if(d['status']==1){
+										window.location.href="{:U('User/draw')}";
+									}
+								});
+							}
+						</script>
+                <tr style="display:none;" id="phone_alert" align="right">
+                  <td colspan="4"><span style="color:#f00;">系统已拨打您的手机告知验证码，请输入验证码</span>
+                    <input class="verify_text" id="phone_code_bank" type="text">
+                    <input class="verify" id="add_bankcards" onClick="cnyOut.finaddAddress()" value="确认" type="button" ></td>
+                </tr>
+                </tbody>
+            </table>
+			 <center>
+            <table>
+                <tr id="addAddress_tr" align="center">
+                  <td colspan="4" class="list" align="center" style="font-size:16px;">
+                  <eq name="num" value="1"><a href="javascript:void(0);" id="addNewAddress" onClick="addNewAddr();">点击绑定银行卡</a>
+                  <else/>
+                  <td style="color:red;">最多添加10条提款地址</td>
+                  </eq></td>
+                </tr>
+            </table>
+            </center>
+            <script>
+				function addNewAddr(){
+					document.getElementById("addNewAddr").style.display="";//显示
+					document.getElementById("addAddress_tr").style.display="none";//隐藏
+				}
+			</script>
+			
+			
+			
+		
+		<div class="Wf-div1" style="padding-left: 0.05rem; border-bottom: solid #FF6A04 0.05rem;">
+			<p style="display: inline-block; float:left; text-align: left;">
+				输入要提款的金额(可用余额:<i style="color: #FF6A04;">￥1000.0000</i>)
+			</p>
+		</div>
+		<form action="{:U('User/withdraw')}" method="post" id="drawform" jump-url="{:U('User/draw')}">
+		<div class="cb-box1 tb-box1" style="margin-bottom: 0.8rem;;">
+			<p class="p5" style="margin-top: 0.2rem; padding-bottom: 0.2rem; border-bottom: solid #E7E7E7 1px;">
+				<label>提款金额</label>
+				<input name="select_bank" id="select_bank" type="hidden">
+                    <input style="display:none">
+				<input class="loginValue" id="money" name="money" type="text" style="width: 2.89rem;" onKeyUp="value=value.replace(/[^\d]/g,'');sjdz();">
+			</p>
+			<p class="p5" style="margin-top: 0.2rem; padding-bottom: 0.2rem; border-bottom: solid #E7E7E7 1px;">
+				<label>实际到账</label>
+				<input class="loginValue" id="true_daozhang" disabled="disabled" type="text" style="width: 2.89rem;">
+				<label style="color: #FF6A04;">手续费{$config.fee}%</label>
+			</p>
+			<p class="p5" style="margin-top: 0.2rem; padding-bottom: 0.2rem; border-bottom: solid #E7E7E7 1px;">
+				<label>交易密码</label>
+				<input style="display:none" type="password">
+				<input class="loginValue" id="pwdtrade" name="pwdtrade" type="password" style="width: 2.89rem;">
+			</p>
+			<p class="p5" style="margin-top: 0.2rem; padding-bottom: 0.2rem; border-bottom: solid #E7E7E7 1px;">
+				<label>验证码</label>
+				 <input style="display:none" type="password">
+				<input class="loginValue" id="code" name="code" type="text" style="width: 2.89rem;">
+				<input class="input_news_password" value="点击发送" type="button" style="width: 1.5rem;" id="msgt" onClick="sandPhone()">
+			</p>
+			<p class="p5" style="margin-top: 0.2rem; padding-right: 0.5rem; padding-bottom: 0.2rem; border-bottom: solid #E7E7E7 1px; text-align: center;">
+				<input class="input_news_password" value="确认提交" type="submit" style="width: 2.04rem;">
+			</p>
+		</div>
+		</form>
+		<div class="j-box3 wt-box3">
+			<table class="j-tab3">
+					<thead>
+						<tr>
+							<th>记录ID</th>
+							<th>转入账户</th>
+							<th>转出数量</th>
+							<th>实际到账</th>
+							<th>操作时间</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="trust_history">
+						 <volist name="draw_info" id="vo">
+						<tr>
+							 <tr id="btc_box" class="btc_new" >
+							  <td id="btc_id">{$vo.withdraw_id}</td>
+							  <td id="btc_wallet">{$vo.cardnum}</td>
+							  <td id="btc_number">{$vo.all_money}</td>
+							  <td id="btc_fee">{$vo.money}</td>
+							  <td id="btc_created">{$vo.add_time|date='Y-m-d H:i:s',###}</td>
+							  <td class="tableEnd" id="btc_status"><eq name="vo.status" value="1">未通过<else/><eq name="vo.status" value="2">通过<else/>审核中</eq></eq></td>
+							  <td><eq name="vo.status" value="3"><a href="javascript:void(0);" onclick="chexiao({$vo.withdraw_id});">撤销</a></eq></td>
+						</tr>
+						</volist>
+					</tbody>
+				</table>
+			</div>
+	</div>
+		<script>
+		function sandPhone(){
+		//alert(111);
+ 		var money=$("#money").val();
+		var pwdtr=$("#pwdtrade").val();
+		var pwdtrade=hex_md5(pwdtr);
+		var pwdt="{$pwdtrade.pwdtrade}";
+		var mo="{$rmb.rmb}";
+		
+        var phone="{$member.phone}";
+		//alert (phone);return;
+		
+	    var i=120;
+        var tid2;
+		if(money==""){
+			alert("请填写余额");return;
+		}else if(money > mo){
+			alert("余额不足");return;
+		}else if(pwdtrade==""){
+			alert("请填写交易密码");return;
+		}else if(pwdtrade!=pwdt){
+			alert("交易密码不正确");return;
+		}else{
+			 tid2=setInterval(function(){
+            if($("#msgt").attr("data-key")=='off'){
+                $("#msgt").attr("disabled",true);
+                $("#msgt").removeClass("class");
+                $("#msgt").addClass("button again");
+                i--;
+                $("#msgt").val(i+"秒后");
+					if(i<=0){
+						$("#msgt").removeAttr("disabled").val("重新发送");
+						$("#msgt").attr("data-key","on");
+					}
+            	}
+        	},1000);
+        
+            $.post("{:U('User/ajaxSandPhone')}",{'phone':phone},
+                    function(d){
+                      alert(d.info);
+                        if(d.status==1){
+                            i=120;
+                            $("#msgt").attr("data-key","off");
+            	 }
+            });
+		}
+       
+    }
+	</script>
+	<script>
+				$("#drawform").validate({
+				rules: {
+					money:{
+						required: true,
+						min: 100,
+						max: 50000,
+					  }, 
+					pwdtrade:"required", 
+					code:"required", 
+				},
+				messages: {
+					money:{
+						required: "请填写提现金额",
+						min: "提现金额最小100",
+						max: "提现金额最大50000",
+						},
+					
+					pwdtrade:"请填写交易密码",
+					code:"请填写验证码",
+				},
+				submitHandler:function(form){
+					ajax_submit_form(form)
+					return false;
+				},
+				invalidHandler: function() {  //不通过回调
+					return false;
+				}
+			});
+			function sjdz(){
+				var fee = {$config.fee};
+				var m ;
+				
+					m = $("#money").val()-$("#money").val()*fee*0.01;
+				
+				$("#true_daozhang").val(m);
+			}
+			</script>
+			<script>
+				function chexiao(id){
+					layer.confirm(
+					'确定撤销', 
+					{btn:['确定','取消']},
+					function(){
+					  $.post("/Home/User/chexiaoByid",{"id":id},function(data){
+						  if(data.status==0){
+									layer.msg(data['info']);
+									window.location.reload();
+								}else{
+									layer.msg(data['info']);
+									window.location.reload();
+								}
+						})
+					}
+					),
+					function(){
+						layer.msg('已取消');
+					}
+					
+			}
+			</script>
+		<div style="clear: both;"></div>
+	</div>
+<include file="App/Home/Iphone/Public/footer.html"/>

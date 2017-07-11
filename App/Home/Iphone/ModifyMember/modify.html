@@ -1,0 +1,146 @@
+
+<include file="App/Home/Iphone/Public/top.html"/><body>
+<div id="main">
+	<div class="main_box">
+		<div class="raise right clearfix">
+			<div class="Wf-div1" style="border-bottom: none;">
+				<a href="{:U('Set/index')}">返回</a>
+				<span>实名认证</span>
+			</div>
+			<div class="strip"></div>
+			<div class="cb-box1 tb-box1">
+				<form id="form" method="post"  jump-url="{:U('Reg/regSuccess')}"  action="{:U('ModifyMember/modify')}">
+				<input name="isSendphone" value="0" type="hidden">
+				<p class="p5" style="margin-top: 0.2rem"><label>昵称</label>
+					<input class="loginValue" id="nick" name="nick" placeholder="请输入您的昵称" type="text">
+				</p>
+				<p class="p5" style="margin-top: 0.2rem"><label>真实姓名</label>
+					<input class="loginValue" id="name" name="name" placeholder="请输入您的真实姓名" type="text">
+				</p>
+				<p class="p5" style="margin-top: 0.2rem"><label>证件类型</label>
+						<select class="loginValue" style="width:71%; height:40px; border:1px solid #CCC; border-radius:5px;" id="cardtype" name="cardtype">
+							<option value="1" selected="selected">身份证</option>
+							<option value="2">护照</option>
+							<option value="3">军官证</option>
+                        	<option value="4">其它</option>
+						</select>
+				</p>
+				<p class="p5" style="margin-top: 0.2rem"><label>证件号码</label>
+					<input class="loginValue" id="idcard" name="idcard" placeholder="请输入您的证件号码" type="text">
+				</p>
+				<p class="p5" style="margin-top: 0.2rem"><label>手机号码</label>
+					<input class="loginValue" type="text" name="phone" id="mobile-number" placeholder="e.g. +1 702 123 4567">
+				</p>
+				<p class="p5" style="margin-top: 0.2rem;"><label>验证码</label>
+					<input class="loginValue" id="code" name="code" placeholder="请输入验证码" type="text" style="width:30%;">
+					<input class="input_news_password" value="点击发送" type="button" style="width:30%;" id="msgt" onClick="sandPhone()" data-key='on'>
+				</p>     
+				<p class="p5" style="margin-top: 0.4rem;"><input class="input_news_password" value="注册" type="button" onClick="tijiao()"></p>
+				 </form>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function tijiao(){
+	//alert(111);
+	
+		var nick=$("#nick").val();
+		var name=$("#name").val();
+		var cardtype=$("#cardtype").val();
+		var idcard=$("#idcard").val();
+		var phone=$("#mobile-number").val();
+		var code=$("#code").val();
+		var url="{:U('ModifyMember/modify')}";
+		$.post(url,{"nick":nick,"name":name,"cardtype":cardtype,"idcard":idcard,"phone":phone,"code":code},function(d){
+			alert(d["info"]);
+			if(d["status"]==1){
+				//alert(d["info"]);
+				window.location.href="{:U('Reg/regSuccess')}";
+			}
+		});
+	}
+
+</script>
+<script>
+    
+    function sandPhone(){
+        var i=120;
+        var tid2;
+        tid2=setInterval(function(){
+            if($("#msgt").attr("data-key")=='off'){
+                $("#msgt").attr("disabled",true);
+                $("#msgt").removeClass("class");
+                $("#msgt").addClass("button again");
+                i--;
+                $("#msgt").val(i+"秒后可重新发送");
+                if(i<=0){
+                    $("#msgt").removeAttr("disabled").val("重新发送验证码");
+                    $("#msgt").attr("data-key","on");
+                }
+            }
+        },1000);
+		var phone = $("#mobile-number").val();
+		
+            $.post("{:U('ModifyMember/ajaxSandPhone')}",{phone:encodeURIComponent($("#mobile-number").val())},
+                    function(d){
+                       alert(d.info);
+                        if(d.status==1){
+                            i=120;
+                            $("#msgt").attr("data-key","off");
+                        }
+                    });
+    }
+    /*function valiForms(){
+        if(vali.nick==0){
+            $('#nick').focus();
+            return false;
+        }
+        if(vali.name==0){
+            $('#name').focus();
+            return false;
+        }
+        if(vali.idcard==0){
+            $('#idcard').focus();
+            return false;
+        }
+        if(vali.phone==0){
+            $('#mobile-number').focus();
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    $("#form").validate({
+        rules: {
+        },
+        messages: {
+        },
+        submitHandler:function(form){
+            ajax_submit_form(form)
+            return false;
+        },
+        invalidHandler: function() {  //不通过回调
+            return false;
+        }
+    });
+    //kind editor
+    var editor;
+    KindEditor.ready(function(K) {
+        editor = K.create('textarea[name="description"]', {
+            resizeType : 1,
+            allowPreviewEmoticons : false,
+            allowImageUpload : false,
+            items : [
+                'source', 'fontname', 'fontsize', 'forecolor','|',  'bold', 'link', '|', 'justifyleft', 'justifycenter', 'justifyright' ],
+            colorTable : [
+                ['#FF0000', '#E56600', '#FF9900', '#64451D', '#DFC5A4', '#FFE500'],
+                ['#009900', '#006600', '#99BB00', '#B8D100', '#60D978', '#00D5FF'],
+                ['#337FE5', '#003399', '#4C33E5', '#9933E5', '#CC33E5', '#EE33EE'],
+                ['#FFFFFF', '#CCCCCC', '#999999', '#666666', '#333333', '#000000']
+            ]
+        });
+    });*/
+</script>
+<include file="App/Home/Iphone/Public/footer.html"/>

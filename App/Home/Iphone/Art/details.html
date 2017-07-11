@@ -1,0 +1,24 @@
+<include file="App/Home/Iphone/Public/top.html"/>
+	<body>
+		<div class="Wf-div1" style="border-bottom: none;">
+			<a onClick="history.back(-1)">返回</a>
+		</div>
+		<p class="bull_dels">
+			【动态】{$art_one.title}</p>
+		<p class="bull_dels_time">
+			{$art_one.add_time|date='Y-m-d H:i:s',###} </p>
+		<div class="bull_content">
+			{$art_one.content}
+		</div>
+		<div style="clear: both;"></div>
+
+		<script>
+			$(function() {
+				$(".bullet_p .bull_click").click(function() {
+					$(this).addClass('actives').siblings().removeClass('actives');
+					var index = $(".bullet_p .bull_click").index(this);
+					$("#box_bull > ul").eq(index).show().siblings().hide();
+				});
+			})
+		</script>
+<include file="App/Home/Iphone/Public/footer.html"/>

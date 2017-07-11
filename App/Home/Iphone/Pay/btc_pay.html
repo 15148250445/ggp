@@ -1,0 +1,250 @@
+<include file="App/Home/Iphone/Public/top.html"/>
+<header class="Wf-div1">
+		<a href="{:U('User/index')}">返回</a>
+		<span>比特币充值</span>
+	</header>
+<!--<name id="realname" data="{$member['name']|default='暂无'}"></name>-->
+<div class="j-box1" style="font-size:0.3rem;width:95%;margin:0 auto;">
+	<!--<div class="Wf-div1" style="padding-left: 0.05rem; border-bottom: solid #FF6A04 0.05rem ;">
+		<i style="float:left; text-align: left; color: #FF6A04;">虚拟币充值</i>
+		
+	</div>-->
+	<style>
+			.add_list{
+				font-size:14px;
+				margin-top:0.3rem;
+			}
+			.add_list ul{
+				margin:0 auto;
+			}
+			.add_list li{
+				height:1rem;
+				 line-height:inherit;
+				 margin:0 auto;
+			}
+			.add_list li label{
+				text-align:right;
+				width:3%;
+				
+			}
+			.add_list li input{
+				height:0.6rem;
+				 width:4rem;
+				-webkit-appearance: none; 
+				-moz-appearance: none; 
+				-o-appearance: none; 
+				appearance: none;
+				border:1px solid #CCCCCC;
+				/*border-radius:0.1rem;*/
+			}
+			.add_list li select{
+				height:0.6rem;
+				 width:70%;
+				float:right;
+			}
+			</style>
+
+	<br />
+	<table id="addNewAddr" class="add_list" border="0" cellpadding="0" cellspacing="0" > 
+              <tbody>
+                <tr>
+                 <form action="{:U('User/insert')}" method="post" id="bankform" jump-url="{:U('User/draw')}">
+                  <td colspan="4" id="newAddress"style="width:95%;margin:0 auto;">
+                  <div id="rmb_out_ok">
+                      <!--<ul id="rollout" style="margin-top:10px;margin:0 auto;">
+                        <li>
+                          <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;充值数量：&nbsp;</label>
+                          <input name="number" id="num" placeholder="最小充值金额{$config['pay_min_money']|default='0'}元" type="text" onkeyup="value=value.replace(/[^\.\d]/g,'');notfee();" maxlength="10">
+						</li>
+						
+                        <li>
+                          <label>平台比特币地址：</label>
+                          <input name="name" id="btc_address" value="{$list['chongzhi_url']|default='暂无'}"  readonly="readonly" type="text" placeholder="请手动向此账户转币">				
+                         </li>
+						 <li>
+                          <label>我的比特币地址：</label>
+                          <input name="address" id="address"   type="text" placeholder="请准确填写自己的比特币地址，否则不能到账">				
+                         </li>
+                         <li style="height:0.5rem"><span class="false" id="accountmsg" style="color:#f00;">银行卡号和开户姓名必须一致，否则无法到账。</span> </li>
+                        <li style="display:inline">
+                          <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;验证码：</label>
+                          <input name="code" id="code"   type="text"  style="width:2.5rem;">	
+						   <img class="yanzm" id="captchaimg" src="{:U('Login/showVerify')}" onclick="$(this).attr('src','{:U(\'Login/showVerify\')}?t='+Math.random())" style="margin-right:0px;width:1.5rem; vertical-align: middle" >			
+                         </li>
+						 <br /><br />
+						 <li id="yes_add">
+                          <label>&nbsp;</label>
+						  
+						    <input class="addition"  value="立即充值" onclick="recharge()" type="button" style="height:0.6rem; list-style-type:none;color:#FFFFFF; background:#FF6600;padding-left:0.1rem;padding-right:0.1rem; border-radius:0.1rem;width:30%;height:0.8rem">
+						 
+                        </li>
+					   
+						 <li style="height:3.3rem;text-align:left;padding-left:0.1rem;">
+					   		<h2>使用说明</h2>
+							<p style="margin-bottom:0;">1. 从云尊联盟同名账户提现到云尊联盟。</p>
+							<p style="margin-bottom:0;">2. 即时到账。</p>
+							<p>3. 通过云尊联盟“第三方支付”充值CNY更便捷，多家银行即时到账；可提现到云尊联盟使用。</p>
+					     </li>
+						 
+					    
+                      </ul>-->
+					  <!--<style>
+					  #table tr{
+					  		
+							line-height:30px;
+					  }
+					  </style>-->
+                      <table>
+					  		<tr style="height:1.2rem;">
+								<td style="text-align:right;width:2.4rem;font-size:0.24rem;">充值数量：</td>
+								<td style="padding-left:0px;"><input name="number" id="num" placeholder="最小充值金额{$config['pay_min_money']|default='0'}元" type="text" onkeyup="value=value.replace(/[^\.\d]/g,'');notfee();" maxlength="10" style="height:0.7rem;border-radius:0.1rem;list-style:none;border:1px solid #CCCCCC; background:#FFFFFF;width:4.1rem;"></td>
+							</tr>
+							<tr  style="height:1.2rem;">
+								<td style="text-align:right;font-size:0.24rem;"> 平台比特币地址：</td>
+								<td align="left"><input name="name" id="btc_address" value="{$list['chongzhi_url']|default='暂无'}"  readonly="readonly" type="text" placeholder="请手动向此账户转币" style="height:0.7rem;border-radius:0.1rem;list-style:none;border:1px solid #CCCCCC; background:#FFFFFF;width:4.1rem;">	</td>
+							</tr>
+							<tr  style="height:1.2rem;font-size:0.18rem;width:2.4rem;">
+								<td style="text-align:right;font-size:0.24rem;"> 我的比特币地址：</td>
+								<td align="left"><input name="address" id="address"   type="text" placeholder="请准确填写自己的比特币地址" style="height:0.7rem;border-radius:0.1rem;list-style:none;border:1px solid #CCCCCC; background:#FFFFFF;width:4.1rem;">		</td>
+							</tr>
+							<tr  style="height:1.2rem;font-size:0.29rem;width:2.4rem;">
+								<td style="text-align:right;font-size:0.24rem;">  验证码：</td>
+								<td align="left"><input name="code" id="code"   type="text"  style="width:2.5rem;height:0.7rem;border-radius:0.1rem;list-style:none;border:1px solid #CCCCCC; background:#FFFFFF;"><img class="yanzm" id="captchaimg" src="{:U('Login/showVerify')}" onclick="$(this).attr('src','{:U(\'Login/showVerify\')}?t='+Math.random())" style="margin-right:0px;width:1.6rem; vertical-align: middle;" ></td>
+							</tr>
+							<tr style="height:1.2rem;font-size:0.29rem;">
+							<td colspan="2" align="center"> <input class="addition"  value="立即充值" onclick="recharge()" type="button" style="height:0.6rem; list-style-type:none;color:#FFFFFF; background:#FF6600;padding-left:0.1rem;padding-right:0.1rem; border-radius:0.1rem;width:30%;height:0.8rem" border="0"></td>
+							</tr>
+							<tr>
+								<td colspan="2" style="text-align:left;">使用说明</td>
+							</tr>
+							<tr>
+								<td colspan="2" style="text-align:left;"><p style="margin-bottom:0;">1. 从云尊联盟同名账户提现到云尊联盟。</p></td>
+							</tr>
+							<tr>
+								<td colspan="2" style="text-align:left;"><p style="margin-bottom:0;">2. 即时到账。</p></td>
+							</tr>
+							<tr>
+								<td colspan="2" style="text-align:left;"><p>3. 通过云尊联盟“第三方支付”充值CNY更便捷，多家银行即时到账；可提现到云尊联盟使用。</p></td>
+							</tr>
+					  </table>
+					  
+                  </div>
+                  </td>
+                  </form>
+                </tr>
+				 <!--新加-->
+						
+               
+                </tbody>
+            </table>
+			<br />
+	<div class="j-box3 wt-box3">
+		<p class="right" style="font-size:14px; color:#f00; line-height:40px; margin-bottom:0;">超过3个小时的汇款订单将失效，请重新生成汇款订单并汇款。<!--<a href="{:U('Help/index?id=62')}" class="help_link">充值不到账如何处理？</a>--></p>
+		<table class="j-tab3">
+					<thead>
+						
+						
+						
+						<tr>
+							<th>记录ID</th>
+							<th>数量</th>
+							<th>时间</th>
+							<th>状态</th>
+						</tr>
+					</thead>
+					<tbody id="trust_history">
+						 <volist name='chongzhi' id='vo' key='key'>
+							<tr>
+							<td>{$key}</td>
+							
+							<td>{$vo.num|default=0}</td>
+							<td>{$vo.add_time|date='Y-m-d H:i:s',###}</td>
+							<!-- <td><eq name='vo.status' value='2'><a class="fkbtn" >等待审核<else/><a class="fkbtn">充值成功</eq></a></td> -->
+							 <td><eq name="vo.status" value="8">
+								<a class="fkbtn" >驳回
+									<else/>
+								<eq name="vo.status" value="3">
+									<a class="fkbtn" >通过
+										<else/>
+										<a class="fkbtn" >审核中
+								</eq>
+							 </eq></a></td>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+	
+	</div>
+
+
+
+	<div id="recharge_alert_bank" style="display:none;">
+		<div class="box_bg2"></div>
+		
+		</div>
+		<!-- recharge alert end -->
+		<div id="noneform">
+		
+		</div>
+		<div>
+			<!-- <button class="ebank_pay" onclick="Ebank.licai()" style="margin-top:160px;">去元宝理财充值</button> -->
+			<div class="ebank_box_common" style=" width:100%; height:100%; background:#000; filter: Alpha(opacity=60); -moz-opacity: 0.6; -khtml-opacity: 0.6; opacity: 0.6; position:absolute; z-index:9998; position:fixed; left:0; top:0; z-index: 9998;  display:none;">
+			</div>
+		</div>
+	</div>
+			
+	
+</div>  
+<script type="text/javascript">
+	function recharge(){
+		//layer.msg(111);
+		var num = $('#num').val();
+		var address = $('#address').val();
+		var code = $('#code').val();
+		var btc_address = $('#btc_address').val();
+		var currency_id = "{$currency.currency_id}";
+		//alert(address);
+		/*parseFloat(num);
+		if( num <= 0 ){
+			layer.msg('请输入正确金额');
+			return false;
+		}*/
+		if(address == ''){
+			alert('请输入自己的比特币地址');
+			return false;
+		}
+		if(code == ''){
+			alert('请输入验证码');
+			return false;
+		}
+		$.ajax({
+			url:"{:U('Pay/btc_recharge')}",
+			type:'POST',
+			dataType:"JSON",
+			data:{'num':num,'code':code,'address':address,'btc_address':btc_address,'currency_id':currency_id},
+			success:function (data){
+				alert(data.info);
+				if(data.status == -2221){
+					$('#captchaimg').attr('src','{:U(\'Login/showVerify\')}?t='+Math.random());
+				}
+				if(data.status == 1){
+					location.reload();
+				}
+			}
+		})
+	}
+</script>
+<script>
+    $(".menu1").addClass("uc-current");
+
+    function showTips(id,msg){
+        var tips = layer.tips(msg, id, {
+            tips: [1, '#fff8db'],
+            area: ['400px', '35px']
+        });
+        $(id).on('mouseout', function(){
+            layer.close(tips);
+        });
+    }
+</script>
+<include file="App/Home/Iphone/Public/footer.html"/> 

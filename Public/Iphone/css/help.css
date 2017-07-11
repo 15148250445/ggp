@@ -1,0 +1,160 @@
+@charset "utf-8";
+*{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+html,body{
+	font-size: 14px;
+	font-family: Arial,"微软雅黑";
+}
+h1,h2,h3,h4,h5,h6{
+	font-weight: normal;
+}
+ul.qqkf{
+	font-size: 12px;
+}
+
+p{
+	font-size: 14px;
+}
+div.person{
+	font-size: 12px;
+}
+.clear{
+clear:both;
+}
+
+.container{
+	width: 1000px;
+
+	margin: 0 auto;
+}
+.container .Left{
+
+	width: 170px;
+	background: #f9f9f9;
+	height: 788px;
+	float: left;
+}
+.container .Left h1{
+	width: 130px;
+	height: 36px;
+	border-bottom: 1px solid #dfdfdf;
+	line-height: 36px;
+	margin: 0 auto;
+	font-size: 18px;
+	padding-top: 12px;
+}
+.container .Left ul li{
+	height: 30px;
+	line-height: 30px;
+	text-indent: 18px;
+	color: #666;
+}
+.container .Left ul li.border-left{
+	border-left: 3px solid #ff6600;
+	color: #ff6600;
+}
+.container .Right{
+	padding: 0 30px;
+	width: 748px;
+	border: 1px solid #dfdfdf;
+	margin-bottom: 105px;
+	float: right;
+}
+/* yuanbao元宝注册 */
+.container-1 .Right h2{
+	height: 57px;
+	border-bottom: 1px dashed #dfdfdf;
+	line-height: 57px;
+	font-size: 18px;
+}
+.container-1 .Right img{
+	margin-top: 20px;
+}
+.container-1 .Right p{
+	margin-top: 26px;
+}
+.container-1 .Right h6{
+	margin: 44px 0 52px 0;
+	text-indent: 14px;
+	color: #ff0000;
+	font-size: 14px;
+}
+/* 元宝理财注册 */
+.container-2 .Right h2{
+	height: 57px;
+	border-bottom: 1px dashed #dfdfdf;
+	line-height: 57px;
+	font-size: 18px;
+	margin-bottom: 58px;
+}
+.container-2 .Right p{
+	margin-left: 40px;
+	font-size: 18px;
+}
+.container-2 .Right img{
+	margin-top: 64px;
+	margin-bottom: 103px;
+}
+/* 姓名身份证信息重置 */
+.container-3 .Right h2{
+	height: 57px;
+	border-bottom: 1px dashed #dfdfdf;
+	line-height: 57px;
+	font-size: 18px;
+	margin-bottom: 14px;
+
+}
+.container-3 .Right p{
+	line-height: 26px;
+}
+.container-3 .Right ul{
+	background: #f9f9f9;
+	padding: 12px 30px;
+	margin-bottom: 26px;
+}
+.container-3 .Right ul li{
+	line-height: 26px;
+	color: #333;
+}
+.container-3 .Right img{
+	margin-bottom: 26px;
+}
+/* 交易密码 */
+.container-4 .Right h2{
+	height: 57px;
+	border-bottom: 1px dashed #dfdfdf;
+	line-height: 57px;
+	font-size: 18px;
+	margin-bottom: 20px;
+
+}
+.container-4 .Right .box{
+	height: 60px;
+	line-height: 60px;
+	background: #f9f9f9;
+	padding-left: 20px;
+	margin-bottom: 26px;
+}
+.container-4 .Right .box a{
+	margin-right: 38px;
+	color: #f60;
+	text-decoration:none;
+}
+/* 登录密码 */
+
+
+/*元宝网左侧导航样式*/
+.sdmenu{ width:170px; font-size: 12px; background-color:#fafafa; padding-bottom:10px;}
+.sdmenu div{ overflow: hidden;}
+.sdmenu div:first-child{}
+.sdmenu div.collapsed{ height:36px; }
+.sdmenu div p{ display: block; height:40px; line-height:40px; font-size:18px; color:#000;  cursor:default; border-bottom: 1px solid #dfdfdf; margin:10px 20px 5px 20px;}
+.sdmenu div.collapsed p{ background-image: url(/images/collapsed.gif); border-top:#fff; border-bottom: 1px solid #d7d4cf;}
+.sdmenu div a{ height:30px; padding-left:20px; line-height:30px; color:#666; display:block; text-decoration:none;}
+.sdmenu div a:hover{ color:#f60; text-decoration:none;}
+.sdmenu div .uc-current{ color:#f60; text-decoration:none; border-left:3px solid #f60; padding-left:17px;}

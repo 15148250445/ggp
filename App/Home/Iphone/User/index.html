@@ -1,0 +1,79 @@
+<include file="App/Home/Iphone/Public/header.html"/>
+		<div id="main">
+			<div class="main_box">
+				<div class="raise right clearfix">
+					<div class="strip"></div>
+					<p class="p1" style="margin-left: 0.3rem;">账户资产估计： <span style="color:#f60;">{$u_info['rmb']}</span> 人民币</p>
+					<p class="p2">
+						<span>名称</span>
+						<span>可用</span>
+						<span>冻结</span>
+						<span>操作</span>
+					</p>
+					<ul class="ul1">
+						<li>
+							<strong style="width:1.4rem;display:inline-block;">人民币</strong>
+							<span class="span1" style="width: 2rem;padding-left: 0.25rem;">{$member.rmb|default=0.00}</span>
+							<span class="span2" style="margin-left: 0;width: 2rem;padding-left: 0.3rem;">{$member.forzen_rmb|default=0.00}</span>
+							<i class="bg-click yes1" style="width: 20px;"></i>
+							<p class="showAndhide" style="display: none">
+								<a href="{:U('FillByBank/index')}"><span class="icon_cz"></span>充值</a>
+								<a href="{:U('User/draw')}"><span class="icon_tb"></span>提现</a>
+							</p>
+							<div style="clear: both;"></div>
+
+							<p></p>
+						</li>
+						<volist name='currency_user' id='vo' >
+						<li>
+							<strong style="width:1.4rem;display:inline-block;">{$vo.currency_name|default='虚拟币'}{$vo.currency_mark|default='--'}</strong>
+							<span class="span1" style="width: 2rem;padding-left: 0.25rem;">{$vo.num|default=0.00}</span>
+							<span class="span2" style="margin-left: 0;width: 2rem;padding-left: 0.3rem;">{$vo.forzen_num|default=0.00}</span>
+							<i class="bg-click yes1" style="width: 20px;"></i>
+							<p class="showAndhide" style="display: none">
+								<a href="{:U('Pay/bpay',array('currency_id'=>$vo['currency_id']))}"><span class="icon_cz"></span>充币</a>
+								<a href="{:U('Pay/tcoin',array('currency_id'=>$vo['currency_id']))}"><span class="icon_tb"></span>提币</a>
+								<a href="{:U('Orders/index',array('currency'=>$vo['currency_mark']))}" style="width: 2.47rem;"><span class="icon_jy"></span>去交易</a>
+							</p>
+							<div style="clear: both;"></div>
+
+							<p></p>
+						</li>
+						</volist>
+
+					</ul>
+
+					<script src="__PUBLIC__/Iphone/js/fastclick.js"></script>
+					<script type="text/javascript">
+						$(function() {
+							FastClick.attach(document.body);
+							$(".showAndhide").hide();
+							$(".ul1 li").click(function() {
+								var a_lenght = $(this).children(".showAndhide");
+								var s_lenght_s = a_lenght.children("a").length;
+								if(s_lenght_s == 2) {
+									$(".ul1 li .showAndhide a").css("width", "3.71rem");
+								} else {
+									$(".ul1 li .showAndhide a").css("width", "2.47rem");
+								}
+
+								if($(this).children("i").hasClass('bg-click')) {
+
+									$(".ul1 li .showAndhide").hide();
+									$(".ul1 li i").removeClass('bg-click1').addClass('bg-click');
+									$(this).children("i").removeClass('bg-click').addClass('bg-click1');
+									$(this).children("i").siblings('.showAndhide').show();
+									// $(this).children('em').text("成功").css({"color":"#33cc00"})
+								} else {
+									$(this).children("i").removeClass('bg-click1').addClass('bg-click');
+									$(this).children("i").siblings('.showAndhide').hide();
+								}
+							});
+						})
+					</script>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+<include file="App/Home/Iphone/Public/footer.html"/>

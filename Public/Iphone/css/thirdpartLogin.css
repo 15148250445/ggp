@@ -1,0 +1,576 @@
+html,body,div,h1,ul,li,input,form,p,span,img,a{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	width: 100%;
+	font-family: "å¾®è½¯é›…é»‘";
+	font-size: 16px;
+}
+body{
+    position:relative;
+}
+a:hover, a:visited, a:link, a:active{
+	text-decoration: none;
+	out-line: none;
+	color: #ffffff;
+}
+
+ul,li{
+	list-style: none;
+}
+img{
+	border: none;
+}
+input{
+	outline: none;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill { 
+    -webkit-box-shadow: 0 0 0 1000px white inset; 
+}
+ input[type=text]:focus, input[type=password]:focus, textarea:focus {
+      -webkit-box-shadow: 0 0 0 1000px white inset; 
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.box{
+	width: 1200px;
+	margin: 0 auto;
+	padding-left: 100px;
+}
+.head{
+	width: 100%;
+	min-width: 1300px;
+	_width:expression(document.body.clientWidth < 1300 ? "1300px" : "auto");
+	height: 100px;
+	background: url(../img/header_bg.jpg) repeat-y center;
+}
+.head h1{
+	padding-left: 110px;
+	font-size: 24px;
+	color: #ffffff;
+	line-height: 100px;
+	background: url(../img/logo.png) no-repeat left;
+}
+#videoGuide,#guide{
+	float: right;
+	cursor: pointer;
+	font-size: 20px;
+	color: #000000;
+	*margin-top: -100px;
+	margin-right: 100px;
+}
+#guide{
+    margin-right:50px;
+}
+.content{
+	width: 900px;
+	margin: 0 auto;
+	padding: 120px 0 145px;
+}
+.content:after{
+	display: block;
+	content: "";
+	clear: both;
+}
+.noUserName{
+	margin-bottom: 30px;
+	display: none;
+}
+.noUserName div{
+	font-size: 0;
+	width: 90%;
+	margin: 0 auto;
+}
+.noUserName div:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.noUserName p{
+	font-size: 18px;
+	color: #333333;
+	text-indent: 5%;
+	margin-bottom: 20px;
+}
+.noUserName a{
+	font-size: 14px;
+	color: #333333;
+	display: inline-block;
+	width: 45%;
+	text-align: center;
+}
+.noUserName .androidApk,.noUserName .iosIpa{
+	text-indent: 30px;
+	height: 50px;
+	border-radius: 4px;
+	border: 1px solid #40c7a2;
+	line-height: 50px;
+	background: url(../img/android.jpg) no-repeat 15px;
+	float: left;
+}
+.noUserName .iosIpa{
+	float: right;
+	border: 1px solid #3c89d7;
+	background: url(../img/ios.jpg) no-repeat 30px;
+}
+
+.accountLogin{
+	width: 600px;
+	border: 1px solid #b8c4ce;
+	border-radius: 3px ;
+	text-align: center;
+}
+.accountLogin .ewm{
+	width: 156px;
+	height: 156px;
+	background: url(../img/ewmdl.jpg) no-repeat;
+	margin: 50px auto 45px auto;
+}
+.accountLogin .succeed{
+	width: 100px;
+	height: 100px;
+	background: url(../img/susseed.png) no-repeat;
+	margin: 50px auto 45px auto;
+	display: none;
+}
+.guideContainer{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.8);
+	display: none;
+	text-align: center;
+}
+#guide{
+	float: right;
+	cursor: pointer;
+	font-size: 20px;
+    margin-right:100px;
+    font-weight: 500;
+}
+.explain{
+	font-size: 14px;
+	color: #333333;
+	line-height: 100%;
+}
+.login{
+	text-align: center;font-size: 24px;
+	line-height: 100%;
+	padding: 50px 0 9px;
+	color: #333333;
+	margin: 10px 10px 0 0;
+	background: url(../img/ewm.jpg) no-repeat right top;
+	position: relative;
+}
+#click_ewm,#click_computer{
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	right: 0;
+	top: 0;
+	cursor: pointer;
+}
+.click_ewm{
+    display:none;
+}
+#img{
+	margin: 40px auto 25px auto;
+	
+}
+.computer{
+	background: url(../img/computer.jpg) no-repeat right top;
+}
+.accountLogin input{
+	width: 398px;
+	height: 48px;
+	border-radius: 4px;
+	border: 1px solid #b8c4ce;
+	margin: 30px auto 0 auto;
+	text-indent: 10px;
+}
+.yzm_box{
+	width: 400px;
+	height: 50px;
+	margin: 30px auto 0 auto;
+    display:none;
+}
+.yzm_box input{
+	width: 250px;
+	float: left;
+	margin: 0;
+}
+.yzm_box img{
+	float: right;
+	height: 100%;
+    cursor: pointer;
+}
+.accountLogin #tip{
+	margin-top: 10px;
+	font-size: 14px;
+	color: red ;
+	display: none;
+}
+@keyframes flash{
+	0%, 50%, 100% {
+	    color: transparent;
+	}
+	25%, 75% {
+	    color: red ;
+	}
+}
+#tip{
+	animation: flash 2s infinite;
+}
+
+.accountLogin .button{
+	background: #cccccc;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 16px;
+	border:none;
+	height: 50px;
+}
+.information{
+	margin: 41px auto 30px auto;
+	border-top: 1px dashed #B8C4CE;
+	padding-left: 89px;
+	text-align: left;
+}
+.information .tip{
+	line-height: 100%;
+	padding-top: 20px;
+	font-size: 14px;
+	color: #666666;
+	color: #333333;
+}
+.information span{
+	color: #3c89d7;
+}
+.information input{
+	width: 10px;
+	height: 10px;
+	border: 1px solid #b8c4ce;
+	margin-top: 0;
+}
+.information .message{
+	font-size: 0;
+}
+.message p{
+	display: inline-block;
+	font-size: 12px;
+	padding-top: 10px;
+	display:block;
+}
+.message p span{
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background:black;
+	margin-bottom: 2px;
+	display: inline-block;
+}
+.download:after{
+	content: "";
+	clear: both;
+	display: block;
+	
+}
+.download{
+	position: relative;
+}
+.noAccount{
+	font-size: 18px;
+	color: #333333;
+	padding-left: 30px;
+}
+.android,.ios{
+	margin-top: 36px;
+	width: 200px;
+	padding-left: 30px;
+}
+.creditIdImg{
+	position: absolute;
+	top:0;
+	right: -170px;
+}
+.android a,.ios a{
+	text-indent: 67px;
+	display: block;
+	color: #333333;
+	height: 50px;
+	border-radius: 4px;
+	border: 1px solid #40c7a2;
+	line-height: 50px;
+	background: url(../img/android.jpg) no-repeat 30px;
+}
+.ios a{
+	text-indent: 88px;
+	border: 1px solid #3c89d7;
+	background: url(../img/ios.jpg) no-repeat 58px;
+}
+
+.footer{
+	background: url(../img/footerbg.jpg);
+	display: table;
+	height: 130px;
+	width: 100%;
+	min-width: 1300px;
+	_width:expression(document.body.clientWidth < 1300 ? "1300px" : "auto");
+}
+.footer_middle{
+	display: table-cell;
+	vertical-align:middle; 
+	text-align:center;
+	color: #ffffff;
+	font-size: 12px;
+}
+.footer_middle p{
+	line-height: 24px;
+}
+.footer_middle p{
+	line-height: 24px;
+}
+
+#newNoticeBox,#noticeBox{
+	background: rgba(0,0,0,0.8);
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+    display:none;
+}
+#newNoticeBox{
+    position:fixed;
+}
+.newNoticeText,.noticeText{
+	width: 620px;
+	margin: 100px auto 0 auto;
+}
+.newNoticeText{
+    margin-top:100px;
+}
+.newNoticeText div,.noticeText div{
+	text-align: center;
+}
+.newNoticeText p,.newNoticeText div,.noticeText p,.noticeText div{
+	color: #FFFFFF;
+	font-size: 16px;
+	line-height: 30px;
+	/*margin-bottom: 30px;*/
+}
+.newNoticeText p,.newNoticeText div{
+    font-size:16px;
+}
+.newNoticeText .textRight,.noticeText .textRight{
+	text-align: right;
+}
+.newNoticeText span,.noticeText span{
+	display: block;
+	width: 200px;
+	height: 50px;
+	background: #3c89d7;
+	color: #ffffff;
+	cursor: pointer;
+	line-height: 50px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+
+@media all and (max-width: 900px) {
+	.box{
+		padding: 0;
+		width: 100%;
+	}
+	.head,.footer{
+		min-width: 0;
+		_width:expression(document.body.clientWidth < 0 ? "0px" : "auto");
+	}
+	.content{
+		width: 100%;
+		padding: 100px 0;
+	}
+	.content .accountLogin,.content .down{
+		margin: 0 auto;
+		float: none;
+	}
+	.content .down{
+		padding-left: 0;
+		margin: 0 auto;
+		text-align: center;
+		padding-top: 30px;
+	}
+	.android,.ios{
+		padding-left: 0;
+	}
+	.content .download{
+		width: 200px;
+		margin: 0 auto;
+		text-align: left;
+		position: relative;
+		left: -90px;
+	}
+	.content .download:after{
+		display: block;
+		content: "";
+		clear: both;
+	}
+	.content .download .ios{
+		margin-right: 30px;
+	}
+	.creditIdImg{
+		left: 230px;
+	}
+    .noUserName{
+		display: none;
+	}
+   .newNoticeText, .noticeText{
+		width: 90%;
+	}
+	.newNoticeText p,.noticeText p{
+		margin-bottom: 0;
+	}
+}
+@media all and (max-width: 602px) {
+    #guide{
+		margin-right: 0;
+	}
+	.box{
+		padding: 0;
+		width: 100%;
+	}
+	.head,.footer{
+		min-width: 0;
+		_width:expression(document.body.clientWidth < 0 ? "0" : "auto");
+	}
+	.content{
+		width: 100%;
+		padding: 100px 0;
+	}
+	.content .accountLogin,.content .down{
+		margin: 0 auto;
+		float: none;
+		width: 90%;
+	}
+	.content .accountLogin input{
+		width: 90%;
+	}
+	
+	.information{
+		width: 90%;
+		padding: 0;
+		margin: 0 auto 30px auto;
+	}
+	.login{
+		padding-top: 35px;
+	}
+	.accountLogin .button{
+		margin-bottom: 30px;
+	}
+	.content .accountLogin .information input{
+		width: auto;
+	}
+	.content .down{
+		padding-left: 0;
+		margin: 0 auto;
+		text-align: center;
+		padding-top: 30px;
+	}
+	.content .download{
+		width: 90%;
+		margin: 0 auto;
+		text-align: left;
+		position: static;
+	}
+	.content .download:after{
+		display: block;
+		content: "";
+		clear: both;
+	}
+	.content .download .android{
+		float: none;
+		margin: 28px auto 0;
+	}
+	.content .download .ios{
+		float: none;
+		margin: 28px auto 0;
+	}
+	.creditIdImg{
+		position: static;
+		display: block;
+		margin: 30px auto 0 auto;
+	}
+	.explain{
+		margin-bottom: 30px;
+	}
+	#guide{
+		margin-right: 0;
+	}
+    #videoGuide{
+        display:none;
+    }
+	.yzm_box{
+		width: 90%;
+	}
+	.content .yzm_box input{
+		width: 60%;
+	}
+	.content .yzm_box img{
+		width: 30%;
+	}
+    .click_ewm{
+		display: block;
+	}
+	.click_computer{
+		display: none;
+	}
+	.noUserName{
+		display: block;
+	}
+	.down{
+		display: none;
+	}
+   .newNoticeText, .noticeText{
+		width: 90%;
+		margin-top: 30px;
+	}
+	.newNoticeText p,.noticeText p{
+		margin-bottom: 0;
+	}
+}
+@media all and (max-width: 500px){
+	#noticeBox{
+		padding-bottom: 150px;
+	}
+}
+.click_yzm{
+	display: none;
+}
+.refresh{
+	width: 250px;
+	height: 48px;
+	background: #3c89d7;
+	margin: 30px auto 92px auto;
+	line-height: 48px;
+	color: #ffffff;
+	cursor: pointer;
+}
+.guideContainer{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.8);
+	display: none;
+	text-align: center;
+}
